@@ -1,0 +1,26 @@
+{
+  "name": "@linotype/directus-playground",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "update": "npx taze major",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx directus start",
+    "build": "npx directus bootstrap",
+    "start": "npx directus start",
+    "schema-dump": "npx directus schema snapshot ./snapshots/schema.yaml",
+    "schema-install": "npx directus schema apply --yes ./snapshots/schema.yaml",
+    "database-migrate": "npx directus database migrate:latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "directus": "latest",
+    "@linotype/directus-extension-linotype": "*"
+  },
+  "devDependencies": {
+    "taze": "latest"
+  }
+}

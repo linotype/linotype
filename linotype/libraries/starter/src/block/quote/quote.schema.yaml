@@ -1,0 +1,44 @@
+version: 1
+directus: 9.22.4
+
+name: quote
+
+meta:
+  translations:
+    - language: en-US
+      translation: Quotes
+      plural: Quotes
+      singular: Quote
+  icon: format_quote
+  color: null
+  hidden: false
+  note: ''
+  sort: 1
+
+fields:
+
+  - name: title
+    type: string
+    meta:
+      translations:
+        - language: en-US
+          translation: Title
+          singular: Title
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: title
+        placeholder: Your title here
+        trim: true
+      readonly: false
+      required: false
+      special: null
+      validation: null
+      validation_message: null
+      width: full
+      sort: 10

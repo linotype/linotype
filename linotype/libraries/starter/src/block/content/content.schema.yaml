@@ -1,0 +1,110 @@
+version: 1
+directus: 9.22.4
+
+name: content
+
+meta:
+  translations:
+    - language: en-US
+      translation: Contents
+      plural: Contents
+      singular: Content
+  icon: subject
+  color: null
+  hidden: false
+  note: ''
+  sort: 1
+
+fields:
+
+  - name: title
+    type: string
+    meta:
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      # group: null
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: title
+        placeholder: Your title here
+        trim: true
+      readonly: false
+      required: false
+      sort: 1
+      special: null
+      translations:
+        - language: en-US
+          translation: Title
+      validation: null
+      validation_message: null
+      width: full
+
+  - name: description
+    type: text
+    meta:
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      # group: null
+      hidden: false
+      interface: input-rich-text-html
+      note: null
+      options:
+        toolbar:
+          - bold
+          - italic
+          - strikethrough
+          - subscript
+          - superscript
+          - underline
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations:
+        - language: en-US
+          translation: Description
+      validation: null
+      validation_message: null
+      width: full
+
+  - name: image
+    type: uuid
+    meta:
+      conditions: null
+      display: image
+      display_options: null
+      # group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options:
+        crop: false
+      readonly: false
+      required: false
+      sort: 3
+      special:
+        - file
+      translations:
+        - language: en-US
+          translation: Image
+      validation: null
+      validation_message: null
+      width: full
+    relation:
+      related_collection: directus_files
+      meta:
+        junction_field: null
+        many_collection: linotype_block__content
+        many_field: image
+        one_allowed_collections: null
+        one_collection: directus_files
+        one_collection_field: null
+        one_deselect_action: nullify
+        one_field: null
+        sort_field: null

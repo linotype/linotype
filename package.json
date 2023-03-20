@@ -1,0 +1,17 @@
+{
+  "name": "linotype",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {},
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "nx": "15.8.7",
+    "prettier": "^2.6.2"
+  },
+  "workspaces": [
+    "linotype/libraries/**",
+    "linotype/packages/**",
+    "linotype/playgrounds/**"
+  ]
+}
