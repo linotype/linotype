@@ -1,10 +1,26 @@
 {
   "name": "@linotype/nuxt",
   "version": "1.0.0",
-  "description": "My new Nuxt module",
-  "repository": "YannickArmspach/nuxt-extension-linotype",
+  "description": "Linotype Nuxt module",
   "license": "MIT",
   "type": "module",
+  "homepage": "https://github.com/linotype/nuxt#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linotype/nuxt.git"
+  },
+  "author": {
+    "name": "Yannick Armspach",
+    "email": "linotype@ynk.one",
+    "url": "https://ynk.one"
+  },
+  "maintainers": [
+    {
+      "name": "Yannick Armspach",
+      "email": "linotype@ynk.one",
+      "url": "https://ynk.one"
+    }
+  ],
   "exports": {
     ".": {
       "types": "./dist/types.d.ts",
