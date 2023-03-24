@@ -64,24 +64,21 @@ const useLinotype = function () {
   const loadTemplate = async () => {
     loading.value = true;
     error.value = false;
-
-    try {
-
-      const { data: dataAPI, error: errorAPI } = await useFetch(`${config.linotype.directus_url}/linotype/template`,{
-        method: 'POST',
-        body: {
-          env: config.linotype.env,
-          scheme: scheme,
-          domain: domain.value,
-          route: getCurrentRoute()
-        }
-      })
-      template.value = dataAPI.value
-      error.value = errorAPI.value
-
-    } catch (error) {
-      error.value = 'Linotype Error';
+    
+    const { data: dataAPI, error: errorAPI } = await useFetch(`${config.linotype.directus_url}/linotype/template`,{
+      method: 'POST',
+      body: {
+        env: config.linotype.env,
+        scheme: scheme,
+        domain: domain.value,
+        route: getCurrentRoute()
+      }
+    })
+    if ( errorAPI.value || dataAPI.value.status == 'error' ) {
+      throw createError({ statusCode: 404, statusMessage: dataAPI.value.message })
     }
+    template.value = dataAPI.value
+    error.value = errorAPI.value
 
     refresh.value++
 
