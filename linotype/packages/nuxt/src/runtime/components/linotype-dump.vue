@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="LINOTYPE_DEBUG == 'true' || show == true"
+    v-if="config.linotype.debug == 'true' || show == true"
     class="linotype-dump"
     :class="{ expend: expend }"
   >
@@ -19,7 +19,7 @@
 <script lang="ts" setup>
 import useDump from "./../composables/useDump"
 
-const { LINOTYPE_DEBUG } = useRuntimeConfig();
+const config = useRuntimeConfig()
 
 const props = defineProps({
   title: {

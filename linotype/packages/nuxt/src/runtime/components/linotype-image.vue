@@ -54,7 +54,7 @@ Exemple:
 
 */
 
-const { LINOTYPE_DIRECTUS_URL } = useRuntimeConfig();
+const config = useRuntimeConfig();
 
 const blockProps = defineProps({
   sources: {
@@ -70,7 +70,7 @@ const blockProps = defineProps({
 });
 
 const srcGenerator = (item, format = 'jpg', fit = 'contain', quality = 90, xN = 1 ) => {
-  return encodeURI( `${LINOTYPE_DIRECTUS_URL}/assets/${item.source.id}?format=${format}&quality=${quality}&transforms=[["resize",{"fit":"${fit}","background":"rgba(0,0,0,0)","width": ${item?.size[0]*xN || null},"height": ${item?.size[1]*xN || null}}]]` )
+  return encodeURI( `${config.linotype.directus_url}/assets/${item.source.id}?format=${format}&quality=${quality}&transforms=[["resize",{"fit":"${fit}","background":"rgba(0,0,0,0)","width": ${item?.size[0]*xN || null},"height": ${item?.size[1]*xN || null}}]]` )
 }
 
 const srcsetGenerator = (item, format = 'jpg', fit = 'contain', quality = 90) => {

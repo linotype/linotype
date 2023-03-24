@@ -1,4 +1,5 @@
-import useDomain from "./../linotype/composables/useDomain"
+import { defineNuxtRouteMiddleware, useNuxtApp } from 'nuxt/app'
+import useDomain from "./../composables/useDomain"
 
 export default defineNuxtRouteMiddleware(() => {
   const nuxtApp = useNuxtApp();

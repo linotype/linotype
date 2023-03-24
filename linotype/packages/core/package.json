@@ -1,0 +1,20 @@
+{
+	"name": "@linotype/core",
+	"description": "Linotype framework core",
+	"icon": "extension",
+	"version": "1.0.3",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"update": "npx taze major",
+		"test": "echo 'test'",
+		"dev": "",
+		"build": "",
+		"release": "npm publish --access public"
+	},
+	"devDependencies": {
+		"typescript": "^5.0.2",
+		"yaml": "^2.2.1"
+	}
+}

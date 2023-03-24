@@ -1,4 +1,4 @@
-import { computed, ref, watchEffect } from 'vue'
+import { ref } from 'vue'
 import { useRouter } from 'vue-router';
 import { useApi, useStores } from '@directus/extensions-sdk'
 import linotypeCollectionsConfig from './../../../config/linotype.yaml'

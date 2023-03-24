@@ -1,42 +1,19 @@
 export default defineNuxtConfig({
 
   modules: [
-    //load linotype module
+    //Linotype module declaration
     '@linotype/nuxt'
   ],
   
-  // default linotype settings
+  // Default Linotype settings
   linotype: {
-    
+    env: process.env.LINOTYPE_ENV,
+    debug: process.env.LINOTYPE_DEBUG,
+    directus_url: process.env.LINOTYPE_DIRECTUS_URL,
+    directus_token: process.env.LINOTYPE_DIRECTUS_TOKEN,
   },
   
-  components: {
-    dirs: [
-    
-      // linotype load componment from variable names, you need to import them globaly
-      { "path": "~/linotype", "global": true }
-    
-    ]
-  },
-  
-  runtimeConfig: {
-    public: {
-      
-      //define linotype public env variables
-      LINOTYPE_ENV: process.env.LINOTYPE_ENV,
-      LINOTYPE_DEBUG: process.env.LINOTYPE_DEBUG,
-      LINOTYPE_DIRECTUS_URL: process.env.LINOTYPE_DIRECTUS_URL,
-    
-    },
-    private: {
-      
-      //define linotype private env variables
-      LINOTYPE_DIRECTUS_TOKEN: process.env.LINOTYPE_DIRECTUS_TOKEN,
-    
-    }
-  },
-
-  //custom settings not useful for linotype
+  //playground
   srcDir: 'src',
   app: {
     rootId: 'linotype',

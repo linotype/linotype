@@ -8,7 +8,9 @@
 </template>
 
 <script lang="ts" setup>
+import { useRoute } from "nuxt/app"
 import useDomain from "./../composables/useDomain"
+
 const route = useRoute();
 const { domain } = useDomain();
 </script>

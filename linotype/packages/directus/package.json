@@ -1,50 +1,60 @@
 {
-	"name": "@linotype/directus-extension-linotype",
-	"description": "Linotype website framework for Directus",
-	"icon": "extension",
-	"version": "1.0.0",
-	"keywords": [
-		"directus",
-		"directus-extension",
-		"directus-custom-bundle"
-	],
-	"directus:extension": {
-		"type": "bundle",
-		"path": {
-			"app": "dist/app.js",
-			"api": "dist/api.js"
-		},
-		"entries": [
-			{
-				"type": "module",
-				"name": "linotype",
-				"source": "src/modules/index.ts"
-			},
-			{
-				"type": "endpoint",
-				"name": "linotype",
-				"source": "src/endpoints/index.ts"
-			}
-		],
-		"host": "^9.22.4",
-		"hidden": false
-	},
-	"scripts": {
-		"test": "echo 'test'",
-		"dev": "directus-extension build --watch --no-minify",
-		"build": "directus-extension build"
-	},
-	"devDependencies": {
-		"@directus/extensions-sdk": "9.22.4",
-		"@rollup/plugin-yaml": "^4.0.1",
-		"@vueuse/core": "^9.12.0",
-		"rollup-plugin-copy": "^3.4.0",
-		"rollup-plugin-dir-import": "^0.0.3",
-		"typescript": "^4.9.5",
-    "glob":"^8.1.0",
-    "yaml":"^2.2.1",
-    "lodash": "^4.17.21",
+  "name": "@linotype/directus-extension-linotype",
+  "description": "Linotype website framework for Directus",
+  "icon": "extension",
+  "version": "1.0.6",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-bundle"
+  ],
+  "directus:extension": {
+    "type": "bundle",
+    "path": {
+      "app": "dist/app.js",
+      "api": "dist/api.js"
+    },
+    "entries": [
+      {
+        "type": "module",
+        "name": "linotype",
+        "source": "src/modules/index.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
+        "source": "src/endpoints/index.ts"
+      }
+    ],
+    "host": "^9.23.1",
+    "hidden": false
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "update": "npx taze major",
+    "test": "echo 'test'",
+    "dev": "directus-extension build --watch --no-minify",
+    "build": "directus-extension build",
+    "release": "directus-extension build && npm publish --access public"
+  },
+  "devDependencies": {
+    "@linotype/core": "*",
+    "@directus/extensions-sdk": "^9.23.1",
+    "@rollup/plugin-yaml": "^4.0.1",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "@vueuse/core": "^9.13.0",
+    "glob": "^9.3.1",
     "glob-promise": "^6.0.2",
-		"vue": "^3.2.45"
-	}
+    "node-fetch": "^3.3.1",
+    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
+    "@types/lodash-es": "^4.17.7",
+    "rollup-plugin-copy": "^3.4.0",
+    "rollup-plugin-dir-import": "^0.0.3",
+    "typescript": "^5.0.2",
+    "vue": "^3.2.47",
+    "yaml": "^2.2.1"
+  }
 }

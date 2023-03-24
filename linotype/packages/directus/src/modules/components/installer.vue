@@ -9,19 +9,11 @@ import useLinotype from './../composables/useLinotype'
 
 const { isActive } = useLinotype()
 
-// const props = withDefaults(
-// 	defineProps<{
-// 		isActive?: boolean | null;
-// 	}>(),
-// 	{
-// 		isActive: true,
-// 	}
-// );
 
 </script>
 
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
+import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'InstallerComponent',
 })

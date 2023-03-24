@@ -1,14 +1,14 @@
 version: 1
 directus: 9.22.4
 
-name: test
+name: test2
 
 meta:
   translations:
     - language: en-US
-      translation: Test
-      plural: Tests
-      singular: Test
+      translation: Test2
+      plural: Tests2
+      singular: Test2
   icon: aspect_ratio
   color: null
   hidden: false

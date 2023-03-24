@@ -7,7 +7,6 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
 import useLinotype from './../composables/useLinotype'
 
 const { isActive, logs } = useLinotype()

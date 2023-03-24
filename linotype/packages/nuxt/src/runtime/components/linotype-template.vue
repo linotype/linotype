@@ -31,7 +31,8 @@
 </template>
 
 <script lang="ts" setup>
-import { watch } from "vue-demi";
+import { watch } from "vue";
+import { useRoute, showError, useHead } from "nuxt/app"
 import useLinotype from "./../composables/useLinotype"
 
 const {
@@ -49,7 +50,7 @@ const checkError = () => {
   if (error.value)
     throw showError({
       statusCode: 404,
-      statusMessage: error.value,
+      statusMessage: String(error.value),
       fatal: true,
     });
 };
@@ -65,13 +66,13 @@ const seo_title =
 const seo_description = page?.value?.seo?.description || '';
 const seo_url = page?.value?.url || '';
 const seo_image = page?.value?.seo?.image?.filename_disk
-  ? config.LINOTYPE_DIRECTUS_URL +
+  ? config.linotype.directus_url +
     '/assets/' +
     page.value.seo.image.filename_disk +
     '?width=1500&height=780'
   : '';
 
-const favicon = website.value?.infos?.favicon?.filename_disk ? config.LINOTYPE_DIRECTUS_URL + '/assets/' + website.value?.infos?.favicon?.filename_disk : ''
+const favicon = website.value?.infos?.favicon?.filename_disk ? config.linotype.directus_url + '/assets/' + website.value?.infos?.favicon?.filename_disk : ''
 
 useHead({
   title: seo_title,
