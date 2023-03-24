@@ -1,6 +1,6 @@
 {
   "name": "@linotype/nuxt",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Linotype Nuxt module",
   "license": "MIT",
   "type": "module",

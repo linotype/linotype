@@ -1,5 +1,5 @@
 import useDomain from "./useDomain"
-import { useRuntimeConfig, useState, useRoute, useFetch } from 'nuxt/app'
+import { useRuntimeConfig, useState, useRoute, useFetch, createError } from 'nuxt/app'
 import { nextTick, watch, computed } from 'vue'
 
 /**
