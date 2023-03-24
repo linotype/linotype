@@ -19,18 +19,18 @@ export interface ModuleOptions {
   debug?: string;
 
   /**
-   * Directus API URL
-   * @default process.env.LINOTYPE_DIRECTUS_URL
+   * Backend API URL
+   * @default process.env.LINOTYPE_BACKEND_URL
    * @type string
    */
-  directus_url?: string;
+  backend_url?: string;
 
   /**
-   * Directus API URL
-   * @default process.env.LINOTYPE_DIRECTUS_TOKEN
+   * Backend API URL
+   * @default process.env.LINOTYPE_BACKEND_TOKEN
    * @type string
    */
-  directus_token?: string;
+  backend_token?: string;
   
 }
 
@@ -48,8 +48,8 @@ export default defineNuxtModule<ModuleOptions>({
   defaults: {
     env: process.env.LINOTYPE_ENV,
     debug: process.env.LINOTYPE_DEBUG,
-    directus_url: process.env.LINOTYPE_DIRECTUS_URL,
-    directus_token: process.env.LINOTYPE_DIRECTUS_TOKEN,
+    backend_url: process.env.LINOTYPE_BACKEND_URL,
+    backend_token: process.env.LINOTYPE_BACKEND_TOKEN,
   },
 
   setup (options, nuxt) {
@@ -60,8 +60,8 @@ export default defineNuxtModule<ModuleOptions>({
     nuxt.options.runtimeConfig.public.linotype = defu(nuxt.options.runtimeConfig.linotype, {
       env: options.env,
       debug: options.debug,
-      directus_url: options.directus_url,
-      directus_token: options.directus_token,
+      backend_url: options.backend_url,
+      backend_token: options.backend_token,
     })
 
     addImportsDir(resolver.resolve('./runtime/composables'))

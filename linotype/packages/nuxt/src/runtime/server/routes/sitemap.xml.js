@@ -10,7 +10,7 @@ export default defineEventHandler(async (event) => {
   const scheme = event?.node?.req?.socket?.encrypted ? 'https' : 'http'
   const domain = event?.node.req?.headers?.host?.split(':')[0] || 'localhost'
   
-  const links = await event.$fetch(`${config.public.linotype.directus_url}/linotype/sitemap`,{
+  const links = await event.$fetch(`${config.public.linotype.backend_url}/linotype/sitemap`,{
     method: 'POST',
     body: {
       env: config.public.linotype.env,

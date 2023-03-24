@@ -65,7 +65,7 @@ const useLinotype = function () {
     loading.value = true;
     error.value = false;
     
-    const { data: dataAPI, error: errorAPI } = await useFetch(`${config.linotype.directus_url}/linotype/template`,{
+    const { data: dataAPI, error: errorAPI } = await useFetch(`${config.linotype.backend_url}/linotype/template`,{
       method: 'POST',
       body: {
         env: config.linotype.env,

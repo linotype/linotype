@@ -66,13 +66,13 @@ const seo_title =
 const seo_description = page?.value?.seo?.description || '';
 const seo_url = page?.value?.url || '';
 const seo_image = page?.value?.seo?.image?.filename_disk
-  ? config.linotype.directus_url +
+  ? config.linotype.backend_url +
     '/assets/' +
     page.value.seo.image.filename_disk +
     '?width=1500&height=780'
   : '';
 
-const favicon = website.value?.infos?.favicon?.filename_disk ? config.linotype.directus_url + '/assets/' + website.value?.infos?.favicon?.filename_disk : ''
+const favicon = website.value?.infos?.favicon?.filename_disk ? config.linotype.backend_url + '/assets/' + website.value?.infos?.favicon?.filename_disk : ''
 
 useHead({
   title: seo_title,

@@ -9,8 +9,8 @@ export default defineNuxtConfig({
   linotype: {
     env: process.env.LINOTYPE_ENV,
     debug: process.env.LINOTYPE_DEBUG,
-    directus_url: process.env.LINOTYPE_DIRECTUS_URL,
-    directus_token: process.env.LINOTYPE_DIRECTUS_TOKEN,
+    backend_url: process.env.LINOTYPE_BACKEND_URL,
+    backend_token: process.env.LINOTYPE_BACKEND_TOKEN,
   },
   
   //playground
