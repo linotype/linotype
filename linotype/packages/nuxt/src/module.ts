@@ -1,4 +1,4 @@
-import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir, addRouteMiddleware } from '@nuxt/kit'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
 
@@ -67,14 +67,16 @@ export default defineNuxtModule<ModuleOptions>({
     addImportsDir(resolver.resolve('./runtime/composables'))
     
     addComponentsDir( { path: resolver.resolve('./runtime/components') } )
-    addComponentsDir( { path: '~/linotype', "global": true } )
+    addComponentsDir( { path: '~/linotype', global: true, watch: true } )
     
     addPlugin(resolver.resolve('./runtime/plugin'))
 
     addServerHandler({ route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap.xml') })
 
     addServerHandler({ route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
-  
+    
+    addRouteMiddleware({ name: 'linotype-middleware-domain', path: resolver.resolve('./runtime/middleware/domain') , global: true })
+    
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 

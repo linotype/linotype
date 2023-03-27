@@ -69,7 +69,7 @@ const useLinotype = function () {
       method: 'POST',
       body: {
         env: config.linotype.env,
-        scheme: scheme,
+        scheme: scheme.value,
         domain: domain.value,
         route: getCurrentRoute()
       }

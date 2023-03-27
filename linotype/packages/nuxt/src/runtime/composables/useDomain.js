@@ -10,14 +10,14 @@ import { useState } from 'nuxt/app'
  *
  */
 const useDomain = function () {
-  const scheme = 'https';
 
-  const domain = useState('useDomain.domain', () => '');
+  const scheme = useState('useDomain.scheme', () => 'http');
+  const domain = useState('useDomain.domain', () => 'localhost');
 
   return {
     scheme,
     domain,
-    baseUrl: scheme + '://' + domain.value,
+    baseUrl: scheme.value + '://' + domain.value,
   };
 };
 

@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
     }
   })
 
-  const stream = new SitemapStream({ hostname: 'https://' + domain })
+  const stream = new SitemapStream({ hostname: `${scheme}://${domain}` })
   const sitemapRaw = await streamToPromise(Readable.from(links).pipe(stream))
   const sitemap = sitemapRaw.toString()
 
