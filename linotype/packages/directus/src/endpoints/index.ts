@@ -48,6 +48,11 @@ export default (router: any, { services }: any) => {
 
   router.post('/template', async (req: any, res: any) => {
 
+    const env = req?.body?.env || 'local'
+    const domain = req?.body?.domain || 'localhost'
+    const scheme = req?.body?.scheme || 'https'
+    const route = req?.body?.route || ''
+    
     try {
 
       let sites = null
@@ -59,12 +64,7 @@ export default (router: any, { services }: any) => {
       let headersData = null
       let contentsData = null
       let footersData = null
-      
-      const env = req?.body?.env || 'local'
-      const domain = req?.body?.domain || 'localhost'
-      const scheme = req?.body?.scheme || 'https'
-      const route = req?.body?.route || ''
-      
+        
       //get sites
       sites = await new ItemsService('linotype_sites', { schema: req.schema, accountability: req.accountability }).readByQuery({
         fields: ['*.*.*.*.*.*.*'],
@@ -172,10 +172,10 @@ export default (router: any, { services }: any) => {
       })
 
     } catch (error) {
-    
+      
       res.send({
         status: "error", 
-        message: "Linotype Not Found" 
+        message: `Linotype Not Found`
       })
     
     }

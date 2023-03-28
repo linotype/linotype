@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="config.linotype.debug == 'true' || show == true"
+    v-if="config.public.linotype.debug == 'true' || show == true"
     class="linotype-dump"
     :class="{ expend: expend }"
   >

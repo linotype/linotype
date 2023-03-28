@@ -20,12 +20,12 @@ const useDump = function () {
         null,
         2
       )
-    );
-  };
+    )
+  }
 
   return {
     jsonDump,
-  };
-};
+  }
+}
 
-export default useDump;
+export default useDump

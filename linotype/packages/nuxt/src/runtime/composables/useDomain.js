@@ -11,14 +11,14 @@ import { useState } from 'nuxt/app'
  */
 const useDomain = function () {
 
-  const scheme = useState('useDomain.scheme', () => 'http');
-  const domain = useState('useDomain.domain', () => 'localhost');
+  const scheme = useState('useDomain.scheme', () => 'undefined')
+  const domain = useState('useDomain.domain', () => 'undefined')
 
   return {
     scheme,
     domain,
     baseUrl: scheme.value + '://' + domain.value,
-  };
-};
+  }
+}
 
-export default useDomain;
+export default useDomain
