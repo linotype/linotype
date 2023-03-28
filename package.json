@@ -8,10 +8,10 @@
   "private": true,
   "dependencies": {},
   "devDependencies": {
-    "nx": "15.8.7",
-    "prettier": "^2.6.2",
-    "release-it": "^15.9.1",
-    "chokidar":"^3.5.3",
+    "chokidar": "^3.5.3",
+    "nx": "15.8.9",
+    "prettier": "^2.8.7",
+    "release-it": "^15.9.3",
     "taze": "^0.9.1"
   },
   "workspaces": [

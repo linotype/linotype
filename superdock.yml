@@ -1,0 +1,55 @@
+superdock:
+  
+  version: 2.0.0
+  
+  id: linotype
+  name: linotype
+  desc: linotype demo site
+  
+  owner: YannickArmspach
+  
+  team:
+    - name: Yannick Armspach
+      role: Lead Developper
+      email: yannick.armspach@vmlyr.com
+  
+  links:
+    - Tickets: 
+    - Documentation: 
+    - Specifications: 
+    - Design: 
+  
+  services:
+    nginx: 1.23.1
+    node: 16.17.0
+    mysql: 8.0.30
+    adminer: latest
+    redis: 7.0.4
+    commander: latest
+    mailhog: latest
+    
+  projects:
+
+    frontend:
+      local:
+        domain: linotype.dev
+        port: 3000
+        port_dev: 4000
+      staging:
+        domain: staging.linotype.dev
+        port: 3000
+      production:
+        domain: linotype.dev
+        port: 3000
+
+    backend:
+      local:
+        domain: backend.linotype.dev
+        port: 3001
+        port_dev: 4001
+      staging:
+        domain: staging.backend.linotype.dev
+        port: 3001
+      production:
+        domain: backend.linotype.dev
+        port: 3001

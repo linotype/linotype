@@ -8,12 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "analyze": "nuxi analyze",
     "build": "nuxi build",
-    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && nuxi dev",
+    "dev": "nuxi dev",
     "generate": "nuxi generate",
     "preview": "nuxi build && nuxi preview",
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt": "3.3.1"
+    "nuxt": "3.3.2"
   }
 }
