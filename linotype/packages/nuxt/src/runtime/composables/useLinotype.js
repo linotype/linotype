@@ -74,14 +74,16 @@ const useLinotype = function () {
         route: getCurrentRoute()
       }
     })
-    if ( errorAPI.value || dataAPI.value.status == 'error' ) {
+    if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       console.log('error', {
         env: config.public.linotype.env,
         scheme: scheme.value,
         domain: domain.value,
-        route: getCurrentRoute()
+        route: getCurrentRoute(),
+        error: errorAPI.value.message
       })
-      throw createError({ statusCode: 404, statusMessage: dataAPI.value.message })
+
+      throw createError({ statusCode: 404, statusMessage: dataAPI.value?.message || errorAPI.value?.message || 'error' })
       
     }
     template.value = dataAPI.value
@@ -103,7 +105,7 @@ const useLinotype = function () {
    * @returns Component
    */
   const loadBlock = (id) => {
-    return `block-${id}-index`
+    return `block-${id}`
     // return defineAsyncComponent( async () => {
     //   if ( blocksIds.value.includes(`${id}/${id}`) ) {
     //      const xxx = await import(`${process.cwd() ? process.cwd() : '.'}/src/components/blocks/${id}/${id}.index.vue`)

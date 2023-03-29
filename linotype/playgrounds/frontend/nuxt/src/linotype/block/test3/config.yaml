@@ -1,0 +1,74 @@
+version: 1
+
+name: test3
+
+meta:
+  translations:
+    - language: en-US
+      translation: Test3
+      plural: Tests2
+      singular: Test3
+  icon: aspect_ratio
+  color: null
+  hidden: false
+  note: ''
+  sort: 1
+
+fields:
+
+  - name: title
+    type: string
+    meta:
+      special: null
+      interface: input
+      options: null
+      display: null
+      display_options: null
+      readonly: false
+      hidden: false
+      width: full
+      translations: null
+      note: null
+      conditions: null
+      required: false
+      group: null
+      validation: null
+      validation_message: null
+
+  - name: items
+    type: json
+    meta:
+      special:
+        - cast-json
+      interface: list
+      options:
+        template: '{{title}}'
+        fields:
+          - field: title
+            name: title
+            type: text
+            meta:
+              field: title
+              width: full
+              type: text
+              interface: input-rich-text-html
+          - field: description
+            name: description
+            type: text
+            meta:
+              field: description
+              width: full
+              type: text
+              interface: input-rich-text-html
+      display: null
+      display_options: null
+      readonly: false
+      hidden: false
+      width: full
+      translations: null
+      note: null
+      conditions: null
+      required: false
+      group: null
+      validation: null
+      validation_message: null

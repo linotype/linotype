@@ -67,7 +67,7 @@ export default defineComponent({
 <style scoped>
 .grid {
   padding: var(--content-padding);
-    padding-bottom: var(--content-padding-bottom);
+  padding-bottom: var(--content-padding-bottom);
   display: grid;
   grid-template-columns: [start] minmax(0,1fr) [half] minmax(0,1fr) [full];
   gap: var(--form-vertical-gap) var(--form-horizontal-gap);
