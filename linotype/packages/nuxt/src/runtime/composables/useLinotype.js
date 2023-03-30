@@ -1,6 +1,6 @@
 import useDomain from "./useDomain"
 import { useRuntimeConfig, useState, useRoute, useFetch, createError } from 'nuxt/app'
-import { nextTick, watch, computed } from 'vue'
+import { nextTick, computed } from 'vue'
 
 /**
  * @useLinotype
@@ -13,46 +13,16 @@ import { nextTick, watch, computed } from 'vue'
  *
  */
 const useLinotype = function () {
-  /**
-   * Use config
-   */
+ 
   const config = useRuntimeConfig()
-
-  /**
-   * Use domain
-   */
   const { scheme, domain } = useDomain()
-
-  /**
-   * Use route
-   */
   const route = useRoute()
 
-  /**
-   * Store template data
-   */
-  const template = useState('useLinotype.template', () => {
-    return {}
-  })
-
-  /**
-   * Store error status
-   */
+  const initialized = useState('useLinotype.initialized', () => false)
+  const template = useState('useLinotype.template', () => { return {}})
   const error = useState('useLinotype.error', () => false)
-
-  /**
-   * Store loading status
-   */
   const loading = useState('useLinotype.loading', () => true)
-
-  /**
-   * Store loading status
-   */
   const refresh = useState('useLinotype.refresh', () => 0)
-
-  /**
-   * Store preview status
-   */
   const preview = useState('useLinotype.preview', () => true)
 
   /**
@@ -61,7 +31,8 @@ const useLinotype = function () {
    * @params none
    * @returns none
    */
-  const loadTemplate = async () => {
+  const loadTemplate = async (path) => {
+
     loading.value = true
     error.value = false
     
@@ -71,7 +42,7 @@ const useLinotype = function () {
         env: config.public.linotype.env,
         scheme: scheme.value,
         domain: domain.value,
-        route: getCurrentRoute()
+        route: path
       }
     })
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
@@ -79,20 +50,16 @@ const useLinotype = function () {
         env: config.public.linotype.env,
         scheme: scheme.value,
         domain: domain.value,
-        route: getCurrentRoute(),
-        error: errorAPI.value.message
+        route: path,
+        error: errorAPI.value?.message
       })
-
+      error.value = errorAPI.value
       throw createError({ statusCode: 404, statusMessage: dataAPI.value?.message || errorAPI.value?.message || 'error' })
-      
     }
-    template.value = dataAPI.value
-    error.value = errorAPI.value
-
-    refresh.value++
-
+    
     await nextTick( async () => {
-      await new Promise(r => setTimeout(r, 300))
+      template.value = dataAPI.value
+      // await new Promise(r => setTimeout(r, 300))
       loading.value = false
     })
 
@@ -121,10 +88,17 @@ const useLinotype = function () {
    * Load linotype
    */
   const loadLinotype = async () => {
-    watch( computed(() => route.path ), async () => {
-      await loadTemplate()
+    
+    onBeforeRouteLeave( async (to) => {
+      // await new Promise(r => setTimeout(r, 2000))
+      await loadTemplate(sanitizeRoute(to.fullPath))
     })
-    await loadTemplate()
+
+    if( initialized.value == false ) {
+      await loadTemplate(getCurrentRoute())
+      initialized.value = true
+    }
+    
   }
 
   /**
@@ -139,8 +113,8 @@ const useLinotype = function () {
   /**
    * Utils sanitizeRoute
    */
-  const sanitizeRoute = (route) => {
-    return route.endsWith('/') ? route.slice(0, -1) : route
+  const sanitizeRoute = (path) => {
+    return path.endsWith('/') ? path.slice(0, -1) : path
   }
 
   /**

@@ -80,7 +80,7 @@ const useLinotype = function () {
       blocks.push({
         name: data.name,
         active: collectionsList.value.filter((item)=> item.collection == `linotype_block__${data.name}` ).length ? true : false,
-        config: data
+        ...data
       })
     }
     blocksList.value = blocks

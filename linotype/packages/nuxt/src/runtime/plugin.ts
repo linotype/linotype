@@ -1,5 +1,4 @@
 import { defineNuxtPlugin, useNuxtApp } from 'nuxt/app'
-import useLinotype from './composables/useLinotype'
 import useDomain from './composables/useDomain'
 
 export default defineNuxtPlugin(async () => {
@@ -16,8 +15,4 @@ export default defineNuxtPlugin(async () => {
     domain.value = window?.document?.location?.host?.split(':')[0] || 'localhost'
   }
 
-  const { loadLinotype } = useLinotype()
-  
-  await loadLinotype()
-  
 })
