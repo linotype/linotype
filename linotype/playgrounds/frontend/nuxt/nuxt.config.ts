@@ -2,7 +2,9 @@ export default defineNuxtConfig({
 
   modules: [
     //Linotype module declaration
-    '@linotype/nuxt'
+    '@linotype/nuxt',
+    //for minimal playground style
+    '@unocss/nuxt',
   ],
   
   // Default Linotype settings
@@ -13,7 +15,16 @@ export default defineNuxtConfig({
     backend_token: process.env.LINOTYPE_BACKEND_TOKEN,
   },
   
-  //playground
+  //for minimal playground style
+  unocss: {
+    uno: true,
+    icons: true,
+    attributify: true,
+    shortcuts: [],
+    rules: [],
+  },
+
+  //playground specials
   srcDir: 'src',
   app: {
     rootId: 'linotype',

@@ -1,14 +1,14 @@
 version: 1
 
-name: test3
+name: list
 
 meta:
   translations:
     - language: en-US
-      translation: Test3
-      plural: Tests2
-      singular: Test3
-  icon: aspect_ratio
+      translation: List
+      plural: Lists
+      singular: List
+  icon: list
   color: null
   hidden: false
   note: ''

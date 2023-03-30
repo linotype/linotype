@@ -1,0 +1,48 @@
+version: 1
+
+name: nav
+
+meta:
+  translations:
+    - language: en-US
+      translation: Navigation
+      plural: Navigations
+      singular: Navigation
+  icon: menu
+  color: null
+  hidden: false
+  note: ''
+  sort: 1
+
+fields:
+
+  - name: title
+    type: string
+    meta:
+      interface: input
+
+  - name: menu
+    type: json
+    meta:
+      special:
+        - cast-json
+      interface: list
+      options:
+        template: '{{title}}'
+        fields:
+          - field: title
+            name: Title
+            type: text
+            meta:
+              field: title
+              width: full
+              type: text
+              interface: input
+          - field: link
+            name: Link
+            type: text
+            meta:
+              field: link
+              width: full
+              type: text
+              interface: input

@@ -4,3 +4,4 @@ extensions
 uploads
 .env
 .nuxt
+.output
