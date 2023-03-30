@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "linotype_sites",
+  "info": {
+    "singularName": "linotype-site",
+    "pluralName": "linotype-sites",
+    "displayName": "linotype sites"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}
