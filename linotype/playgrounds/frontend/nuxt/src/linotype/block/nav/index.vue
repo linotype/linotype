@@ -2,9 +2,10 @@
   <div :id="`${props.blockType}-${props.blockId}`" :class="props.blockType" bg-gray-100 m-5 p-5>
     <div font-bold>[ Linotype block "{{props.blockType}}" / ref: {{props.blockData.reference}} ]</div>
     <div flex flex-row gap-2 py-2>
-      <div v-for="(item, index) in props.blockData.menu" :key="index">
-        <NuxtLink :to="item.link">{{item.title}}</NuxtLink>
+      <div v-for="(item, index) in data" :key="index">
+        <NuxtLink :to="item.slug">{{item.title}}</NuxtLink>
       </div>
+      <input type="text" @keyup.enter="search" v-model="input"/>
     </div>
   </div>
 </template>
@@ -16,10 +17,22 @@ const props = defineProps<{
   blockData: {
     reference: string
     title: string
-    menu: {
-      title: string
-      link: string
-    }[]
   }
 }>()
+
+const { data } = await useFetch('/linotype/menu')
+
+const route = useRoute()
+const query = computed( () => route.query.query )
+const input = ref(query.value)
+
+const search = () => {
+  navigateTo({
+    path: '/search',
+    query: {
+      query: input.value
+    }
+  })
+}
+
 </script>

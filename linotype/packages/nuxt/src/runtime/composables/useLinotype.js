@@ -1,5 +1,5 @@
 import useDomain from "./useDomain"
-import { useRuntimeConfig, useState, useRoute, useFetch, createError } from 'nuxt/app'
+import { useRuntimeConfig, useState, useRoute, useFetch, createError, onBeforeRouteLeave } from 'nuxt/app'
 import { nextTick, computed } from 'vue'
 
 /**
@@ -63,6 +63,8 @@ const useLinotype = function () {
       loading.value = false
     })
 
+    refresh.value++
+
   }
 
   /**
@@ -72,7 +74,7 @@ const useLinotype = function () {
    * @returns Component
    */
   const loadBlock = (id) => {
-    return `block-${id}`
+    return `block-${id.replace('_','-')}`
     // return defineAsyncComponent( async () => {
     //   if ( blocksIds.value.includes(`${id}/${id}`) ) {
     //      const xxx = await import(`${process.cwd() ? process.cwd() : '.'}/src/components/blocks/${id}/${id}.index.vue`)
@@ -91,7 +93,7 @@ const useLinotype = function () {
     
     onBeforeRouteLeave( async (to) => {
       // await new Promise(r => setTimeout(r, 2000))
-      await loadTemplate(sanitizeRoute(to.fullPath))
+      await loadTemplate(sanitizeRoute(to.path))
     })
 
     if( initialized.value == false ) {

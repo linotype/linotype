@@ -1,7 +1,7 @@
 <template>
   <div
-    id="linotype"
-    class="relative"
+    class="linotype-template"
+    :key="refresh"
   >
     <component
       :is="loadBlock(header.type)"
@@ -44,6 +44,7 @@ const {
   page,
   headers,
   contents,
+  refresh,
   footers,
   error,
 } = useLinotype();

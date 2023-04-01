@@ -1,4 +1,4 @@
-import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir, addRouteMiddleware } from '@nuxt/kit'
+import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
 
@@ -64,25 +64,20 @@ export default defineNuxtModule<ModuleOptions>({
       backend_token: options.backend_token,
     })
 
-    
-    
-
     addImportsDir(resolver.resolve('./runtime/composables'))
     
     addComponentsDir( { path: resolver.resolve('./runtime/components') } )
     addComponentsDir( { path: '~/linotype', global: true, watch: true } )
     
-    addServerHandler({ route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap') })
-
     addServerHandler({ route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
-    
-    // addServerHandler({ middleware: true, handler: resolver.resolve('./runtime/middleware/domain') })
+    addServerHandler({ route: '/linotype/menu', handler: resolver.resolve('./runtime/server/routes/menu') })
+    addServerHandler({ route: '/linotype/search', handler: resolver.resolve('./runtime/server/routes/search') })
+    addServerHandler({ route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap') })
     
     addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugin') })
     
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
-
 
   }
 

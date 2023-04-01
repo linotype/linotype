@@ -2,7 +2,7 @@
   "name": "@linotype/directus-extension-linotype",
   "description": "Linotype website framework for Directus",
   "icon": "extension",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "keywords": [
     "directus",
     "directus-extension",
@@ -15,15 +15,47 @@
       "api": "dist/api.js"
     },
     "entries": [
+
       {
         "type": "module",
         "name": "linotype",
         "source": "src/modules/index.ts"
       },
+      
       {
         "type": "endpoint",
         "name": "linotype",
         "source": "src/endpoints/index.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
+        "source": "src/endpoints/config.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
+        "source": "src/endpoints/page.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
+        "source": "src/endpoints/template.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
+        "source": "src/endpoints/menu.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
+        "source": "src/endpoints/sitemap.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
+        "source": "src/endpoints/search.ts"
       }
     ],
     "host": "^9.23.1",
