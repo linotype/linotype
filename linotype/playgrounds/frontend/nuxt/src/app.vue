@@ -2,10 +2,10 @@
   <div>
     
     <!-- Use Linotype Page directly -->
-    <LinotypePage/>
+    <!-- <LinotypePage/> -->
   
     <!-- NuxtPage and use linotyle tags in pages directory -->
-    <!-- <NuxtPage/> -->
+    <NuxtPage/>
 
   </div>
 </template>

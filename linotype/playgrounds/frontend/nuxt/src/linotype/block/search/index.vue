@@ -13,9 +13,7 @@
 
 <script lang="ts" setup>
 import { useRoute } from 'nuxt/app';
-import { computed } from 'vue';
 import { ref } from 'vue';
-import { LocationQueryValue } from 'vue-router';
 
 const props = defineProps<{
   blockId: number
@@ -26,13 +24,10 @@ const props = defineProps<{
   }
 }>()
 
-const results: ref<Object[]> = ref([])
-
 const route = useRoute()
-
-const query = computed( () => route.query.query )
-
-const input = ref(query.value)
+const results: ref<Object[]> = ref([])
+const query: ref<string> = ref(route.query.query)
+const input: ref<string> = ref(query.value)
 
 const search = async () => {
   const { data } = await useFetch('/linotype/search', {
@@ -40,23 +35,26 @@ const search = async () => {
       search: input.value
     }
   })
+  query.value = input.value
   results.value = data.value
 }
 
-const goSearch = () => {
+const goSearch = async () => {
   navigateTo({
     path: '/search',
+    force: true,
     query: {
       query: input.value
     }
   })
 }
 
-watchEffect( async () => {
-  input.value =  route.query.query
+watch(route, async () => {
+  input.value = route.query.query
+  query.value = route.query.query
+  await search()
 })
 
-onMounted( async ()=> await search() )
 await search()
 
 </script>

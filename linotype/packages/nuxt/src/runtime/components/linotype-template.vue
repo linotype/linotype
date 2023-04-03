@@ -1,7 +1,7 @@
 <template>
   <div
     class="linotype-template"
-    :key="refresh"
+    
   >
     <component
       :is="loadBlock(header.type)"

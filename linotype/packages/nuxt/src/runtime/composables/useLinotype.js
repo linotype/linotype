@@ -91,9 +91,10 @@ const useLinotype = function () {
    */
   const loadLinotype = async () => {
     
-    onBeforeRouteLeave( async (to) => {
+    onBeforeRouteLeave( async (to, from, next) => {
       // await new Promise(r => setTimeout(r, 2000))
       await loadTemplate(sanitizeRoute(to.path))
+      next()
     })
 
     if( initialized.value == false ) {

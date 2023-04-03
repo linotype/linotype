@@ -23,16 +23,21 @@ const props = defineProps<{
 const { data } = await useFetch('/linotype/menu')
 
 const route = useRoute()
-const query = computed( () => route.query.query )
-const input = ref(query.value)
+
+const input = ref(route.query.query)
 
 const search = () => {
   navigateTo({
     path: '/search',
+    force: true,
     query: {
       query: input.value
     }
   })
 }
+
+watchEffect(() => {
+  input.value = route.query.query
+})
 
 </script>
