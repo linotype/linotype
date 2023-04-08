@@ -27,12 +27,12 @@ const id = computed( () => route.query.id )
 
 const config = useRuntimeConfig()
 
-const { data } = await useFetch(`${config.public.linotype.backend_url}/items/${props.blockData.collection}/${id.value}`)
-
 const item = ref<string>('')
 
-if ( id.value ) {
-
+if ( props.blockData.collection && id.value ) {
+  
+  const { data } = await useFetch(`${config.public.linotype.backend_url}/items/${props.blockData.collection}/${id.value}`)
+  
   const ids = Object.keys(data?.value?.data)
   let html: string = props.blockData.template
   for ( const id of ids ) {

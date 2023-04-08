@@ -14,7 +14,7 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt": "3.3.2",
-    "@unocss/nuxt": "^0.50.6"
+    "@unocss/nuxt": "^0.50.7",
+    "nuxt": "3.3.3"
   }
 }

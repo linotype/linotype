@@ -55,6 +55,6 @@ watch(route, async () => {
   await search()
 })
 
-await search()
+onMounted( async () => await search())
 
 </script>

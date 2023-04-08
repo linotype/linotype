@@ -25,26 +25,25 @@ const props = defineProps<{
 
 const config = useRuntimeConfig()
 
-const { data } = await useFetch(`${config.public.linotype.backend_url}/items/${props.blockData.collection}`)
-
 const items = ref<string[]>([])
 
-for ( const item of data?.value?.data ) {
+const response = await useFetch(`${config.public.linotype.backend_url}/items/${props.blockData.collection}`)
+
+const findReplaceString = (string: string, find: string, replace: string): string => {
+  if ((/[a-zA-Z\_]+/g).test(string)) {
+    return string.replace(new RegExp('\{\{(?:\\s+)?(' + find + ')(?:\\s+)?\}\}'), replace);
+  } else {
+    return string
+  }
+}
+
+for ( const item of response.data?.value?.data ) {
   const ids = Object.keys(item)
   let html: string = props.blockData.template
   for ( const id of ids ) {
     html = findReplaceString(html, id, item[id] )
   }
   items.value.push(html)
-}
-
-function findReplaceString(string, find, replace) 
-{
-  if ((/[a-zA-Z\_]+/g).test(string)) {
-    return string.replace(new RegExp('\{\{(?:\\s+)?(' + find + ')(?:\\s+)?\}\}'), replace);
-  } else {
-    return string
-  }
 }
 
 </script>

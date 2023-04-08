@@ -1,5 +1,6 @@
 <template>
   <div>
-    <LinotypeTemplate/>
+    article template
+    <LinotypeContent/>
   </div>
 </template>

@@ -1,3 +1,5 @@
+import { defineNuxtConfig } from '#imports'
+
 export default defineNuxtConfig({
 
   modules: [
@@ -28,6 +30,12 @@ export default defineNuxtConfig({
   srcDir: 'src',
   app: {
     rootId: 'linotype',
-  }
+  },
+
+  // imports: {
+  //   dirs: [
+  //     'linotype/**/**/composables'
+  //   ]
+  // }
 
 });
