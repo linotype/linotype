@@ -1,4 +1,4 @@
-import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir, addImports, addImportsSources, extendRouteRules } from '@nuxt/kit'
+import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
 
@@ -76,7 +76,13 @@ export default defineNuxtModule<ModuleOptions>({
     
     addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugin') })
     
-    // extendRouteRules('/article/:slug', { })
+    // extendPages((pages) => {
+    //   pages.push({
+    //     name: 'linotype-default',
+    //     path: '/:pathMatch(.*)',
+    //     file: resolver.resolve('./runtime/components/linotype-content.vue')
+    //   })
+    // })
 
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
