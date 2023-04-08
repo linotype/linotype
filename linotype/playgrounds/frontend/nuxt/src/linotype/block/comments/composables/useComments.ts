@@ -1,3 +1,4 @@
+import { useRuntimeConfig, useState, useFetch } from 'nuxt/app'
 
 const useComments = () => {
 
