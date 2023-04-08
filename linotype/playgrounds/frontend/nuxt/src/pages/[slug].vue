@@ -1,6 +1,0 @@
-<template>
-  <div>
-    <LinotypeContent/>
-  </div>
-</template>
-

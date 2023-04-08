@@ -1,8 +1,6 @@
 <template>
-  <div>
-    template blog
-    <LinotypeHeader/>
+  <LinotypeTemplate>
+    <h1>template blog</h1>
     <LinotypeContent/>
-    <LinotypeFooter/>
-  </div>
+  </LinotypeTemplate>
 </template>

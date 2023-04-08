@@ -3,7 +3,8 @@
     <div font-bold>[ Linotype block "{{props.blockType}}" / ref: {{props.blockData.reference}} ]</div>
     <div flex flex-col gap-2 py-2>
       <div v-for="(item, index) in items" :key="index" bg-gray-200 p-2>
-        <div v-html="item"/>
+        <div v-html="item.html"/>
+        <NuxtLink :to="`/article${item.slug}`">view</NuxtLink>
       </div>
     </div>
   </div>
@@ -43,7 +44,10 @@ for ( const item of response.data?.value?.data ) {
   for ( const id of ids ) {
     html = findReplaceString(html, id, item[id] )
   }
-  items.value.push(html)
+  items.value.push({
+    ...item,
+    html: html
+  })
 }
 
 </script>

@@ -23,22 +23,26 @@ const props = defineProps<{
 
 const route = useRoute()
 
-const id = computed( () => route.query.id )
+const slug = computed( () => route.params.slug )
 
 const config = useRuntimeConfig()
 
 const item = ref<string>('')
 
-if ( props.blockData.collection && id.value ) {
+if ( props.blockData.collection && slug?.value ) {
   
-  const { data } = await useFetch(`${config.public.linotype.backend_url}/items/${props.blockData.collection}/${id.value}`)
+  const { data } = await useFetch(`${config.public.linotype.backend_url}/items/${props.blockData.collection}?filter[slug][_eq]=/${slug.value}`)
   
-  const ids = Object.keys(data?.value?.data)
-  let html: string = props.blockData.template
-  for ( const id of ids ) {
-    html = findReplaceString(html, id, data?.value?.data[id] )
+  if ( data?.value?.data[0] ) {
+
+    const ids = Object.keys(data?.value?.data[0])
+    let html: string = props.blockData.template
+    for ( const id of ids ) {
+      html = findReplaceString(html, id, data?.value?.data[0][id] )
+    }
+    item.value = html
+  
   }
-  item.value = html
 
 } else {
   item.value = 'no item'
