@@ -1,4 +1,4 @@
-import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir, addImports, addImportsSources, extendRouteRules } from '@nuxt/kit'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
 
@@ -67,7 +67,7 @@ export default defineNuxtModule<ModuleOptions>({
     addImportsDir(resolver.resolve('./runtime/composables'))
     
     addComponentsDir( { path: resolver.resolve('./runtime/components') } )
-    addComponentsDir( { path: '~/linotype', global: true, watch: true } )
+    addComponentsDir( { path: '~/linotype', global: true, watch: true, extensions: ['vue'] } )
     
     addServerHandler({ route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
     addServerHandler({ route: '/linotype/menu', handler: resolver.resolve('./runtime/server/routes/menu') })
@@ -76,6 +76,8 @@ export default defineNuxtModule<ModuleOptions>({
     
     addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugin') })
     
+    // extendRouteRules('/article/:slug', { })
+
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 

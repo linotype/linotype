@@ -45,6 +45,7 @@ const useLinotype = function () {
         route: path
       }
     })
+
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       console.log('error', {
         env: config.public.linotype.env,
@@ -57,13 +58,12 @@ const useLinotype = function () {
       throw createError({ statusCode: 404, statusMessage: dataAPI.value?.message || errorAPI.value?.message || 'error' })
     }
     
-    await nextTick( async () => {
-      template.value = dataAPI.value
-      // await new Promise(r => setTimeout(r, 300))
-      loading.value = false
-    })
+    template.value = dataAPI.value
 
-    refresh.value++
+    nextTick(() => {
+      loading.value = false
+      refresh.value++
+    })
 
   }
 
@@ -74,6 +74,7 @@ const useLinotype = function () {
    * @returns Component
    */
   const loadBlock = (id) => {
+ 
     return `block-${id.replace('_','-')}`
     // return defineAsyncComponent( async () => {
     //   if ( blocksIds.value.includes(`${id}/${id}`) ) {
@@ -90,9 +91,8 @@ const useLinotype = function () {
    * Load linotype
    */
   const loadLinotype = async () => {
-    
+
     onBeforeRouteLeave( async (to, from, next) => {
-      // await new Promise(r => setTimeout(r, 2000))
       await loadTemplate(sanitizeRoute(to.path))
       next()
     })
@@ -101,7 +101,7 @@ const useLinotype = function () {
       await loadTemplate(getCurrentRoute())
       initialized.value = true
     }
-    
+
   }
 
   /**
@@ -128,11 +128,11 @@ const useLinotype = function () {
     loadLinotype,
     loadTemplate,
     loadBlock,
-    website: computed(() => template.value.website ),
-    page: computed(() => template.value.page ),
-    headers: computed(() => template.value.headers ),
-    contents: computed(() => template.value.contents ),
-    footers: computed(() => template.value.footers ),
+    website: template.value.website,
+    page: template.value.page,
+    headers: template.value.headers,
+    contents: template.value.contents,
+    footers: template.value.footers,
     error,
     loading,
     refresh,
