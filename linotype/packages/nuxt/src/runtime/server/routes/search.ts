@@ -1,7 +1,4 @@
 import { useRuntimeConfig, getQuery } from '#imports'
-import fs from 'fs'
-import path from 'path'
-import YAML from 'yaml'
 import { defineEventHandler } from 'h3'
 
 export default defineEventHandler(async (event) => {

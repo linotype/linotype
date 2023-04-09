@@ -9,9 +9,7 @@
 
 <script lang="ts" setup>
 import useLinotype from "./../composables/useLinotype"
-
 const { loading } = useLinotype();
-
 </script>
 
 <style>

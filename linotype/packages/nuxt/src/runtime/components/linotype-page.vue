@@ -1,18 +1,19 @@
 <template>
   <div class="linotype-page">
-    <LinotypeLoading/>
-    <LinotypeHeader/>
+    <LinotypeLoading />
+    <LinotypeHeader />
     <NuxtPage
       :transition="{
         name: 'fade',
         mode: 'out-in'
       }"
     />
-    <LinotypeFooter/>
+    <LinotypeFooter />
   </div>
 </template>
 
 <script setup>
+import useLinotype from './../composables/useLinotype'
 const { loadLinotype } = useLinotype()
 await loadLinotype()
 </script>

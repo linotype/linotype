@@ -1,6 +1,6 @@
 import useDomain from "./useDomain"
 import { useRuntimeConfig, useState, useRoute, useFetch, createError, onBeforeRouteLeave } from 'nuxt/app'
-import { nextTick, computed } from 'vue'
+import { nextTick } from 'vue'
 
 /**
  * @useLinotype

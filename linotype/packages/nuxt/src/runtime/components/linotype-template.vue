@@ -1,18 +1,18 @@
 <template>
   <div>
-    <slot/>
+    <slot />
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, watch } from "vue";
-import { useRoute, showError, useNuxtApp, useRuntimeConfig } from "nuxt/app"
-import { useHead } from "@unhead/vue"
+import { watch } from "vue";
+import { useRoute, showError, useRuntimeConfig } from "nuxt/app"
+// import { useHead } from "@unhead/vue"
 import useLinotype from "./../composables/useLinotype"
 
 const config = useRuntimeConfig()
 
-const { website, page, error } = useLinotype();
+const { error } = useLinotype();
 
 const checkError = () => {
   if (error.value)

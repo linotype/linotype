@@ -6,10 +6,7 @@
 
 <script lang="ts" setup>
 import useLinotype from './../composables/useLinotype'
-
 const { isActive } = useLinotype()
-
-
 </script>
 
 <script lang="ts">
