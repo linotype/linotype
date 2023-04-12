@@ -6,7 +6,7 @@
   "scripts": {
     "update": "npx taze major",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx directus start",
+    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx directus start",
     "build": "npx directus bootstrap",
     "start": "npx directus start",
     "schema-dump": "npx directus schema snapshot ./snapshots/schema.yaml",
@@ -17,7 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus": "latest",
+    "directus": "^9.24.0",
     "@linotype/directus-extension-linotype": "*"
   },
   "devDependencies": {

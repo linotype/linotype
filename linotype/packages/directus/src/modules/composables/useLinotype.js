@@ -14,29 +14,11 @@ import linotypeCollectionsConfig from './../../../config/linotype.yaml'
  *
  */
 
-/**
- * Define logs store
- */
 const logs = ref([])
-
-/**
- * Define linotype active store
- */
 const isActive = ref(true)
-
-/**
- * Define linotype blocks store
- */
 const blocksList = ref([])
-
-/**
- * Define linotype collections store
- */
 const collectionsList = ref([])
 
-/**
- * Linotype composable function
- */
 const useLinotype = function () {
   
   /**
@@ -72,7 +54,7 @@ const useLinotype = function () {
    */
   const loadBlocksList = async () => {
     const blocks = []
-    const response = await api.get(`/linotype/config/blocks`).catch(function (error) {
+    const response = await api.get(`/linotype/blocks`).catch(function (error) {
       logs.value.push(error.toJSON());
     })
     
@@ -319,7 +301,7 @@ const useLinotype = function () {
         }
       }
     })
-    console.log('fields',fields)
+    
     for await (const field of fields) {
       logs.value.push('install block field: ' + field.field)
       await api.post(`/fields/${'linotype_block__' + config.name}`, field ).catch(function (error) {

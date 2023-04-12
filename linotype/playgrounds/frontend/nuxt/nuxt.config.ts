@@ -15,6 +15,17 @@ export default defineNuxtConfig({
     backend_token: process.env.LINOTYPE_BACKEND_TOKEN,
   },
   
+  //allow linotype route cors
+  routeRules: {
+    '/linotype/**': { 
+      cors: true,
+      headers: { 
+        'Acess-Control-Allow-Origin': 'https://backend.linotype.dev', 
+        'Access-Control-Allow-Credentials': true,
+      }
+    }
+  },
+
   //for minimal playground style
   unocss: {
     uno: true,
@@ -29,11 +40,5 @@ export default defineNuxtConfig({
   app: {
     rootId: 'linotype',
   },
-
-  // imports: {
-  //   dirs: [
-  //     'linotype/**/**/composables'
-  //   ]
-  // }
 
 });

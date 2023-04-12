@@ -69,10 +69,11 @@ export default defineNuxtModule<ModuleOptions>({
     addComponentsDir( { path: resolver.resolve('./runtime/components') } )
     addComponentsDir( { path: '~/linotype', global: true, watch: true, extensions: ['vue'] } )
     
-    addServerHandler({ route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
-    addServerHandler({ route: '/linotype/menu', handler: resolver.resolve('./runtime/server/routes/menu') })
-    addServerHandler({ route: '/linotype/search', handler: resolver.resolve('./runtime/server/routes/search') })
-    addServerHandler({ route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap') })
+    addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
+    addServerHandler({ method: 'post', route: '/linotype/block/sync', handler: resolver.resolve('./runtime/server/routes/sync') })
+    addServerHandler({ method: 'get', route: '/linotype/menu', handler: resolver.resolve('./runtime/server/routes/menu') })
+    addServerHandler({ method: 'get', route: '/linotype/search', handler: resolver.resolve('./runtime/server/routes/search') })
+    addServerHandler({ method: 'get', route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap') })
     
     addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugin') })
     

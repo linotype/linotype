@@ -18,12 +18,15 @@
           <v-list>
             <v-list-item v-for="block in blocksList" :key="block">
               <v-list-item-icon>
-                <v-icon :name="block.config.meta.icon" />
+                <v-icon :name="block.config?.snapshot?.collections[0]?.meta?.icon" />
               </v-list-item-icon>
               <v-list-item-content>
-                <v-text-overflow :text="block.name" />
-                <v-button v-if="!block.active" @click="installBlock(block)" :primary="true">Install</v-button>
-                <v-button v-else @click="uninstallBlock(block)" :danger="true">Uninstall</v-button>
+                <v-text-overflow :text="block.config?.id" />
+                <v-list-actions>
+                  <v-button _v-if="block.active" @click="exportBlock(block.config)" :warning="true">Export</v-button>
+                  <v-button _v-if="!block.active" @click="importBlock(block.config)" :primary="true">Import</v-button>
+                  <v-button _v-else @click="deleteBlock(block.config)" :danger="true">Delete</v-button>
+                </v-list-actions>
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -42,12 +45,19 @@
 
 <script lang="ts" setup>
 import useLinotype from './../composables/useLinotype'
+import useBlock from '../composables/useBlock'
+import useExport from '../composables/useExport'
+import useImport from '../composables/useImport'
 
 import InstallerComponent from '../components/installer.vue'
 import MenuComponent from '../components/menu.vue'
 import LogsComponent from '../components/logs.vue'
 
 const { init, isActive, installAllBlock, uninstallAllBlock, installBlock, uninstallBlock, blocksList } = useLinotype()
+
+const { deleteBlock } = useBlock()
+const { exportBlock } = useExport()
+const { importBlock } = useImport()
 
 init()
 </script>

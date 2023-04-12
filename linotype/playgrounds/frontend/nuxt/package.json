@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "analyze": "nuxi analyze",
     "build": "nuxi build",
-    "dev": "nuxi dev",
+    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && nuxi dev",
     "generate": "nuxi generate",
     "preview": "nuxi build && nuxi preview",
     "start": "node .output/server/index.mjs"

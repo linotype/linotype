@@ -30,6 +30,11 @@
       {
         "type": "endpoint",
         "name": "linotype",
+        "source": "src/endpoints/blocks.ts"
+      },
+      {
+        "type": "endpoint",
+        "name": "linotype",
         "source": "src/endpoints/config.ts"
       },
       {

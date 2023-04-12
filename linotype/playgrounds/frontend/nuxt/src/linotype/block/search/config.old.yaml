@@ -1,0 +1,22 @@
+version: 1
+
+name: search
+
+meta:
+  translations:
+    - language: en-US
+      translation: Search
+      plural: Searchs
+      singular: Search
+  icon: menu
+  color: null
+  hidden: false
+  note: ''
+  sort: 1
+
+fields:
+
+  - name: title
+    type: string
+    meta:
+      interface: input

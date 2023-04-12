@@ -1,0 +1,69 @@
+version: 1
+
+name: text
+
+meta:
+  translations:
+    - language: en-US
+      translation: Text
+      plural: Texts
+      singular: Text
+  icon: notes
+  color: null
+  hidden: false
+  note: ''
+  sort: 1
+
+fields:
+
+  - name: title
+    type: string
+    meta:
+      translations:
+        - language: en-US
+          translation: Title
+          singular: Title
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: title
+        placeholder: Your title here
+        trim: true
+      readonly: false
+      required: false
+      special: null
+      validation: null
+      validation_message: null
+      width: full
+      sort: 10
+
+  - name: content
+    type: string
+    meta:
+      translations:
+        - language: en-US
+          translation: Content
+          singular: Content
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      hidden: false
+      interface: textarea
+      note: null
+      options:
+        iconLeft: 
+        placeholder: Your content here
+        trim: true
+      readonly: false
+      required: false
+      special: null
+      validation: null
+      validation_message: null
+      width: full
+      sort: 10

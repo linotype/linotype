@@ -1,74 +1,322 @@
+id: list
 version: 1
-
-name: list
-
-meta:
-  translations:
-    - language: en-US
-      translation: List
-      plural: Lists
-      singular: List
-  icon: list
-  color: null
-  hidden: false
-  note: ''
-  sort: 1
-
-fields:
-
-  - name: title
-    type: string
-    meta:
-      special: null
-      interface: input
-      options: null
-      display: null
-      display_options: null
-      readonly: false
-      hidden: false
-      width: full
-      translations: null
-      note: null
-      conditions: null
-      required: false
-      group: null
-      validation: null
-      validation_message: null
-
-  - name: items
-    type: json
-    meta:
-      special:
-        - cast-json
-      interface: list
-      options:
-        template: '{{title}}'
-        fields:
-          - field: title
-            name: title
-            type: text
-            meta:
-              field: title
-              width: full
+snapshot:
+  collections:
+    - collection: linotype_block__list
+      meta:
+        accountability: all
+        archive_app_filter: true
+        archive_field: status
+        archive_value: archived
+        collapse: open
+        collection: linotype_block__list
+        color: null
+        display_template: null
+        group: linotype_blocks
+        hidden: false
+        icon: list
+        item_duplication_fields:
+          - title
+        note: null
+        singleton: false
+        sort: 1
+        sort_field: sort
+        translations:
+          - language: en-US
+            translation: Lists
+            singular: List
+            plural: Lists
+        unarchive_value: draft
+      schema:
+        name: linotype_block__list
+  fields:
+    - collection: linotype_block__list
+      field: id
+      type: integer
+      meta:
+        collection: linotype_block__list
+        conditions: null
+        display: null
+        display_options: null
+        field: id
+        group: null
+        hidden: true
+        interface: numeric
+        note: null
+        options: null
+        readonly: true
+        required: false
+        sort: 1
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: id
+        table: linotype_block__list
+        data_type: integer
+        default_value: null
+        max_length: null
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: false
+        is_unique: false
+        is_primary_key: true
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: true
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__list
+      field: items
+      type: json
+      meta:
+        collection: linotype_block__list
+        conditions: null
+        display: null
+        display_options: null
+        field: items
+        group: null
+        hidden: false
+        interface: list
+        note: null
+        options:
+          fields:
+            - field: title
+              name: title
               type: text
-              interface: input-rich-text-html
-          - field: description
-            name: description
-            type: text
-            meta:
-              field: description
-              width: full
+              meta:
+                field: title
+                width: full
+                type: text
+                interface: input
+                required: false
+                options:
+                  iconLeft: title
+                  trim: true
+            - field: content
+              name: content
               type: text
-              interface: input-rich-text-html
-      display: null
-      display_options: null
-      readonly: false
-      hidden: false
-      width: full
-      translations: null
-      note: null
-      conditions: null
-      required: false
-      group: null
-      validation: null
-      validation_message: null
+              meta:
+                field: content
+                width: full
+                type: text
+                interface: input-rich-text-html
+                required: false
+                options:
+                  toolbar:
+                    - bold
+                    - italic
+                    - underline
+                    - strikethrough
+                    - subscript
+                    - superscript
+                    - customLink
+          template: "{{title}}"
+        readonly: false
+        required: false
+        sort: null
+        special:
+          - cast-json
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: items
+        table: linotype_block__list
+        data_type: json
+        default_value: null
+        max_length: null
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__list
+      field: reference
+      type: string
+      meta:
+        collection: linotype_block__list
+        conditions: null
+        display: raw
+        display_options: null
+        field: reference
+        group: null
+        hidden: false
+        interface: input
+        note: null
+        options:
+          iconLeft: flag
+          placeholder: Define a unique reference for this block
+          trim: true
+        readonly: false
+        required: true
+        sort: 3
+        special: null
+        translations:
+          - language: en-US
+            translation: Reference
+        validation: null
+        validation_message: null
+        width: half
+      schema:
+        name: reference
+        table: linotype_block__list
+        data_type: varchar
+        default_value: null
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__list
+      field: sort
+      type: integer
+      meta:
+        collection: linotype_block__list
+        conditions: null
+        display: null
+        display_options: null
+        field: sort
+        group: null
+        hidden: true
+        interface: input
+        note: null
+        options: null
+        readonly: false
+        required: false
+        sort: 2
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: sort
+        table: linotype_block__list
+        data_type: integer
+        default_value: null
+        max_length: null
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__list
+      field: status
+      type: string
+      meta:
+        collection: linotype_block__list
+        conditions: null
+        display: labels
+        display_options:
+          choices:
+            - text: Published
+              value: published
+              background: var(--primary)
+              foreground: "#FFFFFF"
+            - text: Draft
+              value: draft
+              background: "#D3DAE4"
+              foreground: "#18222F"
+            - text: Archived
+              value: archived
+              background: var(--warning)
+              foreground: "#FFFFFF"
+          showAsDot: true
+        field: status
+        group: null
+        hidden: false
+        interface: select-dropdown
+        note: null
+        options:
+          choices:
+            - text: Published
+              value: published
+            - text: Draft
+              value: draft
+            - text: Archived
+              value: archived
+          icon: public
+          placeholder: Select a block status
+        readonly: false
+        required: true
+        sort: 4
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: half
+      schema:
+        name: status
+        table: linotype_block__list
+        data_type: varchar
+        default_value: published
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__list
+      field: title
+      type: string
+      meta:
+        collection: linotype_block__list
+        conditions: null
+        display: null
+        display_options: null
+        field: title
+        group: null
+        hidden: false
+        interface: input
+        note: null
+        options: null
+        readonly: false
+        required: false
+        sort: 5
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: title
+        table: linotype_block__list
+        data_type: varchar
+        default_value: null
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+  relations: []
