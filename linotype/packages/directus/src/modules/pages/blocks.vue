@@ -8,24 +8,24 @@
         
         <InstallerComponent class="full"/>
 
-        <div v-if="isActive" class="full">
+        <!-- <div v-if="isActive" class="full">
           <v-button @click="installAllBlock()" :primary="true">Install All</v-button> <v-button @click="uninstallAllBlock()" :danger="true">Uninstall All</v-button>
-        </div>
+        </div> -->
 
-        <v-divider v-if="isActive" class="full" large :inline-title="false">Blocks</v-divider>
+        <v-divider class="full" large :inline-title="false">Blocks</v-divider>
 
-        <div v-if="isActive" class="full">
+        <div v-if="isLinotypeInstalled" class="full">
           <v-list>
-            <v-list-item v-for="block in blocksList" :key="block">
+            <v-list-item v-for="block in blocksStore" :key="block.config.id">
               <v-list-item-icon>
-                <v-icon :name="block.config?.snapshot?.collections[0]?.meta?.icon" />
+                <v-icon :name="block.config?.snapshot?.collections[0]?.meta?.icon || 'check_box_outline_blank'" />
               </v-list-item-icon>
               <v-list-item-content>
-                <v-text-overflow :text="block.config?.id" />
+                <v-text-overflow :text="block?.config?.id" />
                 <v-list-actions>
-                  <v-button _v-if="block.active" @click="exportBlock(block.config)" :warning="true">Export</v-button>
-                  <v-button _v-if="!block.active" @click="importBlock(block.config)" :primary="true">Import</v-button>
-                  <v-button _v-else @click="deleteBlock(block.config)" :danger="true">Delete</v-button>
+                  <v-button v-if="block.active" @click="exportBlock(block.config)" :warning="true">Export</v-button>
+                  <v-button v-if="block.active" @click="deleteBlock(block.config)" :danger="true">Delete</v-button>
+                  <v-button v-if="!block.active" @click="importBlock(block.config)" :primary="true">Import</v-button>
                 </v-list-actions>
               </v-list-item-content>
             </v-list-item>
@@ -37,29 +37,31 @@
     </div>
 
     <template #sidebar>
-      <LogsComponent/>
+      <!-- <LogsComponent/> -->
     </template>
 
   </private-view>
 </template>
 
 <script lang="ts" setup>
-import useLinotype from './../composables/useLinotype'
+// import useLinotype from './../composables/useLinotype'
 import useBlock from '../composables/useBlock'
 import useExport from '../composables/useExport'
 import useImport from '../composables/useImport'
+import useUtils from '../composables/useUtils'
 
 import InstallerComponent from '../components/installer.vue'
 import MenuComponent from '../components/menu.vue'
-import LogsComponent from '../components/logs.vue'
+// import LogsComponent from '../components/logs.vue'
 
-const { init, isActive, installAllBlock, uninstallAllBlock, installBlock, uninstallBlock, blocksList } = useLinotype()
+// const { init } = useLinotype()
 
+const { isLinotypeInstalled, isBlockInstalled, blocksStore } = useUtils()
 const { deleteBlock } = useBlock()
 const { exportBlock } = useExport()
 const { importBlock } = useImport()
 
-init()
+// init()
 </script>
 
 <script lang="ts">
@@ -69,7 +71,7 @@ export default defineComponent({
   components: {
     InstallerComponent,
     MenuComponent,
-    LogsComponent
+    // LogsComponent
   }
 })
 </script>

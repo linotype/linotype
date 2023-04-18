@@ -15,13 +15,11 @@
       "api": "dist/api.js"
     },
     "entries": [
-
       {
         "type": "module",
         "name": "linotype",
         "source": "src/modules/index.ts"
       },
-      
       {
         "type": "endpoint",
         "name": "linotype",
@@ -77,20 +75,20 @@
     "release": "directus-extension build && npm publish --access public"
   },
   "devDependencies": {
+    "@directus/extensions-sdk": "9.23.1",
     "@linotype/core": "*",
-    "@directus/extensions-sdk": "^9.23.1",
     "@rollup/plugin-yaml": "^4.0.1",
-    "rollup-plugin-auto-external": "^2.0.0",
-    "@vueuse/core": "^9.13.0",
-    "glob": "^9.3.1",
+    "@types/lodash-es": "^4.17.7",
+    "@vueuse/core": "^10.0.2",
+    "glob": "^10.2.1",
     "glob-promise": "^6.0.2",
-    "node-fetch": "^3.3.1",
     "lodash": "^4.17.21",
     "lodash-es": "^4.17.21",
-    "@types/lodash-es": "^4.17.7",
+    "node-fetch": "^3.3.1",
+    "rollup-plugin-auto-external": "^2.0.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dir-import": "^0.0.3",
-    "typescript": "^5.0.2",
+    "typescript": "^5.0.4",
     "vue": "^3.2.47",
     "yaml": "^2.2.1"
   }
