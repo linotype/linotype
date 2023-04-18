@@ -17,10 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "directus": "^9.24.0",
-    "@linotype/directus-extension-linotype": "*"
-  },
-  "devDependencies": {
-    "taze": "latest"
+    "@linotype/directus-extension-linotype": "*",
+    "directus": "9.24.0"
   }
 }
