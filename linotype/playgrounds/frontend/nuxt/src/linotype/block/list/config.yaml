@@ -11,21 +11,20 @@ snapshot:
         collapse: open
         collection: linotype_block__list
         color: null
-        display_template: null
+        display_template: "{{reference}}"
         group: linotype_blocks
         hidden: false
         icon: list
-        item_duplication_fields:
-          - title
-        note: null
+        item_duplication_fields: []
+        note: ""
         singleton: false
         sort: 1
         sort_field: sort
         translations:
           - language: en-US
-            translation: Lists
-            singular: List
+            translation: List
             plural: Lists
+            singular: List
         unarchive_value: draft
       schema:
         name: linotype_block__list
@@ -46,7 +45,7 @@ snapshot:
         options: null
         readonly: true
         required: false
-        sort: 1
+        sort: null
         special: null
         translations: null
         validation: null
@@ -90,29 +89,15 @@ snapshot:
                 field: title
                 width: full
                 type: text
-                interface: input
-                required: false
-                options:
-                  iconLeft: title
-                  trim: true
-            - field: content
-              name: content
+                interface: input-rich-text-html
+            - field: description
+              name: description
               type: text
               meta:
-                field: content
+                field: description
                 width: full
                 type: text
                 interface: input-rich-text-html
-                required: false
-                options:
-                  toolbar:
-                    - bold
-                    - italic
-                    - underline
-                    - strikethrough
-                    - subscript
-                    - superscript
-                    - customLink
           template: "{{title}}"
         readonly: false
         required: false
@@ -158,7 +143,7 @@ snapshot:
           trim: true
         readonly: false
         required: true
-        sort: 3
+        sort: 11
         special: null
         translations:
           - language: en-US
@@ -198,7 +183,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: 2
+        sort: 11
         special: null
         translations: null
         validation: null
@@ -229,15 +214,15 @@ snapshot:
         display: labels
         display_options:
           choices:
-            - text: Published
+            - text: $t:published
               value: published
               background: var(--primary)
               foreground: "#FFFFFF"
-            - text: Draft
+            - text: $t:draft
               value: draft
               background: "#D3DAE4"
               foreground: "#18222F"
-            - text: Archived
+            - text: $t:archived
               value: archived
               background: var(--warning)
               foreground: "#FFFFFF"
@@ -249,17 +234,17 @@ snapshot:
         note: null
         options:
           choices:
-            - text: Published
+            - text: $t:published
               value: published
-            - text: Draft
+            - text: $t:draft
               value: draft
-            - text: Archived
+            - text: $t:archived
               value: archived
           icon: public
           placeholder: Select a block status
         readonly: false
         required: true
-        sort: 4
+        sort: 11
         special: null
         translations: null
         validation: null
@@ -297,7 +282,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: 5
+        sort: null
         special: null
         translations: null
         validation: null

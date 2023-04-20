@@ -29,14 +29,14 @@ snapshot:
         unarchive_value: draft
       schema:
         name: linotype_block__comments
-    - collection: linotype_block__comments_attachment
+    - collection: linotype_block__comments_attachments
       meta:
         accountability: all
         archive_app_filter: true
         archive_field: null
         archive_value: null
         collapse: open
-        collection: linotype_block__comments_attachment
+        collection: linotype_block__comments_attachments
         color: null
         display_template: null
         group: null
@@ -45,12 +45,12 @@ snapshot:
         item_duplication_fields: null
         note: null
         singleton: false
-        sort: null
+        sort: 1
         sort_field: null
         translations: null
         unarchive_value: null
       schema:
-        name: linotype_block__comments_attachment
+        name: linotype_block__comments_attachments
   fields:
     - collection: linotype_block__comments
       field: attachments
@@ -68,7 +68,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: null
+        sort: 11
         special:
           - m2m
         translations: null
@@ -91,7 +91,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: 9
+        sort: 8
         special: null
         translations: null
         validation: null
@@ -130,7 +130,7 @@ snapshot:
         options: null
         readonly: true
         required: false
-        sort: 4
+        sort: 3
         special:
           - cast-timestamp
           - date-created
@@ -171,7 +171,7 @@ snapshot:
         options: null
         readonly: true
         required: false
-        sort: 7
+        sort: 6
         special:
           - cast-timestamp
           - date-updated
@@ -211,7 +211,7 @@ snapshot:
         options: null
         readonly: true
         required: false
-        sort: 1
+        sort: 9
         special: null
         translations: null
         validation: null
@@ -234,6 +234,45 @@ snapshot:
         foreign_key_table: null
         foreign_key_column: null
     - collection: linotype_block__comments
+      field: image
+      type: uuid
+      meta:
+        collection: linotype_block__comments
+        conditions: null
+        display: null
+        display_options: null
+        field: image
+        group: null
+        hidden: false
+        interface: file-image
+        note: null
+        options: null
+        readonly: false
+        required: false
+        sort: 10
+        special:
+          - file
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: image
+        table: linotype_block__comments
+        data_type: char
+        default_value: null
+        max_length: 36
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: directus_files
+        foreign_key_column: id
+    - collection: linotype_block__comments
       field: reference
       type: string
       meta:
@@ -252,7 +291,7 @@ snapshot:
           trim: true
         readonly: false
         required: true
-        sort: 6
+        sort: 5
         special: null
         translations:
           - language: en-US
@@ -292,7 +331,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: 2
+        sort: 1
         special: null
         translations: null
         validation: null
@@ -351,7 +390,7 @@ snapshot:
               value: archived
         readonly: false
         required: false
-        sort: 8
+        sort: 7
         special: null
         translations: null
         validation: null
@@ -390,7 +429,7 @@ snapshot:
           template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
         readonly: true
         required: false
-        sort: 3
+        sort: 2
         special:
           - user-created
         translations: null
@@ -430,7 +469,7 @@ snapshot:
           template: "{{avatar.$thumbnail}} {{first_name}} {{last_name}}"
         readonly: true
         required: false
-        sort: 5
+        sort: 4
         special:
           - user-updated
         translations: null
@@ -453,15 +492,15 @@ snapshot:
         has_auto_increment: false
         foreign_key_table: null
         foreign_key_column: null
-    - collection: linotype_block__comments_attachment
-      field: attachment_id
+    - collection: linotype_block__comments_attachments
+      field: attachments_id
       type: integer
       meta:
-        collection: linotype_block__comments_attachment
+        collection: linotype_block__comments_attachments
         conditions: null
         display: null
         display_options: null
-        field: attachment_id
+        field: attachments_id
         group: null
         hidden: true
         interface: null
@@ -476,8 +515,8 @@ snapshot:
         validation_message: null
         width: full
       schema:
-        name: attachment_id
-        table: linotype_block__comments_attachment
+        name: attachments_id
+        table: linotype_block__comments_attachments
         data_type: integer
         default_value: null
         max_length: null
@@ -489,13 +528,13 @@ snapshot:
         is_generated: false
         generation_expression: null
         has_auto_increment: false
-        foreign_key_table: attachment
+        foreign_key_table: attachments
         foreign_key_column: id
-    - collection: linotype_block__comments_attachment
+    - collection: linotype_block__comments_attachments
       field: id
       type: integer
       meta:
-        collection: linotype_block__comments_attachment
+        collection: linotype_block__comments_attachments
         conditions: null
         display: null
         display_options: null
@@ -515,7 +554,7 @@ snapshot:
         width: full
       schema:
         name: id
-        table: linotype_block__comments_attachment
+        table: linotype_block__comments_attachments
         data_type: integer
         default_value: null
         max_length: null
@@ -529,11 +568,11 @@ snapshot:
         has_auto_increment: true
         foreign_key_table: null
         foreign_key_column: null
-    - collection: linotype_block__comments_attachment
+    - collection: linotype_block__comments_attachments
       field: linotype_block__comments_id
       type: integer
       meta:
-        collection: linotype_block__comments_attachment
+        collection: linotype_block__comments_attachments
         conditions: null
         display: null
         display_options: null
@@ -553,7 +592,7 @@ snapshot:
         width: full
       schema:
         name: linotype_block__comments_id
-        table: linotype_block__comments_attachment
+        table: linotype_block__comments_attachments
         data_type: integer
         default_value: null
         max_length: null
@@ -568,12 +607,12 @@ snapshot:
         foreign_key_table: linotype_block__comments
         foreign_key_column: id
   relations:
-    - collection: linotype_block__comments_attachment
+    - collection: linotype_block__comments_attachments
       field: linotype_block__comments_id
       related_collection: linotype_block__comments
       meta:
-        junction_field: attachment_id
-        many_collection: linotype_block__comments_attachment
+        junction_field: attachments_id
+        many_collection: linotype_block__comments_attachments
         many_field: linotype_block__comments_id
         one_allowed_collections: null
         one_collection: linotype_block__comments
@@ -582,7 +621,7 @@ snapshot:
         one_field: attachments
         sort_field: null
       schema:
-        table: linotype_block__comments_attachment
+        table: linotype_block__comments_attachments
         column: linotype_block__comments_id
         foreign_key_table: linotype_block__comments
         foreign_key_column: id
