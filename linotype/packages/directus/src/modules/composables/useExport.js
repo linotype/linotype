@@ -30,12 +30,24 @@ const useExport = function () {
     //get block collection snapshot 
     const blockSnapshot = await getBlockSnapshot(`linotype_block__${block.id}`, snapshot)
     
-    //find relative collections snapshots
+    //find collections snapshots from relations
     blockSnapshot?.relations?.map( async (relation) => {
-      const blockRelationSnapshot = await getBlockSnapshot(relation.collection, snapshot)
-      blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
-      blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]
-      blockSnapshot.relations = [...blockSnapshot.relations, ...blockRelationSnapshot.relations]
+      if ( relation.collection ) {
+        const blockRelationSnapshot = await getBlockSnapshot(relation.collection, snapshot)
+        blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
+        blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]
+        blockSnapshot.relations = [...blockSnapshot.relations, ...blockRelationSnapshot.relations]
+      }
+    })
+    
+    //find collections snapshots from relational fields (m2m, etc.)
+    snapshot?.fields?.map( async (field) => {
+      if ( field?.collection?.startsWith('linotype_block__') && field?.schema?.foreign_key_table ) { 
+        const blockRelationSnapshot = await getBlockSnapshot(field.schema.foreign_key_table, snapshot)
+        blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
+        blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]
+        blockSnapshot.relations = [...blockSnapshot.relations, ...blockRelationSnapshot.relations]
+      }
     })
 
     //get linotype config
