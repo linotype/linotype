@@ -11,7 +11,7 @@
 </template>
 
 <script lang="ts" setup>
-import useComments from './../composables/useComments'
+import useComments from './../scripts/useComments'
 
 const { input, postComment, comments, error } = useComments()
 

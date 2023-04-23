@@ -47,13 +47,13 @@ const useUtils = function () {
     })
     for await (const data of response?.data) {
       blocks.push({
-        active: checkBlockInstalled(data.config.id),
+        active: checkBlockInstalled(data.id),
         ...data
       })
     }
     blocksStore.value = blocks
     allowedBlocksIds.value = blocks.reduce((results, item) => {
-      if( item.active && item?.config?.snapshot?.collections[0]?.collection ) results.push(item.config.snapshot.collections[0].collection)
+      if( item.active && item?.snapshot?.collections[0]?.collection ) results.push(item.snapshot.collections[0].collection)
       return results
     }, [])
   }

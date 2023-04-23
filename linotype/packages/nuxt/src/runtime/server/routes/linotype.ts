@@ -17,17 +17,7 @@ const getLinotypeConfig = (dir: string): object[] => {
     const stat = fs.lstatSync(filename)
     if (stat.isDirectory()) {
       const configLinotype = fs.readFileSync(`${filename}/config.yaml`, 'utf8')
-      const schemaDirectusFields = fs.readFileSync(`${filename}/schema/directus/fields.yaml`, 'utf8')
-      blocks.push( {
-        name: files[i],
-        config: YAML.parse(configLinotype),
-        schema: {
-          directus: YAML.parse(schemaDirectusFields),
-          strapi: {},
-          linotype: {},
-          custom: {}
-        },
-      })
+      blocks.push( YAML.parse(configLinotype) )
     }
   }
   return blocks

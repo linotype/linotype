@@ -16,16 +16,16 @@
 
         <div v-if="isLinotypeInstalled" class="full">
           <v-list>
-            <v-list-item v-for="block in blocksStore" :key="block.config.id">
+            <v-list-item v-for="block in blocksStore" :key="block.id">
               <v-list-item-icon>
-                <v-icon :name="block.config?.snapshot?.collections[0]?.meta?.icon || 'check_box_outline_blank'" />
+                <v-icon :name="block?.snapshot?.collections[0]?.meta?.icon || 'check_box_outline_blank'" />
               </v-list-item-icon>
               <v-list-item-content>
-                <v-text-overflow :text="block?.config?.id" />
+                <v-text-overflow :text="block?.id" />
                 <v-list-actions>
-                  <v-button v-if="block.active" @click="exportBlock(block.config)" :warning="true">Export</v-button>
-                  <v-button v-if="block.active" @click="deleteBlock(block.config)" :danger="true">Delete</v-button>
-                  <v-button v-if="!block.active" @click="importBlock(block.config)" :primary="true">Import</v-button>
+                  <v-button v-if="block.active" @click="exportBlock(block)" :warning="true">Export</v-button>
+                  <v-button v-if="block.active" @click="deleteBlock(block)" :danger="true">Delete</v-button>
+                  <v-button v-if="!block.active" @click="importBlock(block)" :primary="true">Import</v-button>
                 </v-list-actions>
               </v-list-item-content>
             </v-list-item>

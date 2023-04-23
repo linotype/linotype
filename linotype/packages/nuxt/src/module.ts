@@ -71,7 +71,7 @@ export default defineNuxtModule<ModuleOptions>({
     
     addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
     addServerHandler({ method: 'post', route: '/linotype/block/sync', handler: resolver.resolve('./runtime/server/routes/sync') })
-    addServerHandler({ method: 'get', route: '/linotype/menu', handler: resolver.resolve('./runtime/server/routes/menu') })
+    // addServerHandler({ method: 'get', route: '/linotype/menu', handler: resolver.resolve('./runtime/server/routes/menu') })
     addServerHandler({ method: 'get', route: '/linotype/search', handler: resolver.resolve('./runtime/server/routes/search') })
     addServerHandler({ method: 'get', route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap') })
     

@@ -103,7 +103,7 @@ const useLinotype = function () {
 
   const installAllBlock = async () => {
     for await (const block of blocksList.value) {
-      await installBlockFunction(block.config)
+      await installBlockFunction(block)
     }
     await updateBlockComposerRelation()
     await applyPermissions()
@@ -113,7 +113,7 @@ const useLinotype = function () {
 
   const uninstallAllBlock = async () => {
     for await (const block of blocksList.value) {
-      await uninstallBlockFunction(block.config)
+      await uninstallBlockFunction(block)
     }
     await updateBlockComposerRelation()
     await reload()
@@ -121,7 +121,7 @@ const useLinotype = function () {
   }
 
   const installBlock = async (block) => {
-    await installBlockFunction(block.config)
+    await installBlockFunction(block)
     await updateBlockComposerRelation()
     await applyPermissions()
     await reload()
@@ -129,7 +129,7 @@ const useLinotype = function () {
   }
 
   const uninstallBlock = async (block) => {
-    await uninstallBlockFunction(block.config)
+    await uninstallBlockFunction(block)
     await updateBlockComposerRelation()
     await reload()
     await init()

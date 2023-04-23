@@ -2,8 +2,8 @@
   <div :id="`${props.blockType}-${props.blockId}`" :class="props.blockType" bg-gray-100 m-5 p-5>
     <div font-bold>[ Linotype block "{{props.blockType}}" / ref: {{props.blockData.reference}} ]</div>
     <div flex flex-row gap-2 py-2>
-      <div v-for="(item, index) in data" :key="index">
-        <NuxtLink :to="item.slug">{{item.title}}</NuxtLink>
+      <div v-for="menu, index in data" :key="index">
+        <NuxtLink :to="menu?.slug">{{menu?.title}}</NuxtLink>
       </div>
       <input type="text" @keyup.enter="search" v-model="input"/>
     </div>
@@ -20,11 +20,20 @@ const props = defineProps<{
   }
 }>()
 
-const { data } = await useFetch('/linotype/menu')
-
 const route = useRoute()
+const { scheme, domain } = useDomain()
+const config = useRuntimeConfig()
 
 const input = ref(route.query.query)
+
+const { data } = await useFetch(`${config.public.linotype.backend_url}/linotype/menu`,{
+  method: 'POST',
+  body: {
+    env: config.public.linotype.env,
+    scheme: scheme,
+    domain: domain
+  }
+})
 
 const search = () => {
   navigateTo({
