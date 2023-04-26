@@ -3,8 +3,13 @@ export default defineNuxtConfig({
   modules: [
     //Linotype module declaration
     '@linotype/nuxt',
-    //for minimal playground style
+    //for playground tests
     '@unocss/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-vitest',
+    'nuxt-icon',
+    //for playground debug
+    '@nuxt/devtools',
   ],
   
   // Default Linotype settings
@@ -16,15 +21,15 @@ export default defineNuxtConfig({
   },
   
   //allow linotype route cors
-  routeRules: {
-    '/linotype/**': { 
-      cors: true,
-      headers: { 
-        'Acess-Control-Allow-Origin': 'https://backend.linotype.dev', 
-        'Access-Control-Allow-Credentials': true,
-      }
-    }
-  },
+  // routeRules: {
+  //   '/linotype/**': { 
+  //     cors: true,
+  //     headers: { 
+  //       'Acess-Control-Allow-Origin': 'https://backend.linotype.dev', 
+  //       'Access-Control-Allow-Credentials': true,
+  //     }
+  //   }
+  // },
 
   //for minimal playground style
   unocss: {
@@ -40,5 +45,9 @@ export default defineNuxtConfig({
   app: {
     rootId: 'linotype',
   },
+
+  devtools: {
+    enabled: true
+  }
 
 });

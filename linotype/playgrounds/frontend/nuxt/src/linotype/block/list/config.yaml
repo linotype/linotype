@@ -1,5 +1,7 @@
 id: list
 version: 1
+parent:
+children:
 snapshot:
   collections:
     - collection: linotype_block__list

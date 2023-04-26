@@ -1,22 +1,24 @@
 <template>
-  <div :id="`${props.blockType}-${props.blockId}`" :class="props.blockType" bg-gray-100 m-5 p-5>
+  <div :id="`${props.blockType}-${props.blockId}`" :class="`block--${props.blockType}`" bg-gray-100 m-5 p-5>
     <div font-bold>[ Linotype block "{{props.blockType}}" / ref: {{props.blockData.reference}} ]</div>
-    <div v-if="props.blockData.view == 'all'">
-      <BlockCommentsViewStats/>
-      <BlockCommentsViewList/>
-      <BlockCommentsViewForm/>
-    </div>
-    <div v-else>
-      <BlockCommentsViewList v-if="props.blockData.view == 'list'"/>
-      <BlockCommentsViewForm v-else-if="props.blockData.view == 'form'"/>
-      <BlockCommentsViewStats v-else-if="props.blockData.view == 'stats'"/>
-    </div>
+      <div v-if="props.blockData.view == 'all'">
+        <LinotypeBlockCommentsViewsStats/>
+        <LinotypeBlockCommentsViewsList/>
+        <LinotypeBlockCommentsViewsForm/>
+      </div>
+      <div v-else>
+        <LinotypeBlockCommentsViewsStats v-if="props.blockData.view == 'stats'"/>
+        <LinotypeBlockCommentsViewsList v-else-if="props.blockData.view == 'list'"/>
+        <LinotypeBlockCommentsViewsForm v-else-if="props.blockData.view == 'form'"/>
+      </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import useComments from './scripts/useComments'
- 
+// import LoadingComponent from './parts/loading'
+// import ErrorComponent from './parts/error'
+
 const props = defineProps<{
   blockId: number
   blockType: string
@@ -29,15 +31,29 @@ const props = defineProps<{
 
 const { loadComments, error, comments } = useComments()
 
-// const ViewList = defineAsyncComponent(() =>
-//   import('./view/list.vue')
-// )
-// const ViewForm = defineAsyncComponent(() =>
-//   import('./view/form.vue')
-// )
-// const ViewStats = defineAsyncComponent(() =>
-//   import('./view/stats.vue')
-// )
+// const ViewList = defineAsyncComponent({
+//   loader: () =>  import('/views/list.vue'),
+//   loadingComponent: LoadingComponent,
+//   delay: 2000,
+//   errorComponent: ErrorComponent,
+//   timeout: 3000
+// })
+
+// const ViewForm = defineAsyncComponent({
+//   loader: () =>  import('./views/form.vue'),
+//   loadingComponent: LoadingComponent,
+//   delay: 2000,
+//   errorComponent: ErrorComponent,
+//   timeout: 3000
+// })
+
+// const ViewStats = defineAsyncComponent({
+//   loader: () =>  import('./views/stats.vue'),
+//   loadingComponent: LoadingComponent,
+//   delay: 2000,
+//   errorComponent: ErrorComponent,
+//   timeout: 3000
+// })
 
 loadComments(props)
 

@@ -1,5 +1,8 @@
 id: loop
 version: 1
+parent:
+children:
+  - loop_item
 snapshot:
   collections:
     - collection: linotype_block__loop
