@@ -11,10 +11,10 @@
         <v-divider class="full" large :inline-title="false">Current</v-divider>
   
         <div class="half">
-          <div class="count">{{blocksList.length}} Blocks</div>
+          <div class="count">{{blocksStore.length}} Blocks</div>
         </div>
         <div class="half">
-          <div class="count">{{blocksList.filter((item)=> item.active).length}} Active Blocks</div>
+          <div class="count">{{allowedBlocksIds.length}} Active Blocks</div>
         </div>
 
       </div>
@@ -29,12 +29,14 @@
 
 <script lang="ts" setup>
 import useLinotype from '../composables/useLinotype'
+import useUtils from '../composables/useUtils'
 
 import InstallerComponent from './../components/installer.vue'
 import MenuComponent from '../components/menu.vue'
 import LogsComponent from '../components/logs.vue'
 
 const { init, isActive, loadLinotype, blocksList, collectionsList } = useLinotype()
+const { isLinotypeInstalled, linotypeStore, blocksStore, allowedBlocksIds, refresh } = useUtils()
 
 init()
 </script>

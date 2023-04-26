@@ -308,7 +308,7 @@ const useLinotype = function () {
         logs.value.push(error.toJSON());
       });
     }
-    const relations = (config?.fields || [] ).reduce((results, item) => {
+    const relations = await (config?.fields || [] ).reduce((results, item) => {
       if ( item?.relation?.related_collection ) {
         results.push({
           collection: 'linotype_block__' + config.name,
@@ -506,7 +506,7 @@ const useLinotype = function () {
 
     //Get default public permissions ID for linotype collections
     const permissions = await api.get(`/permissions`).catch(function (error) { logs.value.push(error.toJSON()) })
-    const permissionsList = permissions?.data?.data.reduce((results, item) => {
+    const permissionsList = await permissions?.data?.data.reduce((results, item) => {
       if( item.collection.startsWith("linotype_") && item.action == 'read' && item.fields[0] == '*' ) {
         results.push(item.id)
       }

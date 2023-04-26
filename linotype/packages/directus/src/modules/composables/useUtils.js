@@ -52,7 +52,7 @@ const useUtils = function () {
       })
     }
     blocksStore.value = blocks
-    allowedBlocksIds.value = blocks.reduce((results, item) => {
+    allowedBlocksIds.value = await blocks.reduce((results, item) => {
       if( item.active && item?.snapshot?.collections[0]?.collection ) results.push(item.snapshot.collections[0].collection)
       return results
     }, [])

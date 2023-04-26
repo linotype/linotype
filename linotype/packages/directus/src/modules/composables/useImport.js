@@ -39,8 +39,10 @@ const useImport = function () {
     }
 
     //refresh
-    await updateComposerRelations()
+    await refresh()
     await applyPermissions()
+    await refresh()
+    await updateComposerRelations()
     await refresh()
 
     //success
@@ -85,15 +87,32 @@ const useImport = function () {
    * Update relation to add new block to linotype composer fields
    */
   const updateComposerRelations = async () => {
-    for await (const collection of ['linotype_pages_content', 'linotype_sites_header', 'linotype_sites_footer']) {
-      await api.patch(`/relations/${collection}/item`, {
-        "collection": collection,
+    const composerRelations = [
+      {
+        many_collection:'linotype_sites_header',
+        junction_field: 'linotype_sites_id',
+        one_allowed_collections: allowedBlocksIds.value //todo: reduce if not allow in header
+      },
+      {
+        many_collection:'linotype_pages_content',
+        junction_field: 'linotype_pages_id',
+        one_allowed_collections: allowedBlocksIds.value //todo: reduce if not allow in header
+      },
+      {
+        many_collection:'linotype_sites_footer',
+        junction_field: 'linotype_sites_id',
+        one_allowed_collections: allowedBlocksIds.value //todo: reduce if not allow in header
+      }
+    ]
+    for await (const composer of composerRelations) {
+      await api.patch(`/relations/${composer.many_collection}/item`, {
+        "collection": composer.many_collection,
           "field": "item",
           "meta": {
-            "junction_field": "linotype_sites_id",
-            "many_collection": collection,
+            "junction_field": composer.junction_field,
+            "many_collection": composer.many_collection,
             "many_field": "item",
-            "one_allowed_collections": allowedBlocksIds.value,
+            "one_allowed_collections": composer.one_allowed_collections,
             "one_collection": null,
             "one_collection_field": "collection",
             "one_deselect_action": "nullify",
@@ -131,9 +150,9 @@ const useImport = function () {
     
     //create new defaults permissions for linotype collections 
     const newPermissions = []
-    for (const item of allowedBlocksIds.value) {
+    for (const collection of allowedBlocksIds.value) {
       newPermissions.push({ 
-        collection: item.collection,
+        collection: collection,
         action: "read",
         fields: ['*']
       })
