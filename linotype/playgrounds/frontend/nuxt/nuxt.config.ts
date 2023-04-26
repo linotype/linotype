@@ -21,15 +21,15 @@ export default defineNuxtConfig({
   },
   
   //allow linotype route cors
-  // routeRules: {
-  //   '/linotype/**': { 
-  //     cors: true,
-  //     headers: { 
-  //       'Acess-Control-Allow-Origin': 'https://backend.linotype.dev', 
-  //       'Access-Control-Allow-Credentials': true,
-  //     }
-  //   }
-  // },
+  routeRules: {
+    '/linotype/**': { 
+      cors: true,
+      headers: { 
+        'Acess-Control-Allow-Origin': '*', 
+        'Access-Control-Allow-Credentials': true,
+      }
+    }
+  },
 
   //for minimal playground style
   unocss: {

@@ -38,7 +38,7 @@ const props = defineProps({
   },
 });
 
-const expend = ref();
+const expend = ref(false);
 
 const { jsonDump } = useDump();
 
@@ -47,42 +47,45 @@ const dump = jsonDump(props.data);
 
 <style>
 .linotype-dump {
-  position: relative;
-  margin-bottom: 0.1rem;
-  background: #ddd;
-  color: #333;
-  font-family: monospace;
-  font-size: 0.7rem;
-  overflow: auto;
+  position: relative!important;
+  margin-bottom: 0.1rem!important;
+  background: #ddd!important;
+  color: #333!important;
+  font-family: monospace!important;
+  font-size: 0.7rem!important;
+  overflow: auto!important;
+}
+
+.linotype-dump pre {
+  margin: 0!important;
+  padding: 0!important;
 }
 
 .linotype-dump .title {
-  padding: 1rem;
-  color: #333;
-  font-size: 0.8rem;
-  cursor: pointer;
+  padding: 1rem!important;
+  color: #333!important;
+  font-size: 0.8rem!important;
+  cursor: pointer!important;
 }
 
 .linotype-dump .content {
-  padding: 0 1rem 1rem 1rem;
-  display: none;
+  padding: 0 1rem 1rem 1rem!important;
+  display: none!important;
 }
 
 .linotype-dump .content:hover {
-  background: #ccc;
+  background: #ccc!important;
 }
 
-.linotype-dump .content.expend {
-  background: #333;
-  color: #cdcbcb;
+.linotype-dump.expend .title {
+  background: #333!important;
+  color: #cdcbcb!important;
 }
 
-.linotype-dump .content.expend.title {
-  color: #cdcbcb;
-}
-
-.linotype-dump .content.expend.content {
-  display: inherit;
+.linotype-dump.expend .content {
+  background: #333!important;
+  color: #cdcbcb!important;
+  display: inherit!important;
 }
 
 </style>
