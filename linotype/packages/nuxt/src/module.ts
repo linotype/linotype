@@ -67,7 +67,7 @@ export default defineNuxtModule<ModuleOptions>({
     addImportsDir(resolver.resolve('./runtime/composables'))
     
     addComponentsDir( { path: resolver.resolve('./runtime/components') } )
-    addComponentsDir( { path: '~/linotype', global: true, watch: true, extensions: ['vue'] } )
+    addComponentsDir( { path: '~/linotype', prefix: 'linotype', isAsync: true, global: true, watch: true, extensions: ['vue'] } )
     
     addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
     addServerHandler({ method: 'post', route: '/linotype/block/sync', handler: resolver.resolve('./runtime/server/routes/sync') })

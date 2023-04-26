@@ -1,6 +1,7 @@
 import useDomain from "./useDomain"
 import { useRuntimeConfig, useState, useRoute, useFetch, createError, onBeforeRouteLeave } from 'nuxt/app'
 import { nextTick } from 'vue'
+// import LinotypeDefault from './../components/linotype-default.vue'
 
 /**
  * @useLinotype
@@ -74,16 +75,23 @@ const useLinotype = function () {
    * @returns Component
    */
   const loadBlock = (id) => {
- 
-    return `block-${id.replace('_','-')}`
-    // return defineAsyncComponent( async () => {
-    //   if ( blocksIds.value.includes(`${id}/${id}`) ) {
-    //      const xxx = await import(`${process.cwd() ? process.cwd() : '.'}/src/components/blocks/${id}/${id}.index.vue`)
-    //      console.log('xxx',xxx)
-    //      return xxx
-    //      } else {
-    //     return import('./../components/linotype-default.vue')
-    //   }
+
+    return `lazy-linotype-block-${id.replace('_','-')}`
+
+    // return defineAsyncComponent({
+    //   // the loader function
+    //   loader: () =>  import(`${process.cwd() ? process.cwd() : '.'}/src/linotype/block/${id}/index.vue`),
+    
+    //   // A component to use while the async component is loading
+    //   loadingComponent: LinotypeDefault,
+    //   // Delay before showing the loading component. Default: 200ms.
+    //   delay: 200,
+    
+    //   // A component to use if the load fails
+    //   errorComponent: LinotypeDefault,
+    //   // The error component will be displayed if a timeout is
+    //   // provided and exceeded. Default: Infinity.
+    //   timeout: 3000
     // })
   }
 
@@ -98,8 +106,8 @@ const useLinotype = function () {
     })
 
     if( initialized.value == false ) {
-      await loadTemplate(getCurrentRoute())
       initialized.value = true
+      await loadTemplate(getCurrentRoute())
     }
 
   }
