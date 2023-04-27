@@ -47,6 +47,7 @@ const useComments = () => {
     comments,
     input,
     error,
+    props,
   }
 
 }

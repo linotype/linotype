@@ -1,7 +1,5 @@
 id: list
 version: 1
-parent:
-children:
 snapshot:
   collections:
     - collection: linotype_block__list
@@ -47,7 +45,7 @@ snapshot:
         options: null
         readonly: true
         required: false
-        sort: null
+        sort: 1
         special: null
         translations: null
         validation: null
@@ -103,7 +101,7 @@ snapshot:
           template: "{{title}}"
         readonly: false
         required: false
-        sort: null
+        sort: 6
         special:
           - cast-json
         translations: null
@@ -145,7 +143,7 @@ snapshot:
           trim: true
         readonly: false
         required: true
-        sort: 11
+        sort: 3
         special: null
         translations:
           - language: en-US
@@ -185,7 +183,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: 11
+        sort: 2
         special: null
         translations: null
         validation: null
@@ -246,7 +244,7 @@ snapshot:
           placeholder: Select a block status
         readonly: false
         required: true
-        sort: 11
+        sort: 4
         special: null
         translations: null
         validation: null
@@ -284,7 +282,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: null
+        sort: 5
         special: null
         translations: null
         validation: null

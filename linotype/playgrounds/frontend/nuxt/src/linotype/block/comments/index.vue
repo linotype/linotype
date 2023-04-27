@@ -1,6 +1,5 @@
 <template>
   <div :id="`${props.blockType}-${props.blockId}`" :class="`block--${props.blockType}`" bg-gray-100 m-5 p-5>
-    <div font-bold>[ Linotype block "{{props.blockType}}" / ref: {{props.blockData.reference}} ]</div>
       <div v-if="props.blockData.view == 'all'">
         <LinotypeBlockCommentsViewsStats/>
         <LinotypeBlockCommentsViewsList/>
@@ -25,7 +24,8 @@ const props = defineProps<{
   blockData: {
     reference: string
     collection: string
-    view: string
+    view: string,
+    form_button_send_label: string
   }
 }>()
 

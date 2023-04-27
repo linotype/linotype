@@ -3,12 +3,11 @@ export default defineNuxtConfig({
   modules: [
     //Linotype module declaration
     '@linotype/nuxt',
-    //for playground tests
+    //for playground
     '@unocss/nuxt',
     '@vueuse/nuxt',
     'nuxt-vitest',
     'nuxt-icon',
-    //for playground debug
     '@nuxt/devtools',
   ],
   
