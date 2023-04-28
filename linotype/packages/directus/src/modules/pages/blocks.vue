@@ -22,12 +22,25 @@
               </v-list-item-icon>
               <v-list-item-content>
                 <v-text-overflow :text="block?.id" />
+                
                 <v-list-actions>
-                  <v-button v-if="block.active" @click="exportBlock(block)" :warning="true">Export</v-button>
-                  <v-button v-if="block.active" @click="deleteBlock(block)" :danger="true">Delete</v-button>
-                  <v-button v-if="!block.active" @click="importBlock(block)" :primary="true">Import</v-button>
+                  <v-button v-if="block.active && !block.updated" @click="block.showDiff ? block.showDiff = false : block.showDiff = true" :secondary="true">Diff</v-button>
+                  <v-button v-if="block.active && !block.updated" @click="exportBlock(block.id)" :warning="true">Export</v-button>
+                  <v-button v-if="block.active" @click="deleteBlock(block.id)" :danger="true">Delete</v-button>
+                  <v-button v-if="!block.active" @click="importBlock(block.id)" :primary="true">Import</v-button>
                 </v-list-actions>
-                <div>
+                <div v-if="block.showDiff">
+                  <CodeDiff
+                  :filename="`${block.id}/config.yaml`"
+                  language="yaml"
+                  context="5000"
+                  :old-string="YAML.stringify(block.snapshot)"
+                  :new-string="YAML.stringify(block.snapshotDiff)"
+                  output-format="line-by-line"
+                  maxHeight="600px"
+                  />
+                </div>
+                <!-- <div>
                   <h3>collections</h3>
                   <ul>
                     <li v-for="item in block?.snapshot?.collections" :key="item.collection">
@@ -46,7 +59,7 @@
                       {{item.collection}}: {{item.related_collection}}
                     </li>
                   </ul>
-                </div>
+                </div> -->
               </v-list-item-content>
             </v-list-item>
           </v-list>
@@ -74,23 +87,24 @@ import InstallerComponent from '../components/installer.vue'
 import MenuComponent from '../components/menu.vue'
 // import LogsComponent from '../components/logs.vue'
 
-// const { init } = useLinotype()
-
 const { isLinotypeInstalled, isBlockInstalled, blocksStore } = useUtils()
 const { deleteBlock } = useBlock()
 const { exportBlock } = useExport()
 const { importBlock } = useImport()
 
-// init()
 </script>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import YAML from 'yaml'
+import { CodeDiff } from 'v-code-diff'
+
 export default defineComponent({
   name: 'BlocksPage',
   components: {
     InstallerComponent,
     MenuComponent,
+    CodeDiff,
     // LogsComponent
   }
 })

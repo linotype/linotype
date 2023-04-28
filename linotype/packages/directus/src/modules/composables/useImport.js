@@ -1,6 +1,7 @@
 import { ref } from 'vue'
 import { useApi } from '@directus/extensions-sdk'
 import useUtils from './useUtils'
+import useBlock from './useBlock'
 
 /**
  * @useImport
@@ -14,15 +15,20 @@ const useImport = function () {
   const logs = ref([])
 
   const api = useApi()
+
+  const { getBlockConfig } = useBlock()
   const { allowedBlocksIds, refresh } = useUtils()
 
 
   /**
    * import block to directus
    */
-  const importBlock = async (block) => {
-    console.log('importBlock', block)
+  const importBlock = async (blockID) => {
     
+    const block = getBlockConfig(blockID, 'file')
+    
+    console.log('importBlock', block)
+
     //import collections, reversed for dependencies 
     for await (const collection of block?.snapshot?.collections?.reverse()) {
       await importCollection(collection)

@@ -90,6 +90,7 @@
     "rollup-plugin-dir-import": "^0.0.3",
     "typescript": "^5.0.4",
     "vue": "^3.2.47",
+    "v-code-diff": "^1.4.0",
     "yaml": "^2.2.1"
   }
 }

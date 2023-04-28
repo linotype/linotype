@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { useApi } from '@directus/extensions-sdk'
 import useUtils from './useUtils'
 
+
 /**
  * @useBlock
  *
@@ -12,56 +13,36 @@ import useUtils from './useUtils'
 const useBlock = function () {
   
   const api = useApi()
-  const { refresh, blocksStore } = useUtils()
+  const { refresh, blocksFileStore, blocksDatabaseStore } = useUtils()
 
-  const getBlockConfig = async (block) => {
-    
-    //get full snapshot
-    const snapshot = (await api.get(`/schema/snapshot`).catch(function (error) {
-      console.log(error.toJSON());
-    }))?.data?.data || []
-
-    //get block collection snapshot 
-    const blockSnapshot = await getBlockSnapshot(`linotype_block__${block.id}`, snapshot)
-    
-    //find relative collections snapshots
-    blockSnapshot?.relations?.map( async (relation) => {
-      const blockRelationSnapshot = await getBlockSnapshot(relation.collection, snapshot)
-      blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
-      blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]
-      blockSnapshot.relations = [...blockSnapshot.relations, ...blockRelationSnapshot.relations]
-    })
-
-    //get linotype config
-    const { data: config } = await api.get(`/linotype/config`).catch(function (error) {
-      console.log(error.toJSON());
-    })
-
-    //define block config
-    const blockConfig = {
-      id: block.id,
-      version: 1.0,
-      snapshot: blockSnapshot
+  const getBlockConfig = (blockID, source = 'file' ) => {
+    if ( source = 'file' ) {
+      return blocksFileStore.value.filter((block) => block.id == blockID )[0] || null
+    } else if ( source = 'database' ) {
+      return blocksDatabaseStore.value.filter((block) => block.id == blockID )[0] || null
     }
-
-    return blockConfig
-
   }
 
-  const deleteBlock = async (block) => {
-    
-    await api.delete(`/collections/linotype_block__${block.id}` ).catch(function (error) {
-      logs.value.push(error.toJSON());
+  const getBlockConfigDiff = (blockID) => {
+    return {
+      fileConfig: getBlockConfig(blockID, 'file'),
+      dbConfig: getBlockConfig(blockID, 'database')
+    }
+  }
+
+  const deleteBlock = async (blockID) => {
+    await api.delete(`/collections/linotype_block__${blockID}` ).catch(function (error) {
+      console.log(error.toJSON());
     });
-
     await refresh()
-
   }
 
   /**
    * returns
    */
   return {
+    getBlockConfig,
+    getBlockConfigDiff,
     deleteBlock
   }
   
