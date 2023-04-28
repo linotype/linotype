@@ -31,39 +31,46 @@ snapshot:
   fields:
     - collection: linotype_block__text
       field: content
-      type: string
+      type: text
       meta:
         collection: linotype_block__text
         conditions: null
-        display: formatted-value
-        display_options:
-          format: true
+        display: null
+        display_options: null
         field: content
         group: null
         hidden: false
-        interface: input
+        interface: input-rich-text-html
         note: null
         options:
-          iconLeft: title
-          placeholder: Your content here
-          trim: true
+          toolbar:
+            - blockquote
+            - bold
+            - bullist
+            - customLink
+            - h2
+            - h3
+            - h4
+            - h5
+            - h6
+            - italic
+            - numlist
+            - removeformat
+            - underline
         readonly: false
         required: false
-        sort: 20
+        sort: 6
         special: null
-        translations:
-          - language: en-US
-            translation: Title
-            singular: Title
+        translations: null
         validation: null
         validation_message: null
         width: full
       schema:
         name: content
         table: linotype_block__text
-        data_type: varchar
+        data_type: text
         default_value: null
-        max_length: 255
+        max_length: null
         numeric_precision: null
         numeric_scale: null
         is_nullable: true
@@ -90,7 +97,7 @@ snapshot:
         options: null
         readonly: true
         required: false
-        sort: null
+        sort: 1
         special: null
         translations: null
         validation: null
@@ -131,7 +138,7 @@ snapshot:
           trim: true
         readonly: false
         required: true
-        sort: 11
+        sort: 3
         special: null
         translations:
           - language: en-US
@@ -171,7 +178,7 @@ snapshot:
         options: null
         readonly: false
         required: false
-        sort: 11
+        sort: 2
         special: null
         translations: null
         validation: null
@@ -232,7 +239,7 @@ snapshot:
           placeholder: Select a block status
         readonly: false
         required: true
-        sort: 11
+        sort: 4
         special: null
         translations: null
         validation: null
@@ -244,6 +251,51 @@ snapshot:
         data_type: varchar
         default_value: published
         max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__text
+      field: tags
+      type: json
+      meta:
+        collection: linotype_block__text
+        conditions: null
+        display: null
+        display_options: null
+        field: tags
+        group: null
+        hidden: false
+        interface: tags
+        note: null
+        options:
+          capitalization: auto-format
+          iconLeft: tag
+          presets:
+            - alert
+            - infos
+            - news
+        readonly: false
+        required: false
+        sort: 7
+        special:
+          - cast-json
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: tags
+        table: linotype_block__text
+        data_type: json
+        default_value: null
+        max_length: null
         numeric_precision: null
         numeric_scale: null
         is_nullable: true
@@ -274,7 +326,7 @@ snapshot:
           trim: true
         readonly: false
         required: false
-        sort: 20
+        sort: 5
         special: null
         translations:
           - language: en-US
