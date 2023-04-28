@@ -64,17 +64,21 @@ export default defineNuxtModule<ModuleOptions>({
       backend_token: options.backend_token,
     })
 
+    //Composable loader
     addImportsDir(resolver.resolve('./runtime/composables'))
     
+    //Componments loader
     addComponentsDir( { path: resolver.resolve('./runtime/components') } )
-    addComponentsDir( { path: '~/linotype', prefix: 'linotype', isAsync: true, global: true, watch: true, extensions: ['vue'] } )
+    addComponentsDir( { path: '~/linotype', prefix: 'linotype', pattern: ['**/index.vue'], ignore: ['**/*.story.vue'], isAsync: true, global: true, watch: true, extensions: ['vue'] } )
     
+    //endpoints for backend
     addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
     addServerHandler({ method: 'post', route: '/linotype/block/sync', handler: resolver.resolve('./runtime/server/routes/sync') })
-    // addServerHandler({ method: 'get', route: '/linotype/menu', handler: resolver.resolve('./runtime/server/routes/menu') })
-    addServerHandler({ method: 'get', route: '/linotype/search', handler: resolver.resolve('./runtime/server/routes/search') })
+
+    //endpoints for frontend
     addServerHandler({ method: 'get', route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap') })
     
+    //linotype loader
     addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugin') })
     
     // extendPages((pages) => {

@@ -27,6 +27,26 @@
                   <v-button v-if="block.active" @click="deleteBlock(block)" :danger="true">Delete</v-button>
                   <v-button v-if="!block.active" @click="importBlock(block)" :primary="true">Import</v-button>
                 </v-list-actions>
+                <div>
+                  <h3>collections</h3>
+                  <ul>
+                    <li v-for="item in block?.snapshot?.collections" :key="item.collection">
+                      {{item.collection}}
+                    </li>
+                  </ul>
+                  <h3>fields</h3>
+                  <ul>
+                    <li v-for="item in block?.snapshot?.fields" :key="item.field">
+                      {{item.collection}}: {{item.field}}
+                    </li>
+                  </ul>
+                  <h3>relations</h3>
+                  <ul>
+                    <li v-for="item in block?.snapshot?.relations" :key="item.related_collection">
+                      {{item.collection}}: {{item.related_collection}}
+                    </li>
+                  </ul>
+                </div>
               </v-list-item-content>
             </v-list-item>
           </v-list>
