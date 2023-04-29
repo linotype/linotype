@@ -27,8 +27,6 @@ const useImport = function () {
     
     const block = getBlockConfig(blockID, 'file')
     
-    console.log('importBlock', block)
-
     //import collections, reversed for dependencies 
     for await (const collection of block?.snapshot?.collections?.reverse()) {
       await importCollection(collection)
@@ -51,42 +49,33 @@ const useImport = function () {
     await updateComposerRelations()
     await refresh()
 
-    //success
-    console.log('import done' )
-
   }
 
   /**
    * import collection and log
    */
   const importCollection = async (collection) => {
-    console.log('importCollection', collection)
     const response = await api.post(`/collections`, collection ).catch(function (error) {
       console.log('importCollection error', error.toJSON())
     })
-    console.log(`importCollection: ${collection.collection}`)
   }
 
   /**
    * import fields and log
    */
   const importField = async (field) => {
-    console.log('importField', field)
     const response = await api.post(`/fields/${field.collection}`, field ).catch(function (error) {
       console.log('importField error', error.toJSON())
     })
-    console.log(`importField: ${field.collection}`)
   }
 
   /**
    * import relations and log
    */
   const importRelation = async (relation) => {
-    console.log('importRelation', relation)
     const response = await api.post(`/relations`, relation ).catch(function (error) {
       console.log('importRelation error', error.toJSON())
     })
-    console.log(`importRelation: ${relation.collection} related with ${relation.related_collection}`)
   }
 
   /**
