@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v1.1.1
+
+[compare changes](https://github.com/linotype/nuxt/compare/v1.0.15...v1.1.1)
+
 ## v1.0.15
 
 [compare changes](https://github.com/linotype/nuxt/compare/v1.0.13...v1.0.15)
