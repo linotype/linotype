@@ -157,14 +157,14 @@ const useUtils = function () {
     })
     
     //find collections snapshots from relational fields (m2m, etc.)
-    // snapshotStore.value?.fields?.map((field) => {
-    //   if ( field?.collection?.startsWith('linotype_block__') && field?.schema?.foreign_key_table ) { 
-    //     const blockRelationSnapshot = extractBlockConfigItem(field.schema.foreign_key_table)
-    //     blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
-    //     blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]
-    //     blockSnapshot.relations = [...blockSnapshot.relations, ...blockRelationSnapshot.relations]
-    //   }
-    // })
+    blockSnapshot?.fields?.map((field) => {
+      if ( field?.schema?.foreign_key_table ) { 
+        const blockRelationSnapshot = extractBlockConfigItem(field.schema.foreign_key_table)
+        blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
+        blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]
+        blockSnapshot.relations = [...blockSnapshot.relations, ...blockRelationSnapshot.relations]
+      }
+    })
 
     //define block config
     const blockConfig = {
