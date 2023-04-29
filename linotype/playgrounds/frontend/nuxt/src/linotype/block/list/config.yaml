@@ -45,7 +45,7 @@ snapshot:
         options: null
         readonly: true
         required: false
-        sort: 1
+        sort: null
         special: null
         translations: null
         validation: null
