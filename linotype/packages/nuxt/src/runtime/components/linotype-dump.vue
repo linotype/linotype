@@ -17,9 +17,10 @@
 </template>
 
 <script lang="ts" setup>
+import useLinotype from "../composables/useLinotype";
 import useDump from "./../composables/useDump"
 
-const config = useRuntimeConfig()
+const { config } = useLinotype();
 
 const props = defineProps({
   title: {

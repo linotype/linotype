@@ -24,7 +24,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useRuntimeConfig } from 'nuxt/app'
+import useLinotype from '../composables/useLinotype'
+
 /*
 
 TODO: 
@@ -54,7 +55,7 @@ Exemple:
 
 */
 
-const config = useRuntimeConfig();
+const { config } = useLinotype();
 
 const blockProps = defineProps({
   sources: {
