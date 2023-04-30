@@ -24,10 +24,9 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed } from 'vue'
 import useLinotype from '../composables/useLinotype'
 
-const { config } = useLinotype();
+const { config, ref, computed } = useLinotype();
 
 const blockProps = defineProps({
   sources: {
@@ -82,6 +81,8 @@ const data = computed(() => {
       },
       sources: sourcesGenerator([...blockProps?.sources as any[]].reverse())
     }
+  } else {
+    return false
   }
 })
 

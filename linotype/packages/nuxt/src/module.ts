@@ -68,7 +68,7 @@ export default defineNuxtModule<ModuleOptions>({
     addImportsDir(resolver.resolve('./runtime/composables'))
     
     //Componments loader
-    addComponentsDir( { path: resolver.resolve('./runtime/components') } )
+    addComponentsDir( { path: resolver.resolve('./runtime/components'), isAsync: true, global: true } )
     addComponentsDir( { path: '~/linotype', prefix: 'linotype', pattern: ['**/index.vue'], ignore: ['**/*.story.vue'], isAsync: true, global: true, watch: true, extensions: ['vue'] } )
     
     //endpoints for backend

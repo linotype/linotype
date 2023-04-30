@@ -1,7 +1,6 @@
 import useDomain from "./useDomain"
 import { useRuntimeConfig, useState, useRoute, useFetch, createError, onBeforeRouteLeave } from 'nuxt/app'
-import { nextTick } from 'vue'
-// import LinotypeDefault from './../components/linotype-default.vue'
+import { nextTick, ref, computed } from 'vue'
 
 /**
  * @useLinotype
@@ -145,6 +144,8 @@ const useLinotype = function () {
     loading,
     refresh,
     preview,
+    computed,
+    ref, 
   }
 }
 
