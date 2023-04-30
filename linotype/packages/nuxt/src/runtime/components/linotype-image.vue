@@ -24,36 +24,8 @@
 </template>
 
 <script lang="ts" setup>
+import { ref, computed } from 'vue'
 import useLinotype from '../composables/useLinotype'
-
-/*
-
-TODO: 
-- def marg top % selon calcule du ratio image reel pour eviter le layout shift
-- test reel image with et height dans img atribute pour voir si mieux en Google page speed meme si pas reel
-
-
-Exemple:
-
-<LinotypeImage :sources="[
-  {
-    source: directus_file_object,
-    size: [2000, 0],
-    fit: 'cover',
-    quality: 90,
-    format: ['webp','jpeg']
-  },
-  {
-    source: directus_file_object,
-    breakpoint: 800,
-    size: [800, 0],
-    fit: 'cover',
-    quality: 90,
-    format: ['webp','jpeg']
-  },
-]"/>
-
-*/
 
 const { config } = useLinotype();
 
@@ -79,7 +51,7 @@ const srcsetGenerator = (item, format = 'jpg', fit = 'contain', quality = 90) =>
 }
 
 const sourcesGenerator = (sources) => {
-  const data = []
+  const data: any[] = []
   for (let i = 0; i < sources.length; i++) {
     for (let j = 0; j < sources[i].format.length; j++) {
       if ( sources[i]?.source?.id ) {
@@ -94,7 +66,7 @@ const sourcesGenerator = (sources) => {
   return data
 }
 
-const sourceFull = ref(  blockProps.sources[0] )
+const sourceFull = ref(blockProps.sources[0])
 
 const data = computed(() => {
   if ( sourceFull.value?.source?.id ) {
