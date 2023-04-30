@@ -17,13 +17,13 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@unocss/nuxt": "^0.51.8",
-    "nuxt": "3.4.2",
-    "@nuxt/devtools": "^0.4.2",
-    "histoire": "^0.16.1",
-    "@histoire/plugin-vue": "^0.16.1",
     "@histoire/plugin-nuxt": "^0.16.1",
+    "@histoire/plugin-vue": "^0.16.1",
+    "@nuxt/devtools": "^0.4.3",
+    "@unocss/nuxt": "^0.51.8",
     "@vueuse/nuxt": "^10.1.0",
+    "histoire": "^0.16.1",
+    "nuxt": "3.4.3",
     "nuxt-icon": "^0.4.0",
     "nuxt-vitest": "^0.6.10"
   }

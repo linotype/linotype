@@ -1,5 +1,6 @@
-import { useRuntimeConfig, useState, useRoute, useFetch } from 'nuxt/app'
+import { useRuntimeConfig, useAsyncData } from 'nuxt/app'
 import useDomain from "./useDomain"
+import { ofetch } from 'ofetch'
 
 /**
  * @useBackend
@@ -15,10 +16,9 @@ const useBackend = function () {
  
   const config = useRuntimeConfig()
   const { scheme, domain } = useDomain()
-  const route = useRoute()
 
   const getMenu = async () => {
-    return await useAsyncData('useBackend.menu', () => $fetch(`${config.public.linotype.backend_url}/linotype/menu`, {
+    return await useAsyncData('useBackend.menu', () => ofetch(`${config.public.linotype.backend_url}/linotype/menu`, {
       method: 'POST',
       body: {
         env: config.public.linotype.env,
@@ -30,7 +30,7 @@ const useBackend = function () {
 
   const getSearch = async (query) => {
     if ( ! query.value ) return []
-    return await useAsyncData('useBackend.search', () => $fetch(`${config.public.linotype.backend_url}/linotype/search`, {
+    return await useAsyncData('useBackend.search', () => ofetch(`${config.public.linotype.backend_url}/linotype/search`, {
       method: 'POST',
       body: {
         env: config.public.linotype.env,
@@ -44,7 +44,7 @@ const useBackend = function () {
   }
 
   const getSitemap = async () => {
-    return await useAsyncData('useBackend.sitemap', () => $fetch(`${config.public.linotype.backend_url}/linotype/sitemap`, {
+    return await useAsyncData('useBackend.sitemap', () => ofetch(`${config.public.linotype.backend_url}/linotype/sitemap`, {
       method: 'POST',
       body: {
         env: config.public.linotype.env,

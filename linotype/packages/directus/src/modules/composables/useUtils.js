@@ -148,7 +148,7 @@ const useUtils = function () {
     
     //find collections snapshots from relations
     blockSnapshot?.relations?.map((relation) => {
-      if ( relation.collection ) {
+      if ( relation.collection && ! relation.collection.startsWith('directus_') ) {
         const blockRelationSnapshot = extractBlockConfigItem(relation.collection)
         blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
         blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]
@@ -158,7 +158,7 @@ const useUtils = function () {
     
     //find collections snapshots from relational fields (m2m, etc.)
     blockSnapshot?.fields?.map((field) => {
-      if ( field?.schema?.foreign_key_table ) { 
+      if ( field?.schema?.foreign_key_table && ! field.schema.foreign_key_table.startsWith('directus_') ) { 
         const blockRelationSnapshot = extractBlockConfigItem(field.schema.foreign_key_table)
         blockSnapshot.collections = [...blockSnapshot.collections, ...blockRelationSnapshot.collections]
         blockSnapshot.fields = [...blockSnapshot.fields, ...blockRelationSnapshot.fields]

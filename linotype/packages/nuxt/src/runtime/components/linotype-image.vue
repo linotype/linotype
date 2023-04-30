@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-
+import { useRuntimeConfig } from 'nuxt/app'
 /*
 
 TODO: 
@@ -107,7 +107,7 @@ const data = computed(() => {
         height: sourceFull.value?.size[1] ? sourceFull.value?.size[1] : null,
         ratio: ( sourceFull.value.height / sourceFull.value.width ) * 100
       },
-      sources: sourcesGenerator(blockProps.sources.clone().reverse())
+      sources: sourcesGenerator([...blockProps?.sources as any[]].reverse())
     }
   }
 })

@@ -30,6 +30,46 @@ snapshot:
         name: linotype_block__text
   fields:
     - collection: linotype_block__text
+      field: background
+      type: uuid
+      meta:
+        collection: linotype_block__text
+        conditions: null
+        display: null
+        display_options: null
+        field: background
+        group: null
+        hidden: false
+        interface: file-image
+        note: null
+        options:
+          crop: false
+        readonly: false
+        required: false
+        sort: null
+        special:
+          - file
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: background
+        table: linotype_block__text
+        data_type: char
+        default_value: null
+        max_length: 36
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: directus_files
+        foreign_key_column: id
+    - collection: linotype_block__text
       field: content
       type: text
       meta:

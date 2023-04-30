@@ -6,11 +6,9 @@
 
 <script lang="ts" setup>
 import { watch } from "vue";
-import { useRoute, showError, useRuntimeConfig } from "nuxt/app"
+import { showError } from "nuxt/app"
 // import { useHead } from "@unhead/vue"
 import useLinotype from "./../composables/useLinotype"
-
-const config = useRuntimeConfig()
 
 const { error } = useLinotype();
 
@@ -24,8 +22,6 @@ const checkError = () => {
 };
 watch(error, checkError);
 checkError();
-
-const route = useRoute();
 
 // if ( website.value?.name ) {
     
