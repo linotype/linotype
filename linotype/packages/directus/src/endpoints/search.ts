@@ -3,11 +3,11 @@ export default (router: any, { services }: any) => {
 	
   const { ItemsService } = services
 
-  router.post('/search', async (req: any, res: any) => {
+  router.get('/search', async (req: any, res: any) => {
 
-    const env = req?.body?.env || 'local'
-    const domain = req?.body?.domain || 'localhost'
-    const search = req?.body?.search || ''
+    const env = req?.query?.env || 'local'
+    const domain = req?.query?.domain || 'localhost'
+    const search = req?.query?.search || ''
 
     if ( search ) {
       const pages = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
@@ -18,6 +18,9 @@ export default (router: any, { services }: any) => {
           target: {
             ['domain_' + env]: { _eq: domain || 'localhost' },
           },
+          slug: {
+            '_ncontains': ':' //exclude dynamic slug
+          }
         },
         limit: -1,
       })

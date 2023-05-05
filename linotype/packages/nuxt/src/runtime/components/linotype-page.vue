@@ -12,12 +12,6 @@
   </div>
 </template>
 
-<script setup>
-import useLinotype from './../composables/useLinotype'
-const { loadLinotype } = useLinotype()
-await loadLinotype()
-</script>
-
 <style>
 .fade-enter-active,
 .fade-leave-active {

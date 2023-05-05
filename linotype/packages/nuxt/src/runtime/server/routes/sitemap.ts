@@ -11,8 +11,8 @@ export default defineEventHandler(async (event) => {
   const domain = event?.node.req?.headers?.host?.split(':')[0] || 'localhost'
 
   const links = await event.$fetch(`${config.public.linotype.backend_url}/linotype/sitemap`,{
-    method: 'POST',
-    body: {
+    method: 'GET',
+    params: {
       env: config.public.linotype.env,
       scheme: scheme,
       domain: domain

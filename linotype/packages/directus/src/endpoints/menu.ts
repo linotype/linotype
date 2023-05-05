@@ -1,17 +1,11 @@
-import fs from 'fs'
-import path from 'path'
-import YAML from 'yaml'
-import fetch from 'node-fetch'
-import { merge, omitBy, isNil } from 'lodash-es'
-
 export default (router: any, { services }: any) => {
 	
   const { ItemsService } = services
 
-  router.post('/menu', async (req: any, res: any) => {
+  router.get('/menu', async (req: any, res: any) => {
 
-    const env = req?.body?.env || 'local'
-    const domain = req?.body?.domain || 'localhost'
+    const env = req?.query?.env || 'local'
+    const domain = req?.query?.domain || 'localhost'
 
     const pages = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
       fields: ['title','slug'],
@@ -20,6 +14,9 @@ export default (router: any, { services }: any) => {
         target: {
           ['domain_' + env]: { _eq: domain || 'localhost' },
         },
+        slug: {
+          '_ncontains': ':' //exclude dynamic slug
+        }
       },
       limit: -1,
     })

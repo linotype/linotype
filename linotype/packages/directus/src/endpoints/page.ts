@@ -4,12 +4,12 @@ export default (router: any, { services }: any) => {
 	
   const { ItemsService } = services
 
-  router.post('/page', async (req: any, res: any) => {
+  router.get('/page', async (req: any, res: any) => {
 
-    const env = req?.body?.env || 'local'
-    const domain = req?.body?.domain || 'localhost'
-    const scheme = req?.body?.scheme || 'https'
-    const route = req?.body?.route == '/' ? '' : req?.body?.route  || ''
+    const env = req?.query?.env || 'local'
+    const domain = req?.query?.domain || 'localhost'
+    const scheme = req?.query?.scheme || 'https'
+    const route = req?.query?.route == '/' ? '' : req?.query?.route  || ''
     
     
     try {

@@ -3,10 +3,10 @@ export default (router: any, { services }: any) => {
 	
   const { ItemsService } = services
 
-  router.post('/sitemap', async (req: any, res: any) => {
+  router.get('/sitemap', async (req: any, res: any) => {
 
-    const env = req?.body?.env || 'local'
-    const domain = req?.body?.domain || 'localhost'
+    const env = req?.query?.env || 'local'
+    const domain = req?.query?.domain || 'localhost'
 
     const sitemap = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
       fields: [
@@ -20,6 +20,9 @@ export default (router: any, { services }: any) => {
         target: {
           ['domain_' + env]: { _eq: domain || 'localhost' },
         },
+        slug: {
+          '_ncontains': ':' //exclude dynamic slug
+        }
       },
       limit: -1,
     })

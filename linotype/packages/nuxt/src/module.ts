@@ -1,6 +1,10 @@
 import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
+import fs from 'fs'
+import path from 'path'
+import YAML from 'yaml'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
+import fetch from 'node-fetch'
 
 export interface ModuleOptions {
 
@@ -52,7 +56,7 @@ export default defineNuxtModule<ModuleOptions>({
     backend_token: process.env.LINOTYPE_BACKEND_TOKEN,
   },
 
-  setup (options, nuxt) {
+  async setup (options, nuxt) {
 
     const resolver = createResolver(import.meta.url)
 
@@ -64,12 +68,37 @@ export default defineNuxtModule<ModuleOptions>({
       backend_token: options.backend_token,
     })
 
+    //load linotype config
+    const config: any = { blocks: [], modules: [], templates: [], themes: [] }
+    const dir = await resolver.resolvePath(`~/linotype/block`)
+    if ( fs.existsSync(dir) ) {
+      const files = fs.readdirSync(dir)
+      for (let i = 0; i < files.length; i++) {
+        const filename = path.join(dir, files[i])
+        const stat = fs.lstatSync(filename)
+        if (stat.isDirectory()) {
+          const configLinotype: string = fs.readFileSync(`${filename}/config.yaml`, 'utf8') as string
+          config.blocks.push( YAML.parse(configLinotype) )
+        }
+      }
+    }
+
     //Composable loader
     addImportsDir(resolver.resolve('./runtime/composables'))
     
     //Componments loader
     addComponentsDir( { path: resolver.resolve('./runtime/components'), isAsync: true, global: true } )
-    addComponentsDir( { path: '~/linotype', prefix: 'linotype', pattern: ['**/index.vue'], ignore: ['**/*.story.vue'], isAsync: true, global: true, watch: true, extensions: ['vue'] } )
+    
+    addComponentsDir( { 
+      path: '~/linotype', 
+      prefix: 'linotype', 
+      //pattern: ['**/index.vue'], 
+      ignore: ['**/*.story.vue'], 
+      // isAsync: true, 
+      global: true, 
+      watch: true, 
+      extensions: ['vue'] 
+    } )
     
     //endpoints for backend
     addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
@@ -80,14 +109,6 @@ export default defineNuxtModule<ModuleOptions>({
     
     //linotype loader
     addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugin') })
-    
-    // extendPages((pages) => {
-    //   pages.push({
-    //     name: 'linotype-default',
-    //     path: '/:pathMatch(.*)',
-    //     file: resolver.resolve('./runtime/components/linotype-content.vue')
-    //   })
-    // })
 
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)

@@ -19,8 +19,8 @@ const useBackend = function () {
 
   const getMenu = async () => {
     return await useAsyncData('useBackend.menu', () => ofetch(`${config.public.linotype.backend_url}/linotype/menu`, {
-      method: 'POST',
-      body: {
+      method: 'GET',
+      params: {
         env: config.public.linotype.env,
         scheme: scheme.value,
         domain: domain.value
@@ -31,8 +31,8 @@ const useBackend = function () {
   const getSearch = async (query) => {
     if ( ! query.value ) return []
     return await useAsyncData('useBackend.search', () => ofetch(`${config.public.linotype.backend_url}/linotype/search`, {
-      method: 'POST',
-      body: {
+      method: 'GET',
+      params: {
         env: config.public.linotype.env,
         scheme: scheme.value,
         domain: domain.value,
@@ -45,8 +45,8 @@ const useBackend = function () {
 
   const getSitemap = async () => {
     return await useAsyncData('useBackend.sitemap', () => ofetch(`${config.public.linotype.backend_url}/linotype/sitemap`, {
-      method: 'POST',
-      body: {
+      method: 'GET',
+      params: {
         env: config.public.linotype.env,
         scheme: scheme.value,
         domain: domain.value
