@@ -1,10 +1,9 @@
 import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
-import fs from 'fs'
-import path from 'path'
-import YAML from 'yaml'
+// import fs from 'fs'
+// import path from 'path'
+// import YAML from 'yaml'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
-import fetch from 'node-fetch'
 
 export interface ModuleOptions {
 
@@ -68,21 +67,6 @@ export default defineNuxtModule<ModuleOptions>({
       backend_token: options.backend_token,
     })
 
-    //load linotype config
-    const config: any = { blocks: [], modules: [], templates: [], themes: [] }
-    const dir = await resolver.resolvePath(`~/linotype/block`)
-    if ( fs.existsSync(dir) ) {
-      const files = fs.readdirSync(dir)
-      for (let i = 0; i < files.length; i++) {
-        const filename = path.join(dir, files[i])
-        const stat = fs.lstatSync(filename)
-        if (stat.isDirectory()) {
-          const configLinotype: string = fs.readFileSync(`${filename}/config.yaml`, 'utf8') as string
-          config.blocks.push( YAML.parse(configLinotype) )
-        }
-      }
-    }
-
     //Composable loader
     addImportsDir(resolver.resolve('./runtime/composables'))
     
@@ -113,6 +97,21 @@ export default defineNuxtModule<ModuleOptions>({
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
 
+    //load linotype config
+    // const config: any = { blocks: [], modules: [], templates: [], themes: [] }
+    // const dir = await resolver.resolvePath(`~/linotype/block`)
+    // if ( fs.existsSync(dir) ) {
+    //   const files = fs.readdirSync(dir)
+    //   for (let i = 0; i < files.length; i++) {
+    //     const filename = path.join(dir, files[i])
+    //     const stat = fs.lstatSync(filename)
+    //     if (stat.isDirectory()) {
+    //       const configLinotype: string = fs.readFileSync(`${filename}/config.yaml`, 'utf8') as string
+    //       config.blocks.push( YAML.parse(configLinotype) )
+    //     }
+    //   }
+    // }
+    
   }
 
 })
