@@ -98,14 +98,21 @@ const useLinotype = function () {
   }
 
   /**
-   * Load linotype
+   * Init linotype
    */
-  const loadLinotype = async () => {
+  const initLinotype = async () => {
 
     onBeforeRouteLeave( async (to, from, next) => {
       await loadTemplate(sanitizeRoute(to?.matched[0]?.path || ''))
       next()
     })
+
+  }
+
+  /**
+   * Load linotype
+   */
+  const loadLinotype = async () => {
     
     if( initialized.value == false ) {
       initialized.value = true
@@ -136,6 +143,7 @@ const useLinotype = function () {
    */
   return {
     config,
+    initLinotype,
     loadLinotype,
     loadTemplate,
     loadBlock,

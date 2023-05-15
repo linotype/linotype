@@ -1,4 +1,4 @@
-import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig } from 'nuxt/app'
+import { addRouteMiddleware, defineNuxtPlugin, onBeforeRouteLeave, useNuxtApp, useRouter, useRuntimeConfig } from 'nuxt/app'
 import useDomain from './composables/useDomain'
 import useLinotype from './composables/useLinotype'
 import { ofetch } from 'ofetch'
@@ -9,7 +9,7 @@ export default defineNuxtPlugin(async () => {
   const nuxtApp = useNuxtApp()
   const router = useRouter()
   const { scheme, domain } = useDomain()
-  const { loadLinotype } = useLinotype()
+  const { initLinotype, loadLinotype } = useLinotype()
 
   //define current domain
   if (process.server) {
@@ -20,21 +20,21 @@ export default defineNuxtPlugin(async () => {
     domain.value = window?.document?.location?.host?.split(':')[0] || 'localhost'
   }
 
+  //init linotype
+  nuxtApp.hook('app:beforeMount', () => initLinotype() )
+
+  //load linotype
+  nuxtApp.hook('app:created', async () => await loadLinotype() )
+
   //register linotype routes
   //TODO payload: unique payload directus endpoint to load current site info + all route (use cache to speed up first load)
   const { data: linotypePagesRoutes } = await ofetch(`${config.public.linotype.backend_url}/items/linotype_pages?fields=id,slug,target.*.*`) //add filter : &filter={ "slug": { "_contains": ":" }}`)
   for( const item of linotypePagesRoutes ) {
     router.addRoute({
-      name: `linotype-custom-${item.id}`,
+      name: `linotype-route-${item.id}`,
       path: item.slug,
       component: () => import(`~/pages/index.vue`)
     }) 
   }
-
-  //load linotype
-  nuxtApp.hook('app:created', async () => {
-    await loadLinotype()
-  })
-
   
 })

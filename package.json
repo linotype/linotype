@@ -4,9 +4,9 @@
   "license": "MIT",
   "scripts": {
     "update": "npx taze major",
-    "linotype/nuxt:dev": "npx chokidar \"./linotype/packages/nuxt/src/**/*\" --initial -c \"npx kill-port 3000 && npx nx run @linotype/nuxt:prepack && npx nx run @linotype/nuxt-playground:dev\"",
-    "linotype/nuxt:test": "npx chokidar \"./linotype/packages/nuxt/src/**/*\" --initial -c \"npx kill-port 3000 && npx nx run @linotype/nuxt:prepack && npx nx run @linotype/nuxt-playground:build && npx nx run @linotype/nuxt-playground:start\"",
-    "linotype/directus:dev": "npx chokidar \"./linotype/packages/directus/src/**/*\" --initial -c \"npx kill-port 3001 && npx nx run @linotype/directus-extension-linotype:build && npx nx run @linotype/directus-playground:dev\""
+    "linotype/nuxt:dev": "npx chokidar \"./linotype/packages/nuxt/src/**/*\" --initial -c \"export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx kill-port 3000 && npx nx run @linotype/nuxt:prepack && npx nx run @linotype/nuxt-playground:dev\"",
+    "linotype/nuxt:test": "npx chokidar \"./linotype/packages/nuxt/src/**/*\" --initial -c \"export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx kill-port 3000 && npx nx run @linotype/nuxt:prepack && npx nx run @linotype/nuxt-playground:build && npx nx run @linotype/nuxt-playground:start\"",
+    "linotype/directus:dev": "npx chokidar \"./linotype/packages/directus/src/**/*\" --initial -c \"export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx kill-port 3001 && npx nx run @linotype/directus-extension-linotype:build && npx nx run @linotype/directus-playground:dev\""
   },
   "private": true,
   "dependencies": {},
