@@ -26,6 +26,7 @@
                 <v-list-actions>
                   <v-button v-if="block.active && !block.updated" @click="block.showDiff ? block.showDiff = false : block.showDiff = true" :secondary="true">Diff</v-button>
                   <v-button v-if="block.active && !block.updated" @click="exportBlock(block.id)" :warning="true">Export</v-button>
+                  <v-button v-if="block.active && !block.updated" @click="importBlock(block.id)" :warning="true">Import</v-button>
                   <v-button v-if="block.active" @click="deleteBlock(block.id)" :danger="true">Delete</v-button>
                   <v-button v-if="!block.active" @click="importBlock(block.id)" :primary="true">Import</v-button>
                 </v-list-actions>

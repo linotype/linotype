@@ -17,7 +17,7 @@ const useImport = function () {
   const api = useApi()
 
   const { getBlockConfig } = useBlock()
-  const { allowedBlocksIds, refresh } = useUtils()
+  const { allowedBlocksIds, blocksDatabaseStore, refresh } = useUtils()
 
 
   /**
@@ -32,15 +32,30 @@ const useImport = function () {
       await importCollection(collection)
     }
     
+    //delete collections if not present in schema
+    //TODO
+
     //import fields
     for await (const field of block?.snapshot?.fields) {
       await importField(field)
     }
-    
+
+    //delete field if not present in schema
+    const databaseBlockFields = blocksDatabaseStore.value.find(item => item.id == blockID)?.snapshot?.fields || []
+    const schemaBlockFieldsId = Object.values(block?.snapshot?.fields.map((item) => item.field ) )
+    for (const databaseBlockField of databaseBlockFields ) {
+      if ( schemaBlockFieldsId.includes(databaseBlockField.field) === false ) {
+        deleteField(databaseBlockField)
+      }
+    }
+
     //import relations
     for await (const relation of block?.snapshot?.relations) {
       await importRelation(relation)
     }
+
+    //delete relations if not present in schema
+    //TODO
 
     //refresh
     await refresh()
@@ -52,7 +67,7 @@ const useImport = function () {
   }
 
   /**
-   * import collection and log
+   * import collection
    */
   const importCollection = async (collection) => {
     const response = await api.post(`/collections`, collection ).catch(function (error) {
@@ -61,7 +76,7 @@ const useImport = function () {
   }
 
   /**
-   * import fields and log
+   * import fields
    */
   const importField = async (field) => {
     const response = await api.post(`/fields/${field.collection}`, field ).catch(function (error) {
@@ -70,7 +85,16 @@ const useImport = function () {
   }
 
   /**
-   * import relations and log
+   * delete fields
+   */
+  const deleteField = async (field) => {
+    const response = await api.delete(`/fields/${field.collection}/${field.field}` ).catch(function (error) {
+      console.log('importField error', error.toJSON())
+    })
+  }
+
+  /**
+   * import relations
    */
   const importRelation = async (relation) => {
     const response = await api.post(`/relations`, relation ).catch(function (error) {
@@ -126,22 +150,6 @@ const useImport = function () {
    * Apply permission to all blocks for public read access
    */
   const applyPermissions = async () => {
-    
-    //Get default public permissions ID for linotype collections
-    // const permissions = await api.get(`/permissions`).catch(function (error) { console.log(error.toJSON()) })
-    // const permissionsList = permissions?.data?.data.reduce((results, item) => {
-    //   if( item.collection.startsWith("linotype_") && item.action == 'read' && item.fields[0] == '*' ) {
-    //     results.push(item.id)
-    //   }
-    //   return results;
-    // }, [])
-    
-    //Delete all default public permissions for linotype collections
-    // if ( permissionsList.length ) {
-    //   await api.delete(`/permissions`, permissionsList).catch(function (error) {
-    //     console.log(error.toJSON());
-    //   })
-    // }
     
     //create new defaults permissions for linotype collections 
     const newPermissions = []
