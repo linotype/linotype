@@ -36,6 +36,8 @@ const useLinotype = function () {
    */
   const loadTemplate = async (path) => {
 
+    initialized.value = true
+    
     loading.value = true
     error.value = false
     
@@ -115,7 +117,6 @@ const useLinotype = function () {
   const loadLinotype = async () => {
     
     if( initialized.value == false ) {
-      initialized.value = true
       await loadTemplate(sanitizeRoute(router?.resolve(getCurrentRoute())?.matched[0]?.path || ''))
     }
 

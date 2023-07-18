@@ -18,6 +18,6 @@
   "license": "ISC",
   "dependencies": {
     "@linotype/directus-extension-linotype": "*",
-    "directus": "10.0.0"
+    "directus": "10.1.0"
   }
 }

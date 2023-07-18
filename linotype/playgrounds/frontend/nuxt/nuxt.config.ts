@@ -45,6 +45,10 @@ export default defineNuxtConfig({
     rootId: 'linotype',
   },
 
+  experimental: {
+    componentIslands: true
+  },
+
   devtools: {
     enabled: true
   }

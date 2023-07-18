@@ -1,0 +1,19 @@
+id: blog
+type: single
+path: /blog
+version: 1
+layout:
+
+  header: 
+    block: header
+    save: options
+
+  articles:
+    block: loop
+    save: meta
+    props: 
+      title: Hello
+
+  footer:
+    block: footer
+    save: options

@@ -14,7 +14,7 @@ snapshot:
         display_template: "{{reference}}"
         group: linotype_blocks
         hidden: false
-        icon: menu
+        icon: menu_open
         item_duplication_fields: []
         note: ""
         singleton: false

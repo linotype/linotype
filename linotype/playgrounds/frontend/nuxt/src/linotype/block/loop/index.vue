@@ -12,7 +12,7 @@
       <h2>All</h2>
       <div v-for="(item, index) in items" :key="index" bg-gray-200 p-2>
         <div v-html="item.html"/>
-        <NuxtLink :to="`/article${item.slug}`">view</NuxtLink>
+        <NuxtLink :to="`/blog/article${item.slug}`">view</NuxtLink>
       </div>
     </div>
   </div>
