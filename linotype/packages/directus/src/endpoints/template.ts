@@ -50,7 +50,7 @@ export default (router: any, { services }: any) => {
 
         //get page from site and slug
         page = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
-          fields: ['*.*.*.*.*.*.*'],
+          fields: ['*.*.*.*.*.*.*.*'],
           filter: {
             status: 'published',
             slug: siteRoute,
@@ -68,7 +68,7 @@ export default (router: any, { services }: any) => {
             const parentSlug = slug.split('/').slice(0, -1).join('/')
             if ( !parentSlug ) return []
             const parentPage = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
-              fields: ['*.*.*.*.*.*.*'],
+              fields: ['*.*.*.*.*.*.*.*'],
               filter: {
                 status: 'published',
                 slug: parentSlug,

@@ -22,7 +22,7 @@ export default (router: any, { services }: any) => {
 
       const page = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
         fields: [
-          '*.*.*.*.*.*.*'
+          '*.*.*.*.*.*.*.*'
         ],
         filter: {
           status: 'published',
