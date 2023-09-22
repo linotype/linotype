@@ -2,7 +2,7 @@
   "name": "@linotype/directus-extension-linotype",
   "description": "Linotype website framework for Directus",
   "icon": "extension",
-  "version": "1.1.93",
+  "version": "1.1.94",
   "keywords": [
     "directus",
     "directus-extension",
@@ -89,8 +89,8 @@
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-dir-import": "^0.0.3",
     "typescript": "^5.0.4",
-    "vue": "^3.2.47",
     "v-code-diff": "^1.4.0",
+    "vue": "^3.2.47",
     "yaml": "^2.2.1"
   }
 }
