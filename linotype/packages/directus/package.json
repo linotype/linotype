@@ -72,7 +72,10 @@
     "test": "echo 'test'",
     "dev": "directus-extension build --watch --no-minify",
     "build": "directus-extension build",
-    "release": "directus-extension build && npm publish --access public"
+    "release:current": "directus-extension build && npm publish --access public",
+    "release:patch": "yarn version --patch && yarn release:current",
+    "release:minor": "yarn version --minor && yarn release:current",
+    "release:major": "yarn version --major && yarn release:current"
   },
   "devDependencies": {
     "@directus/extensions-sdk": "9.23.1",

@@ -39,7 +39,10 @@
     "dev": "nuxi dev playground",
     "dev:build": "nuxi build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxi prepare playground",
-    "release": "npm run lint && npm run prepack && npm publish --access public",
+    "release:current": "npm run lint && npm run prepack && npm publish --access public",
+    "release:patch": "yarn version --patch && yarn release:current",
+    "release:minor": "yarn version --minor && yarn release:current",
+    "release:major": "yarn version --major && yarn release:current",
     "lint": "eslint .",
     "test": "vitest run",
     "test:watch": "vitest watch"
