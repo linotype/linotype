@@ -25,7 +25,15 @@ export default (router: any, { services }: any) => {
       
       //get sites
       sites = await new ItemsService('linotype_sites', { schema: req.schema, accountability: req.accountability }).readByQuery({
-        fields: ['*'],
+        fields: [
+          'id',
+          'status',
+          'path',
+          'domain_local',
+          'domain_staging',
+          'domain_preproduction',
+          'domain_production',
+        ],
         filter: {
           status: 'online',
           ["domain_" + env] : { _eq: domain },
@@ -50,7 +58,22 @@ export default (router: any, { services }: any) => {
 
         //get page from site and slug
         page = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
-          fields: ['*.*.*.*.*.*.*.*'],
+          fields: [
+            '*',
+            'target.*',
+            
+            'target.header.id',
+            'target.header.collection',
+            'target.header.item.*.*.*.*.*.*.*.*',
+
+            'content.id',
+            'content.collection',
+            'content.item.*.*.*.*.*.*.*.*',
+
+            'target.footer.id',
+            'target.footer.collection',
+            'target.footer.item.*.*.*.*.*.*.*.*',
+          ],
           filter: {
             status: 'published',
             slug: siteRoute,
@@ -68,7 +91,22 @@ export default (router: any, { services }: any) => {
             const parentSlug = slug.split('/').slice(0, -1).join('/')
             if ( !parentSlug ) return []
             const parentPage = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
-              fields: ['*.*.*.*.*.*.*.*'],
+              fields: [
+                '*',
+                'target.*',
+                
+                'target.header.id',
+                'target.header.collection',
+                'target.header.item.*.*.*.*.*.*.*.*',
+
+                'content.id',
+                'content.collection',
+                'content.item.*.*.*.*.*.*.*.*',
+
+                'target.footer.id',
+                'target.footer.collection',
+                'target.footer.item.*.*.*.*.*.*.*.*',
+              ],
               filter: {
                 status: 'published',
                 slug: parentSlug,
@@ -92,9 +130,19 @@ export default (router: any, { services }: any) => {
           siteData = {
             id: page[0]?.target?.id,
             status: page[0]?.target?.status,
-            name: page[0]?.target?.name,
+            name: page[0]?.target?.name || 'Unnamed',
             domain: page[0]?.target["domain_" + env],
-            url: scheme + '://' + page[0]?.target["domain_" + env]
+            url: scheme + '://' + page[0]?.target["domain_" + env],
+            favicon: page[0]?.target?.favicon || '',
+            locale: page[0]?.target?.locale || 'en_EN',
+            seo: {
+              title: page[0]?.target?.seo_title || '',
+              description: page[0]?.target?.seo_description || '',
+              image: page[0]?.target?.seo_image || ''
+            },
+            metas: page[0]?.target?.metas,
+            robots: page[0]?.target?.robots,
+            redirections: page[0]?.target?.redirections
           }
 
           pageData = {
@@ -105,7 +153,7 @@ export default (router: any, { services }: any) => {
             slug: page[0]?.slug,
             url: scheme + '://' + page[0]?.target["domain_" + env] + page[0]?.slug,
             seo: {
-              title: page[0]?.seo_title ? page[0]?.seo_title : page[0]?.title,
+              title: page[0]?.seo_title,
               description: page[0]?.seo_description,
               image: page[0]?.seo_image,
             },

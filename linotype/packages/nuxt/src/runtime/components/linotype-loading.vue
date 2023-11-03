@@ -2,7 +2,7 @@
   <transition name="linotype-loading-fade">
     <div
       v-show="loading"
-      class="linotype-loading bg-primary"
+      class="linotype-loading"
     />
   </transition>
 </template>
