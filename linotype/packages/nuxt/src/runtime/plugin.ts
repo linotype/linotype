@@ -1,4 +1,4 @@
-import { addRouteMiddleware, defineNuxtPlugin, onBeforeRouteLeave, useNuxtApp, useRouter, useRuntimeConfig } from 'nuxt/app'
+import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig } from 'nuxt/app'
 import useDomain from './composables/useDomain'
 import useLinotype from './composables/useLinotype'
 import { ofetch } from 'ofetch'

@@ -32,7 +32,7 @@ useHead({
     { name: 'application-name', content: head_name },
     { name: 'msapplication-TileColor', content: '#1e1d1d' },
     { name: 'theme-color', content: '#1e1d1d' },
-    ...website?.metas
+    ...(website?.metas || [])
   ],
   link: [
     { rel: 'canonical', href: page?.url || '' },

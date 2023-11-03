@@ -2,7 +2,7 @@
   <div class="linotype-page">
     <LinotypeLoading />
     <LinotypeHeader />
-    <NuxtPage/>
+    <NuxtPage />
     <LinotypeFooter />
   </div>
 </template>
