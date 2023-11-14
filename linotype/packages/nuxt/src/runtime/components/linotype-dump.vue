@@ -19,9 +19,8 @@
 <script lang="ts" setup>
 import useLinotype from "../composables/useLinotype";
 import useDump from "./../composables/useDump"
-import { ref } from "vue"
 
-const { config } = useLinotype();
+const { config, ref } = useLinotype();
 
 const props = defineProps({
   title: {
