@@ -1,0 +1,7 @@
+{
+  "extends": "./../../playgrounds/frontend/nuxt/.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "allowJs": true
+  }
+}
