@@ -1,4 +1,4 @@
-import { useRuntimeConfig, useAsyncData } from 'nuxt/app'
+import { useRuntimeConfig, useAsyncData } from '#app'
 import useDomain from "./useDomain"
 import { ofetch } from 'ofetch'
 

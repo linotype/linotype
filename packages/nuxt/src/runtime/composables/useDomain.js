@@ -1,4 +1,4 @@
-import { useState } from 'nuxt/app'
+import { useState } from '#app'
 /**
  * @useDomain
  *

@@ -78,7 +78,7 @@ export default defineNuxtModule<ModuleOptions>({
       // isAsync: true, 
       global: true, 
       watch: true, 
-      extensions: ['vue'] 
+      extensions: ['vue']
     } )
     
     //endpoints for backend

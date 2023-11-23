@@ -19,7 +19,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useFetch, useRuntimeConfig } from 'nuxt/app';
+import { useFetch, useRuntimeConfig } from '#app';
 import { ref } from 'vue';
 
 const props = defineProps<{

@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { computed, watch } from "vue";
-import { showError } from "nuxt/app"
+import { showError } from "#app"
 import { useHead, useSeoMeta } from "@unhead/vue"
 import useLinotype from "./../composables/useLinotype"
 

@@ -1,0 +1,16 @@
+id: page
+version: 1
+path: /:slug
+seo: true
+sitemap: true
+
+blocks:
+
+  header: auto
+
+  content: 
+    - id: loop_item
+      props: 
+        - 
+
+  footer: auto

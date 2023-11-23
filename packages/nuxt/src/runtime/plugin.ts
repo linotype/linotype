@@ -1,9 +1,10 @@
-import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig } from 'nuxt/app'
+import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig } from '#app'
 import useDomain from './composables/useDomain'
 import useLinotype from './composables/useLinotype'
 import { ofetch } from 'ofetch'
 
-export default defineNuxtPlugin(async () => {
+
+export default defineNuxtPlugin( async () => {
   
   const config = useRuntimeConfig()
   const nuxtApp = useNuxtApp()

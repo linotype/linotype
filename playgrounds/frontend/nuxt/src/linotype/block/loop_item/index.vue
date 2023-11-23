@@ -6,10 +6,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useFetch, useRuntimeConfig } from 'nuxt/app';
-import { ref } from 'vue';
-import { useRoute } from 'nuxt/app';
-import { computed } from 'vue';
+import { useFetch, useRoute, useRuntimeConfig } from '#app';
+import { ref, computed } from 'vue';
 
 const props = defineProps<{
   blockId: number

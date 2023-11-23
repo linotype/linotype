@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       cors: true,
       headers: { 
         'Acess-Control-Allow-Origin': '*', 
-        'Access-Control-Allow-Credentials': true,
+        'Access-Control-Allow-Credentials': 'true',
       }
     }
   },

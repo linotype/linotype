@@ -12,7 +12,7 @@
           <v-button @click="installAllBlock()" :primary="true">Install All</v-button> <v-button @click="uninstallAllBlock()" :danger="true">Uninstall All</v-button>
         </div> -->
 
-        <v-divider class="full" large :inline-title="false">Blocks</v-divider>
+        <!-- <v-divider class="full" large :inline-title="false">Blocks</v-divider> -->
 
         <div v-if="isLinotypeInstalled" class="full">
           <v-list>
@@ -23,14 +23,14 @@
               <v-list-item-content>
                 <v-text-overflow :text="block?.id" />
                 
-                <v-list-actions>
-                  <v-button v-if="block.active && !block.updated" @click="block.showDiff ? block.showDiff = false : block.showDiff = true" :secondary="true">Diff</v-button>
-                  <v-button v-if="block.active && !block.updated" @click="exportBlock(block.id)" :warning="true">Export</v-button>
-                  <v-button v-if="block.active && !block.updated" @click="importBlock(block.id)" :warning="true">Import</v-button>
-                  <v-button v-if="block.active" @click="deleteBlock(block.id)" :danger="true">Delete</v-button>
-                  <v-button v-if="!block.active" @click="importBlock(block.id)" :primary="true">Import</v-button>
-                </v-list-actions>
-                <div v-if="block.showDiff">
+                <div class="actions">
+                  <!-- <v-button v-if="block.active && !block.updated" @click="block.showDiff ? block.showDiff = false : block.showDiff = true" :secondary="true">Diff</v-button> -->
+                  <v-button v-if="block.active && !block.updated" @click="exportBlock(block.id)" small secondary>Export</v-button> 
+                  <v-button v-if="block.active && !block.updated" @click="importBlock(block.id)" small secondary>Import</v-button> 
+                  <v-button v-if="block.active" @click="deleteBlock(block.id)" small danger>Delete</v-button> 
+                  <v-button v-if="!block.active" @click="importBlock(block.id)" small secondary>Import</v-button>
+                </div>
+                <!-- <div v-if="block.showDiff">
                   <CodeDiff
                   :filename="`${block.id}/config.yaml`"
                   language="yaml"
@@ -40,7 +40,7 @@
                   output-format="line-by-line"
                   maxHeight="600px"
                   />
-                </div>
+                </div> -->
                 <!-- <div>
                   <h3>collections</h3>
                   <ul>
@@ -98,14 +98,14 @@ const { importBlock } = useImport()
 <script lang="ts">
 import { defineComponent } from 'vue'
 import YAML from 'yaml'
-import { CodeDiff } from 'v-code-diff'
+// import { CodeDiff } from 'v-code-diff'
 
 export default defineComponent({
   name: 'BlocksPage',
   components: {
     InstallerComponent,
     MenuComponent,
-    CodeDiff,
+    // CodeDiff,
     // LogsComponent
   }
 })
@@ -130,5 +130,10 @@ export default defineComponent({
   display: flex;
   margin-bottom: 8px;
   cursor: default;
+}
+
+.actions {
+	display: flex;
+	gap: 8px;
 }
 </style>

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useRoute } from 'nuxt/app';
+import { useRoute } from '#app';
 import { Ref } from 'vue';
 
 const props = defineProps<{
