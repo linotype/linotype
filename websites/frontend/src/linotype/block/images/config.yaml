@@ -1,0 +1,556 @@
+id: images
+version: 1
+snapshot:
+  collections:
+    - collection: linotype_block__images
+      meta:
+        accountability: all
+        archive_app_filter: true
+        archive_field: status
+        archive_value: archived
+        collapse: open
+        collection: linotype_block__images
+        color: null
+        display_template: "{{reference}}"
+        group: linotype_blocks
+        hidden: false
+        icon: image
+        item_duplication_fields: []
+        note: ""
+        preview_url: null
+        singleton: false
+        sort: 3
+        sort_field: sort
+        translations:
+          - plural: Images
+            language: en-US
+            singular: Image
+            translation: Images
+        unarchive_value: draft
+        versioning: false
+      schema:
+        name: linotype_block__images
+  fields:
+    - collection: linotype_block__images
+      field: actions
+      type: json
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: actions
+        group: null
+        hidden: false
+        interface: list
+        note: null
+        options:
+          addLabel: New Action
+          fields:
+            - field: style
+              name: style
+              type: string
+              meta:
+                type: string
+                field: style
+                options:
+                  choices:
+                    - text: Button
+                      value: button
+                    - text: Link
+                      value: link
+                required: true
+                interface: select-dropdown
+            - field: title
+              name: title
+              type: string
+              meta:
+                type: string
+                field: title
+                width: full
+                required: true
+                interface: input
+            - field: link
+              name: link
+              type: string
+              meta:
+                type: string
+                field: link
+                width: full
+                required: true
+                interface: input
+          template: "{{title}} - {{link}}"
+        readonly: false
+        required: false
+        sort: 11
+        special:
+          - cast-json
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: actions
+        table: linotype_block__images
+        data_type: longtext
+        default_value: null
+        max_length: 4294967295
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: description
+      type: text
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: description
+        group: null
+        hidden: false
+        interface: input-rich-text-html
+        note: null
+        options:
+          toolbar:
+            - bold
+            - bullist
+            - customLink
+            - h2
+            - h3
+            - h4
+            - h5
+            - h6
+            - italic
+            - numlist
+            - strikethrough
+            - subscript
+            - superscript
+            - underline
+        readonly: false
+        required: false
+        sort: 10
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: description
+        table: linotype_block__images
+        data_type: text
+        default_value: null
+        max_length: 65535
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: id
+      type: integer
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: id
+        group: null
+        hidden: true
+        interface: numeric
+        note: null
+        options: null
+        readonly: true
+        required: false
+        sort: 1
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: id
+        table: linotype_block__images
+        data_type: int unsigned
+        default_value: null
+        max_length: null
+        numeric_precision: 10
+        numeric_scale: 0
+        is_nullable: false
+        is_unique: false
+        is_primary_key: true
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: true
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: image
+      type: uuid
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: image
+        group: null
+        hidden: false
+        interface: file-image
+        note: null
+        options:
+          crop: false
+        readonly: false
+        required: true
+        sort: 5
+        special:
+          - file
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: image
+        table: linotype_block__images
+        data_type: char
+        default_value: null
+        max_length: 36
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: directus_files
+        foreign_key_column: id
+    - collection: linotype_block__images
+      field: position
+      type: string
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: position
+        group: null
+        hidden: false
+        interface: select-radio
+        note: null
+        options:
+          choices:
+            - text: Left
+              value: left
+            - text: Center
+              value: center
+            - text: Right
+              value: right
+        readonly: false
+        required: false
+        sort: 6
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: position
+        table: linotype_block__images
+        data_type: varchar
+        default_value: left
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: reference
+      type: string
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: raw
+        display_options: null
+        field: reference
+        group: null
+        hidden: false
+        interface: input
+        note: null
+        options:
+          iconLeft: flag
+          placeholder: Define a unique reference for this block
+          trim: true
+        readonly: false
+        required: true
+        sort: 3
+        special: null
+        translations:
+          - language: en-US
+            translation: Reference
+        validation: null
+        validation_message: null
+        width: half
+      schema:
+        name: reference
+        table: linotype_block__images
+        data_type: varchar
+        default_value: null
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: sort
+      type: integer
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: sort
+        group: null
+        hidden: true
+        interface: input
+        note: null
+        options: null
+        readonly: false
+        required: false
+        sort: 2
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: sort
+        table: linotype_block__images
+        data_type: int
+        default_value: null
+        max_length: null
+        numeric_precision: 10
+        numeric_scale: 0
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: status
+      type: string
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: labels
+        display_options:
+          choices:
+            - text: $t:published
+              value: published
+              background: var(--primary)
+              foreground: "#FFFFFF"
+            - text: $t:draft
+              value: draft
+              background: "#D3DAE4"
+              foreground: "#18222F"
+            - text: $t:archived
+              value: archived
+              background: var(--warning)
+              foreground: "#FFFFFF"
+          showAsDot: true
+        field: status
+        group: null
+        hidden: false
+        interface: select-dropdown
+        note: null
+        options:
+          choices:
+            - text: $t:published
+              value: published
+            - text: $t:draft
+              value: draft
+            - text: $t:archived
+              value: archived
+          icon: public
+          placeholder: Select a block status
+        readonly: false
+        required: true
+        sort: 4
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: half
+      schema:
+        name: status
+        table: linotype_block__images
+        data_type: varchar
+        default_value: published
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: surtitle
+      type: text
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: surtitle
+        group: null
+        hidden: false
+        interface: input
+        note: null
+        options: null
+        readonly: false
+        required: false
+        sort: 8
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: surtitle
+        table: linotype_block__images
+        data_type: text
+        default_value: null
+        max_length: 65535
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: theme
+      type: string
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: theme
+        group: null
+        hidden: false
+        interface: select-dropdown
+        note: null
+        options:
+          choices:
+            - text: Light
+              value: light
+            - text: Dark
+              value: dark
+        readonly: false
+        required: false
+        sort: 7
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: theme
+        table: linotype_block__images
+        data_type: varchar
+        default_value: light
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__images
+      field: title
+      type: text
+      meta:
+        collection: linotype_block__images
+        conditions: null
+        display: null
+        display_options: null
+        field: title
+        group: null
+        hidden: false
+        interface: input-rich-text-html
+        note: null
+        options:
+          customFormats:
+            - title: Highlight
+              inline: span
+              classes: highlight
+              styles:
+                color: "#FDC33A"
+          tinymceOverrides:
+            forced_root_block: div
+          toolbar:
+            - bold
+            - italic
+        readonly: false
+        required: false
+        sort: 9
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: title
+        table: linotype_block__images
+        data_type: text
+        default_value: null
+        max_length: 65535
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+  relations: []

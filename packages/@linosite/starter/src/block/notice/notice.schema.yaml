@@ -1,0 +1,43 @@
+version: 1
+
+name: notice
+
+meta:
+  translations:
+    - language: en-US
+      translation: Notices
+      plural: Notices
+      singular: Notice
+  icon: privacy_tips
+  color: null
+  hidden: false
+  note: ''
+  sort: 1
+
+fields:
+
+  - name: title
+    type: string
+    meta:
+      translations:
+        - language: en-US
+          translation: Title
+          singular: Title
+      conditions: null
+      display: formatted-value
+      display_options:
+        format: true
+      hidden: false
+      interface: input
+      note: null
+      options:
+        iconLeft: title
+        placeholder: Your title here
+        trim: true
+      readonly: false
+      required: false
+      special: null
+      validation: null
+      validation_message: null
+      width: full
+      sort: 10

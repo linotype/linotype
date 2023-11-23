@@ -1,0 +1,897 @@
+id: navigations
+version: 1
+snapshot:
+  collections:
+    - collection: linotype_block__navigations
+      meta:
+        accountability: all
+        archive_app_filter: true
+        archive_field: status
+        archive_value: archived
+        collapse: open
+        collection: linotype_block__navigations
+        color: null
+        display_template: "{{reference}}"
+        group: linotype_blocks
+        hidden: false
+        icon: menu_open
+        item_duplication_fields: []
+        note: ""
+        preview_url: null
+        singleton: false
+        sort: 11
+        sort_field: sort
+        translations:
+          - plural: Navigations
+            language: en-US
+            singular: Navigation
+            translation: Navigations
+        unarchive_value: draft
+        versioning: false
+      schema:
+        name: linotype_block__navigations
+  fields:
+    - collection: linotype_block__navigations
+      field: id
+      type: integer
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: null
+        display_options: null
+        field: id
+        group: null
+        hidden: true
+        interface: numeric
+        note: null
+        options: null
+        readonly: true
+        required: false
+        sort: 1
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: id
+        table: linotype_block__navigations
+        data_type: int unsigned
+        default_value: null
+        max_length: null
+        numeric_precision: 10
+        numeric_scale: 0
+        is_nullable: false
+        is_unique: false
+        is_primary_key: true
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: true
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: logo
+      type: uuid
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: null
+        display_options: null
+        field: logo
+        group: null
+        hidden: false
+        interface: file-image
+        note: null
+        options:
+          crop: false
+        readonly: false
+        required: false
+        sort: 6
+        special:
+          - file
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: logo
+        table: linotype_block__navigations
+        data_type: char
+        default_value: null
+        max_length: 36
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: directus_files
+        foreign_key_column: id
+    - collection: linotype_block__navigations
+      field: logo_size
+      type: integer
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: null
+        display_options: null
+        field: logo_size
+        group: null
+        hidden: false
+        interface: input
+        note: null
+        options:
+          max: 800
+          min: 10
+          step: 10
+        readonly: false
+        required: false
+        sort: 7
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: logo_size
+        table: linotype_block__navigations
+        data_type: int
+        default_value: 150
+        max_length: null
+        numeric_precision: 10
+        numeric_scale: 0
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: menu
+      type: json
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: formatted-json-value
+        display_options:
+          format: "{{title}}"
+        field: menu
+        group: null
+        hidden: false
+        interface: list
+        note: null
+        options:
+          fields:
+            - field: title
+              name: title
+              type: text
+              meta:
+                type: text
+                field: title
+                width: full
+                required: false
+                interface: input-rich-text-html
+                options:
+                  toolbar:
+                    - bold
+                    - italic
+                  tinymceOverrides:
+                    forced_root_block: div
+                  customFormats:
+                    - title: Highlight
+                      inline: span
+                      classes: highlight
+                      styles:
+                        color: "#FDC33A"
+                display: formatted-value
+                display_options:
+                  format: true
+            - field: url
+              name: url
+              type: string
+              meta:
+                type: string
+                field: url
+                width: full
+                required: false
+                interface: input
+            - field: icon
+              name: icon
+              type: uuid
+              meta:
+                type: uuid
+                field: icon
+                width: full
+                required: false
+                interface: uuid-file-image
+                options:
+                  selectedCollection: directus_files
+            - field: description
+              name: description
+              type: text
+              meta:
+                type: text
+                field: description
+                width: full
+                required: false
+                interface: input-rich-text-html
+                options:
+                  toolbar:
+                    - bold
+                    - italic
+            - field: style
+              name: style
+              type: string
+              meta:
+                type: string
+                field: style
+                width: full
+                options:
+                  choices:
+                    - text: Simple
+                      value: simple
+                    - text: Button
+                      value: button
+                    - text: Dropdown
+                      value: dropdown
+                    - text: Fullwidth
+                      value: fullwidth
+                required: false
+                interface: select-radio
+            - field: children
+              name: children
+              type: json
+              meta:
+                type: json
+                field: children
+                width: full
+                options:
+                  fields:
+                    - field: title
+                      name: title
+                      type: text
+                      meta:
+                        type: text
+                        field: title
+                        width: full
+                        required: false
+                        interface: input-rich-text-html
+                        options:
+                          toolbar:
+                            - bold
+                            - italic
+                          tinymceOverrides:
+                            forced_root_block: div
+                          customFormats:
+                            - title: Highlight
+                              inline: span
+                              classes: highlight
+                              styles:
+                                color: "#FDC33A"
+                        display: formatted-value
+                        display_options:
+                          format: true
+                    - field: url
+                      name: url
+                      type: string
+                      meta:
+                        type: string
+                        field: url
+                        width: full
+                        required: false
+                        interface: input
+                    - field: icon
+                      name: icon
+                      type: uuid
+                      meta:
+                        type: uuid
+                        field: icon
+                        width: full
+                        required: false
+                        interface: uuid-file-image
+                        options:
+                          selectedCollection: directus_files
+                    - field: description
+                      name: description
+                      type: text
+                      meta:
+                        type: text
+                        field: description
+                        width: full
+                        required: false
+                        interface: input-rich-text-html
+                        options:
+                          toolbar:
+                            - bold
+                            - italic
+                    - field: children
+                      name: children
+                      type: json
+                      meta:
+                        field: children
+                        width: full
+                        type: json
+                        required: false
+                        interface: list
+                        options:
+                          template: "{{title}}"
+                          fields:
+                            - field: title
+                              name: title
+                              type: text
+                              meta:
+                                field: title
+                                width: full
+                                type: text
+                                required: true
+                                interface: input-rich-text-html
+                                options:
+                                  toolbar:
+                                    - bold
+                                    - italic
+                                  tinymceOverrides:
+                                    forced_root_block: div
+                                  customFormats:
+                                    - title: Highlight
+                                      inline: span
+                                      classes: highlight
+                                      styles:
+                                        color: "#FDC33A"
+                                display: formatted-value
+                                display_options:
+                                  format: true
+                            - field: url
+                              name: url
+                              type: text
+                              meta:
+                                field: url
+                                width: full
+                                type: text
+                                required: true
+                                interface: input
+                            - field: icon
+                              name: icon
+                              type: uuid
+                              meta:
+                                field: icon
+                                width: full
+                                type: uuid
+                                required: false
+                                interface: uuid-file-image
+                                options:
+                                  selectedCollection: directus_files
+                            - field: description
+                              name: description
+                              type: text
+                              meta:
+                                field: description
+                                width: full
+                                type: text
+                                required: false
+                                interface: input-rich-text-html
+                                options:
+                                  toolbar:
+                                    - bold
+                                    - italic
+                  addLabel: New sub-menu
+                  template: "{{title}}"
+                required: false
+                interface: list
+          template: "{{title}}"
+        readonly: false
+        required: false
+        sort: 9
+        special:
+          - cast-json
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: menu
+        table: linotype_block__navigations
+        data_type: longtext
+        default_value: null
+        max_length: 4294967295
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: menu_right
+      type: json
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: formatted-json-value
+        display_options:
+          format: "{{title}}"
+        field: menu_right
+        group: null
+        hidden: false
+        interface: list
+        note: null
+        options:
+          fields:
+            - field: title
+              name: title
+              type: text
+              meta:
+                type: text
+                field: title
+                width: full
+                required: false
+                interface: input-rich-text-html
+                options:
+                  toolbar:
+                    - bold
+                    - italic
+                  tinymceOverrides:
+                    forced_root_block: div
+                  customFormats:
+                    - title: Highlight
+                      inline: span
+                      classes: highlight
+                      styles:
+                        color: "#FDC33A"
+                display: formatted-value
+                display_options:
+                  format: true
+            - field: url
+              name: url
+              type: string
+              meta:
+                type: string
+                field: url
+                width: full
+                required: false
+                interface: input
+            - field: icon
+              name: icon
+              type: uuid
+              meta:
+                type: uuid
+                field: icon
+                width: full
+                required: false
+                interface: uuid-file-image
+                options:
+                  selectedCollection: directus_files
+            - field: description
+              name: description
+              type: text
+              meta:
+                type: text
+                field: description
+                width: full
+                required: false
+                interface: input-rich-text-html
+                options:
+                  toolbar:
+                    - bold
+                    - italic
+            - field: style
+              name: style
+              type: string
+              meta:
+                type: string
+                field: style
+                width: full
+                options:
+                  choices:
+                    - text: Simple
+                      value: simple
+                    - text: Button
+                      value: button
+                    - text: Dropdown
+                      value: dropdown
+                    - text: Fullwidth
+                      value: fullwidth
+                required: false
+                interface: select-radio
+            - field: children
+              name: children
+              type: json
+              meta:
+                type: json
+                field: children
+                width: full
+                options:
+                  fields:
+                    - field: title
+                      name: title
+                      type: text
+                      meta:
+                        type: text
+                        field: title
+                        width: full
+                        required: false
+                        interface: input-rich-text-html
+                        options:
+                          toolbar:
+                            - bold
+                            - italic
+                          tinymceOverrides:
+                            forced_root_block: div
+                          customFormats:
+                            - title: Highlight
+                              inline: span
+                              classes: highlight
+                              styles:
+                                color: "#FDC33A"
+                        display: formatted-value
+                        display_options:
+                          format: true
+                    - field: url
+                      name: url
+                      type: string
+                      meta:
+                        type: string
+                        field: url
+                        width: full
+                        required: false
+                        interface: input
+                    - field: icon
+                      name: icon
+                      type: uuid
+                      meta:
+                        type: uuid
+                        field: icon
+                        width: full
+                        required: false
+                        interface: uuid-file-image
+                        options:
+                          selectedCollection: directus_files
+                    - field: description
+                      name: description
+                      type: text
+                      meta:
+                        type: text
+                        field: description
+                        width: full
+                        required: false
+                        interface: input-rich-text-html
+                        options:
+                          toolbar:
+                            - bold
+                            - italic
+                    - field: children
+                      name: children
+                      type: json
+                      meta:
+                        field: children
+                        width: full
+                        type: json
+                        required: false
+                        interface: list
+                        options:
+                          template: "{{title}}"
+                          fields:
+                            - field: title
+                              name: title
+                              type: text
+                              meta:
+                                field: title
+                                width: full
+                                type: text
+                                required: true
+                                interface: input-rich-text-html
+                                options:
+                                  toolbar:
+                                    - bold
+                                    - italic
+                                  tinymceOverrides:
+                                    forced_root_block: div
+                                  customFormats:
+                                    - title: Highlight
+                                      inline: span
+                                      classes: highlight
+                                      styles:
+                                        color: "#FDC33A"
+                                display: formatted-value
+                                display_options:
+                                  format: true
+                            - field: url
+                              name: url
+                              type: text
+                              meta:
+                                field: url
+                                width: full
+                                type: text
+                                required: true
+                                interface: input
+                            - field: icon
+                              name: icon
+                              type: uuid
+                              meta:
+                                field: icon
+                                width: full
+                                type: uuid
+                                required: false
+                                interface: uuid-file-image
+                                options:
+                                  selectedCollection: directus_files
+                            - field: description
+                              name: description
+                              type: text
+                              meta:
+                                field: description
+                                width: full
+                                type: text
+                                required: false
+                                interface: input-rich-text-html
+                                options:
+                                  toolbar:
+                                    - bold
+                                    - italic
+                  addLabel: New sub-menu
+                  template: "{{title}}"
+                required: false
+                interface: list
+          template: "{{title}}"
+        readonly: false
+        required: false
+        sort: 10
+        special:
+          - cast-json
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: menu_right
+        table: linotype_block__navigations
+        data_type: longtext
+        default_value: null
+        max_length: 4294967295
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: position
+      type: string
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: null
+        display_options: null
+        field: position
+        group: null
+        hidden: false
+        interface: select-dropdown
+        note: null
+        options:
+          choices:
+            - text: Relative
+              value: relative
+            - text: Fixed
+              value: fixed
+        readonly: false
+        required: false
+        sort: 8
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: position
+        table: linotype_block__navigations
+        data_type: varchar
+        default_value: relative
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: reference
+      type: string
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: raw
+        display_options: null
+        field: reference
+        group: null
+        hidden: false
+        interface: input
+        note: null
+        options:
+          iconLeft: flag
+          placeholder: Define a unique reference for this block
+          trim: true
+        readonly: false
+        required: true
+        sort: 3
+        special: null
+        translations:
+          - language: en-US
+            translation: Reference
+        validation: null
+        validation_message: null
+        width: half
+      schema:
+        name: reference
+        table: linotype_block__navigations
+        data_type: varchar
+        default_value: null
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: sort
+      type: integer
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: null
+        display_options: null
+        field: sort
+        group: null
+        hidden: true
+        interface: input
+        note: null
+        options: null
+        readonly: false
+        required: false
+        sort: 2
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: sort
+        table: linotype_block__navigations
+        data_type: int
+        default_value: null
+        max_length: null
+        numeric_precision: 10
+        numeric_scale: 0
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: status
+      type: string
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: labels
+        display_options:
+          choices:
+            - text: $t:published
+              value: published
+              background: var(--primary)
+              foreground: "#FFFFFF"
+            - text: $t:draft
+              value: draft
+              background: "#D3DAE4"
+              foreground: "#18222F"
+            - text: $t:archived
+              value: archived
+              background: var(--warning)
+              foreground: "#FFFFFF"
+          showAsDot: true
+        field: status
+        group: null
+        hidden: false
+        interface: select-dropdown
+        note: null
+        options:
+          choices:
+            - text: $t:published
+              value: published
+            - text: $t:draft
+              value: draft
+            - text: $t:archived
+              value: archived
+          icon: public
+          placeholder: Select a block status
+        readonly: false
+        required: true
+        sort: 4
+        special: null
+        translations: null
+        validation: null
+        validation_message: null
+        width: half
+      schema:
+        name: status
+        table: linotype_block__navigations
+        data_type: varchar
+        default_value: published
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+    - collection: linotype_block__navigations
+      field: title
+      type: string
+      meta:
+        collection: linotype_block__navigations
+        conditions: null
+        display: formatted-value
+        display_options:
+          format: true
+        field: title
+        group: null
+        hidden: false
+        interface: input
+        note: null
+        options:
+          iconLeft: title
+          placeholder: Your title here
+          trim: true
+        readonly: false
+        required: false
+        sort: 5
+        special: null
+        translations:
+          - language: en-US
+            singular: Title
+            translation: Title
+        validation: null
+        validation_message: null
+        width: full
+      schema:
+        name: title
+        table: linotype_block__navigations
+        data_type: varchar
+        default_value: null
+        max_length: 255
+        numeric_precision: null
+        numeric_scale: null
+        is_nullable: true
+        is_unique: false
+        is_primary_key: false
+        is_generated: false
+        generation_expression: null
+        has_auto_increment: false
+        foreign_key_table: null
+        foreign_key_column: null
+  relations: []
