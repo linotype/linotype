@@ -18,7 +18,6 @@
   "license": "ISC",
   "dependencies": {
     "@linotype/directus-extension-linotype": "*",
-    "directus": "^10.7.2",
-    "mysql": "^2.18.1"
+    "directus": "^10.7.2"
   }
 }
