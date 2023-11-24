@@ -71,7 +71,7 @@
   "publishConfig": {
     "directory": "dist"
   },
-  "main": "main.js",
+  "main": "dist/app.js",
   "scripts": {
     "update": "npx taze major",
     "test": "echo 'test'",
