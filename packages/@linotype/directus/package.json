@@ -68,12 +68,9 @@
   "files": [
     "dist"
   ],
-  "publishConfig": {
-    "directory": "dist"
-  },
   "exports": {
-    "app": "./dist/app.js",
-    "api": "./dist/api.js"
+    "./dist/app.js": "./dist/app.js",
+    "./dist/api.js": "./dist/api.js"
   },
   "scripts": {
     "update": "npx taze major",
