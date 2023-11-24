@@ -1,7 +1,8 @@
 {
   "name": "@linotype/nuxt",
-  "version": "1.6.3",
   "description": "Linotype Nuxt module",
+  "private": true,
+  "version": "1.6.3",
   "license": "MIT",
   "type": "module",
   "homepage": "https://github.com/linotype/nuxt#readme",
@@ -36,6 +37,7 @@
   "scripts": {
     "update": "npx taze major",
     "prepack": "nuxt-module-build build",
+    "build": "nuxt-module-build build",
     "dev": "nuxi dev playground",
     "play": "npx chokidar \"./../../../packages/@linotype/nuxt/src/**/*\" --initial -c \"export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx kill-port 3000 && npx nx prepack @linotype/nuxt && npx node-notifier-cli notify -t 'linotype' -m 'Reloded' -s Glass -x 0 & npx nx dev playground-frontend\"",
     "dev:build": "nuxi build playground",
