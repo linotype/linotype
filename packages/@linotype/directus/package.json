@@ -62,7 +62,7 @@
         "source": "src/endpoints/search.ts"
       }
     ],
-    "host": "^9.23.1",
+    "host": "^10.8.0",
     "hidden": false
   },
   "files": [
@@ -71,7 +71,10 @@
   "publishConfig": {
     "directory": "dist"
   },
-  "main": "dist/app.js",
+  "exports": {
+    "app": "./dist/app.js",
+    "api": "./dist/api.js"
+  },
   "scripts": {
     "update": "npx taze major",
     "test": "echo 'test'",
