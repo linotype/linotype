@@ -1,5 +1,35 @@
 <template>
   <div :id="`${props.blockType}-${props.blockId}`" :class="`block--${props.blockType}`" class="relative z-0" :data-reference="props.blockData?.reference">
+    
+    <ULandingHero
+      description="Work in real-time with your team on open-source and private repositories, all in one place. Working on GitHub issues and notifications has never been that fun."
+      orientation="vertical"
+      :links="[{ label: 'Continue with GitHub', icon: 'i-simple-icons-github', color: 'gray', size: 'lg' }]"
+    >
+      <template #title>
+        <div v-html="props.blockData.title"/>
+      </template>
+      <template #headline>
+        <UButton
+          color="gray"
+          to="https://volta.net/changelog"
+          label="See what's new in v1.17.0"
+          trailing-icon="i-heroicons-arrow-right"
+          size="xs"
+          class="rounded-full"
+        />
+      </template>
+      <template #default>
+        <img
+          src="https://picsum.photos/640/360"
+          class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700"
+        />
+      </template>
+    </ULandingHero>
+
+    
+    
+    
     <div v-if="props.blockData?.style === 'diagonal_cut'" class="absolute z-10 left-0 right-0 bottom-0 h-[5%]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 10" preserveAspectRatio="none" class="absolute top-[1px] bottom-0 left-0 right-[10px] fill-white w-full h-full">
         <polygon points="0 0 200 10 0 10" />

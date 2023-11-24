@@ -1,14 +1,12 @@
-import { searchForWorkspaceRoot } from 'vite'
-
 export default defineNuxtConfig({
   app: {
     head: {
       // meta: [
       //   { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       // ],
-      script: [
-        { src: 'https://stats.dinorose.fr/script.js', async: true, 'data-website-id': '76bbda40-7f44-40b6-923b-9b2ddede8c3a' }
-      ],
+      // script: [
+      //   { src: 'https://stats.dinorose.fr/script.js', async: true, 'data-website-id': '76bbda40-7f44-40b6-923b-9b2ddede8c3a' }
+      // ],
       // link: [
       //   { rel: 'stylesheet', href: 'https://awesome-lib.css' }
       // ],
@@ -34,29 +32,6 @@ export default defineNuxtConfig({
     // },
   },
 
-  vue: {
-    compilerOptions: {
-      isCustomElement: (tag) => {
-        return tag.startsWith('ion-')
-      }
-    }
-  },
-
-  // vite: {
-  //   server: {
-  //     hmr: {
-  //       host: process?.env?.HOST || 'localhost',
-  //       port: +(process?.env?.PORT_DEV || 4000),
-  //       protocol: 'ws',
-  //     },
-  //     fs: {
-  //       allow: [
-  //         searchForWorkspaceRoot(process.cwd())
-  //       ],
-  //     },
-  //   },
-  // },
-
   // ssr: true,
   srcDir: 'src',
 
@@ -75,11 +50,46 @@ export default defineNuxtConfig({
     }
   },
 
-  modules: [
-    '@linotype/nuxt',
-    '@nuxtjs/tailwindcss',
-    'nuxt-icon',
+  extends: [
+    '@nuxt/ui-pro'
   ],
+  
+  modules: [
+    '@nuxt/ui',
+    '@nuxtjs/fontaine',
+    '@nuxtjs/google-fonts',
+    '@linotype/nuxt'
+  ],
+
+  ui: {
+    variables: {
+      light: {
+        background: '255 255 255',
+        foreground: 'var(--color-gray-700)'
+      },
+      dark: {
+        background: 'var(--color-gray-900)',
+        foreground: 'var(--color-gray-200)'
+      },
+      header: {
+        height: '4rem'
+      }
+    },
+    icons: ['ph', 'simple-icons'],
+    colorMode: {
+      preference: 'dark'
+    },
+    googleFonts: {
+      display: 'swap',
+      download: true,
+      families: {
+        'DM+Sans': [400, 500, 600, 700]
+      }
+    },
+    fontMetrics: {
+      fonts: ['DM Sans']
+    },
+  },
 
   css: ['/linotype/theme/style.css'],
 
@@ -108,5 +118,5 @@ export default defineNuxtConfig({
   },
 
   telemetry: false,
-  devtools: { enabled: false },
+  devtools: { enabled: true },
 })
