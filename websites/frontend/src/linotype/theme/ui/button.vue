@@ -2,7 +2,7 @@
   <NuxtLink
     v-if="props.title && type == 'button'"
     :to="link"
-    class="cursor-pointer bg-primary px-[2.1em] py-[0.6em] text-base font-semibold leading-7 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+    class="cursor-pointer bg-primary text-white px-[2.1em] py-[0.6em] text-base font-semibold leading-7 shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
   >
     {{ props.title }}
   </NuxtLink>

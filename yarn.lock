@@ -7466,6 +7466,11 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
+directus-extension-schema-management-module@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/directus-extension-schema-management-module/-/directus-extension-schema-management-module-1.5.0.tgz#27b0a57934f60b2ad83ac06900b3a46fa845c71e"
+  integrity sha512-k2JQaCxjbLPOSyh084hPSVpxpVLB1/oKe+ztPmXaeDOlPoHv7CdOZyYWTkoLmI7gcUBRJjBtYgMJHsTMTd9QcA==
+
 directus@^10.7.2, directus@^10.8.2:
   version "10.8.2"
   resolved "https://registry.yarnpkg.com/directus/-/directus-10.8.2.tgz#a9313f8bd2632e80baa5d0eed5be6f7b8fe93d8b"
@@ -11585,7 +11590,7 @@ mute-stream@1.0.0:
   resolved "https://registry.yarnpkg.com/mute-stream/-/mute-stream-1.0.0.tgz#e31bd9fe62f0aed23520aa4324ea6671531e013e"
   integrity sha512-avsJQhyd+680gKXyG/sQc0nXaC6rBkPOfyHYcFb9+hdkqQkR9bdnkJ0AMZhke0oesPqIO+mFFJ+IdBc7mst4IA==
 
-mysql@2.18.1, mysql@^2.18.1:
+mysql@2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/mysql/-/mysql-2.18.1.tgz#2254143855c5a8c73825e4522baf2ea021766717"
   integrity sha512-Bca+gk2YWmqp2Uf6k5NFEurwY/0td0cpebAucFpY/3jhrwrVGuxU2uQFCHjU19SJfje0yQvi+rVWdq78hR5lig==
