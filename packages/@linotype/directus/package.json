@@ -69,6 +69,7 @@
     "dist"
   ],
   "exports": {
+    "./package.json": "./package.json",
     "./dist/app.js": "./dist/app.js",
     "./dist/api.js": "./dist/api.js"
   },
