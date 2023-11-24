@@ -15,5 +15,16 @@
     "packages/**",
     "playgrounds/**",
     "websites/**"
-  ]
+  ],
+  "nx": {
+    "targetDefaults": {
+      "build": {
+        "cache": true,
+        "dependsOn": ["^build"]
+      },
+      "lint": {
+        "cache": true
+      }
+    }
+  }
 }
