@@ -68,6 +68,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "directory": "dist"
+  },
   "scripts": {
     "update": "npx taze major",
     "test": "echo 'test'",
