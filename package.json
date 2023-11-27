@@ -6,10 +6,10 @@
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "kill-port": "^2.0.1",
-    "nx": "^15.9.7",
+    "nx": "^17.1.3",
     "prettier": "^3.1.0",
     "release-it": "^17.0.0",
-    "taze": "^0.12.0"
+    "taze": "^0.12.1"
   },
   "workspaces": [
     "packages/**",
@@ -20,7 +20,9 @@
     "targetDefaults": {
       "build": {
         "cache": false,
-        "dependsOn": ["^build"]
+        "dependsOn": [
+          "^build"
+        ]
       }
     }
   }

@@ -1,15 +1,15 @@
 {
 	"name": "@linotype/core",
 	"description": "Linotype framework core",
-  "private": true,
+	"private": true,
 	"icon": "extension",
 	"version": "1.0.3",
 	"files": [
 		"dist"
 	],
-  "publishConfig": {
-    "directory": "dist"
-  },
+	"publishConfig": {
+		"directory": "dist"
+	},
 	"scripts": {
 		"update": "npx taze major",
 		"test": "echo 'test'",

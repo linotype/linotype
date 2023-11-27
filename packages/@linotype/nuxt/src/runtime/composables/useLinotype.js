@@ -1,7 +1,6 @@
 import { useRuntimeConfig, useState, useRoute, useRouter, useFetch, createError, onBeforeRouteLeave } from '#app'
-import { nextTick, ref, computed } from 'vue'
+import { nextTick, ref, computed, resolveComponent } from 'vue'
 import useDomain from "./useDomain"
-
 
 /**
  * @useLinotype
@@ -14,7 +13,8 @@ import useDomain from "./useDomain"
  *
  */
 const useLinotype = function () {
- 
+  
+  const app = useNuxtApp().vueApp
   const config = useRuntimeConfig()
   const { scheme, domain } = useDomain()
   const router = useRouter()
@@ -28,6 +28,25 @@ const useLinotype = function () {
   const preview = useState('useLinotype.preview', () => true)
 
 
+  /**
+   * Load components
+   */
+  const load = (components) => {
+
+    Object.entries(components).forEach(([fileName, module]) => {
+
+      const regex = /\/block\/([^/]*)\/index\.vue$/;
+      const match = fileName.match(regex);
+      const componentName = match ? match[1] : null;
+      
+      if (componentName) {
+        app.component(`linotype-block-${componentName}`, defineAsyncComponent(() => components[fileName]()))
+      }
+    
+    })
+  
+  }
+  
   /**
    * Load Current Page Data
    *
@@ -79,24 +98,9 @@ const useLinotype = function () {
    * @returns Component
    */
   const loadBlock = (id) => {
-
+    
     return `linotype-block-${id.replace('_','-')}`
 
-    // return defineAsyncComponent({
-    //   // the loader function
-    //   loader: () =>  import(`${process.cwd() ? process.cwd() : '.'}/src/linotype/block/${id}/index.vue`),
-    
-    //   // A component to use while the async component is loading
-    //   loadingComponent: LinotypeDefaultBlock,
-    //   // Delay before showing the loading component. Default: 200ms.
-    //   delay: 200,
-    
-    //   // A component to use if the load fails
-    //   errorComponent: LinotypeDefaultBlock,
-    //   // The error component will be displayed if a timeout is
-    //   // provided and exceeded. Default: Infinity.
-    //   timeout: 3000
-    // })
   }
 
   /**
@@ -144,6 +148,7 @@ const useLinotype = function () {
    */
   return {
     config,
+    load,
     initLinotype,
     loadLinotype,
     loadTemplate,

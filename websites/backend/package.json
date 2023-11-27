@@ -19,7 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "directus": "^10.7.2",
-    "@linotype/directus-extension-linotype": "*",
+    "@linotype/directus-extension-linotype": "workspace:*",
     "directus-extension-schema-management-module": "^1.5.0"
   }
 }

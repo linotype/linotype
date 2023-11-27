@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@linotype/directus-extension-linotype": "*",
+    "@linotype/directus-extension-linotype": "workspace:*",
     "directus": "^10.8.2"
   }
 }

@@ -4,28 +4,31 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx nuxi dev",
+    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx nuxt dev",
     "test": "npx vitest --ui",
     "story": "npx histoire dev",
     "story:build": "npx histoire build",
     "story:preview": "npx histoire preview",
     "update": "npx taze major",
-    "analyze": "nuxi analyze",
-    "build": "npx nuxi build",
-    "generate": "npx nuxi generate",
-    "preview": "npx nuxi build && nuxi preview",
+    "analyze": "npx nuxt analyze",
+    "build": "npx nuxt build",
+    "generate": "npx nuxt generate",
+    "preview": "npx nuxt build && nuxt preview",
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
     "@histoire/plugin-nuxt": "^0.17.5",
     "@histoire/plugin-vue": "^0.17.5",
-    "@linotype/nuxt": "*",
+    "@linotype/nuxt": "workspace:*",
     "@nuxt/devtools": "^1.0.3",
     "@unocss/nuxt": "^0.57.7",
     "@vueuse/nuxt": "^10.6.1",
     "histoire": "^0.17.5",
     "nuxt": "^3.8.2",
     "nuxt-icon": "^0.6.6",
-    "nuxt-vitest": "^0.11.5"
+    "nuxt-vitest": "^0.11.5",
+    "vite": "^5.0.2",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
   }
 }

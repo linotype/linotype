@@ -1,7 +1,7 @@
 <template>
   <div :id="`${props.blockType}-${props.blockId}`" :class="`block--${props.blockType}`" :data-reference="props.blockData.reference">
     <LinotypeHelper :title="`BLOCK: ${props.blockType} / ID: ${props.blockId} / REF: ${props.blockData.reference}`" :data="props.blockData">
-      <LinotypeBlockFootersExample v-bind="props"/>
+      <!-- <LinotypeBlockFootersExample v-bind="props"/> -->
     </LinotypeHelper>
     
     <UFooter>
