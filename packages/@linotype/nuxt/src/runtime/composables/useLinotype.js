@@ -40,7 +40,10 @@ const useLinotype = function () {
       const componentName = match ? match[1] : null;
       
       if (componentName) {
-        app.vueApp.component(`linotype-block-${componentName}`, defineAsyncComponent(() => components[fileName]()))
+        app.vueApp.component(
+          `linotype-block-${componentName}`.split(/[-_]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(''), 
+          defineAsyncComponent(() => components[fileName]())
+        )
       }
     
     })
@@ -99,7 +102,7 @@ const useLinotype = function () {
    */
   const loadBlock = (id) => {
     
-    return `linotype-block-${id.replace('_','-')}`
+    return `linotype-block-${id}`.split(/[-_]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('')
 
   }
 
