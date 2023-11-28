@@ -62,36 +62,26 @@ export default defineNuxtConfig({
   ],
 
   ui: {
-    variables: {
-      light: {
-        background: '255 255 255',
-        foreground: 'var(--color-gray-700)'
-      },
-      dark: {
-        background: 'var(--color-gray-900)',
-        foreground: 'var(--color-gray-200)'
-      },
-      header: {
-        height: '4rem'
-      }
-    },
-    icons: ['ph', 'simple-icons'],
-    colorMode: {
-      preference: 'dark'
-    },
-    googleFonts: {
-      display: 'swap',
-      download: true,
-      families: {
-        'DM+Sans': [400, 500, 600, 700]
-      }
-    },
-    fontMetrics: {
-      fonts: ['DM Sans']
-    },
+    icons: ['heroicons']
   },
 
-  css: ['/linotype/theme/style.css'],
+  colorMode: {
+    preference: 'light'
+  },
+
+  googleFonts: {
+    display: 'swap',
+    download: true,
+    families: {
+      'DM+Sans': [400, 500, 600, 700]
+    }
+  },
+
+  fontMetrics: {
+    fonts: ['DM Sans']
+  },
+
+  css: ['/components/linotype/theme/style.css'],
 
   routeRules: {
     // '/**': {
@@ -117,6 +107,6 @@ export default defineNuxtConfig({
     // '/old-page2': { redirect: { to: '/new-page', statusCode: 302 } }
   },
 
-  telemetry: false,
-  devtools: { enabled: true },
+  // telemetry: false,
+  // devtools: { enabled: true },
 })

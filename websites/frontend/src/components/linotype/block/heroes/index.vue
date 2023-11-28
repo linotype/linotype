@@ -4,10 +4,10 @@
     <ULandingHero
       description="Work in real-time with your team on open-source and private repositories, all in one place. Working on GitHub issues and notifications has never been that fun."
       orientation="vertical"
-      :links="[{ label: 'Continue with GitHub', icon: 'i-simple-icons-github', color: 'gray', size: 'lg' }]"
+      :links="[{ label: 'Continue with GitHub', icon: 'i-heroicons-chevron-double-right', color: 'gray', size: 'lg' }]"
     >
       <template #title>
-        <div v-html="props.blockData.title"/>
+        <div v-html="props.blockData?.title"/>
       </template>
       <template #headline>
         <UButton
@@ -30,7 +30,7 @@
     
     
     
-    <div v-if="props.blockData?.style === 'diagonal_cut'" class="absolute z-10 left-0 right-0 bottom-0 h-[5%]">
+    <!-- <div v-if="props.blockData?.style === 'diagonal_cut'" class="absolute z-10 left-0 right-0 bottom-0 h-[5%]">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 10" preserveAspectRatio="none" class="absolute top-[1px] bottom-0 left-0 right-[10px] fill-white w-full h-full">
         <polygon points="0 0 200 10 0 10" />
       </svg>
@@ -89,7 +89,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 

@@ -19,7 +19,7 @@
   "devDependencies": {
     "@histoire/plugin-nuxt": "^0.17.5",
     "@histoire/plugin-vue": "^0.17.5",
-    "@linotype/nuxt": "workspace:*",
+    "@linotype/nuxt": "*",
     "@nuxt/devtools": "^1.0.3",
     "@unocss/nuxt": "^0.57.7",
     "@vueuse/nuxt": "^10.6.1",
