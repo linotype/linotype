@@ -69,7 +69,8 @@
     "stream": "^0.0.2",
     "vite": "^5.0.2",
     "vitest": "^0.34.6",
-    "vue": "^3.3.8"
+    "vue": "^3.3.8",
+    "vite-plugin-glob":"^0.3.2"
   },
   "unbuild": {
     "failOnWarn": false

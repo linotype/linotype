@@ -13,7 +13,9 @@
     "strict": true,
     "noImplicitThis": true,
     "esModuleInterop": true,
-    "types": ["vite/client"],
+    "types": [
+      "vite/client"
+    ],
     "verbatimModuleSyntax": true,
     "allowJs": true,
     "noEmit": true,

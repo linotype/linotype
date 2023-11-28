@@ -14,7 +14,7 @@ import useDomain from "./useDomain"
  */
 const useLinotype = function () {
   
-  const app = useNuxtApp().vueApp
+  const app = useNuxtApp()
   const config = useRuntimeConfig()
   const { scheme, domain } = useDomain()
   const router = useRouter()
@@ -40,7 +40,7 @@ const useLinotype = function () {
       const componentName = match ? match[1] : null;
       
       if (componentName) {
-        app.component(`linotype-block-${componentName}`, defineAsyncComponent(() => components[fileName]()))
+        app.vueApp.component(`linotype-block-${componentName}`, defineAsyncComponent(() => components[fileName]()))
       }
     
     })
