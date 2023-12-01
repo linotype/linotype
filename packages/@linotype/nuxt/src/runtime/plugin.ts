@@ -29,13 +29,20 @@ export default defineNuxtPlugin( async () => {
 
   //register linotype routes
   //TODO payload: unique payload directus endpoint to load current site info + all route (use cache to speed up first load)
-  const { data: linotypePagesRoutes } = await ofetch(`${config.public.linotype.backend_url}/items/linotype_pages?fields=id,slug,target.*.*`) //add filter : &filter={ "slug": { "_contains": ":" }}`)
-  for( const item of linotypePagesRoutes ) {
-    router.addRoute({
-      name: `linotype-route-${item.id}`,
-      path: item.slug,
-      component: () => import(`~/pages/index.vue`)
-    }) 
-  }
+  // const { data: linotypePagesRoutes } = await ofetch(`${config.public.linotype.backend_url}/items/linotype_pages?fields=id,slug,target.*.*`) //add filter : &filter={ "slug": { "_contains": ":" }}`)
+  // for( const item of linotypePagesRoutes ) {
+  //   router.addRoute({
+  //     name: `linotype-route-${item.id}`,
+  //     path: item.slug,
+  //     component: () => import(`~/pages/index.vue`)
+  //   }) 
+  // }
+  // console.log('linotypePagesRoutes', linotypePagesRoutes)
   
+  // router.addRoute({
+  //   // name: `linotype-route`,
+  //   path: '/**',
+  //   component: () => import(`~/pages/index.vue`)
+  // }) 
+
 })

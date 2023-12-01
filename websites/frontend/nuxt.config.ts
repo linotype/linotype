@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   },
 
   // ssr: true,
-  srcDir: 'src',
+  // srcDir: 'src',
 
   runtimeConfig: {
     public: {
@@ -55,14 +55,16 @@ export default defineNuxtConfig({
   ],
   
   modules: [
+    '@nuxt/content',
     '@nuxt/ui',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
+    'nuxt-og-image',
     '@linotype/nuxt'
   ],
 
   ui: {
-    icons: ['heroicons']
+    icons: ['heroicons', 'simple-icons']
   },
 
   colorMode: {
@@ -81,7 +83,7 @@ export default defineNuxtConfig({
     fonts: ['DM Sans']
   },
 
-  css: ['/components/linotype/theme/style.css'],
+  // css: ['/components/linotype/theme/style.css'],
 
   routeRules: {
     // '/**': {
@@ -107,6 +109,7 @@ export default defineNuxtConfig({
     // '/old-page2': { redirect: { to: '/new-page', statusCode: 302 } }
   },
 
-  // telemetry: false,
-  // devtools: { enabled: true },
+  telemetry: false,
+  devtools: { enabled: true },
+  typescript: { strict: false }
 })

@@ -19,7 +19,7 @@ const head_image = computed(() => {
   return page?.seo?.image ? config.public.linotype.backend_url + '/assets/' + page.seo.image + '?width=1500&height=780' : ''
       || website?.seo?.image ? config.public.linotype.backend_url + '/assets/' + website.seo.image + '?width=1500&height=780' : ''
 });
-const head_favicon = computed(() => website.favicon ? config.public.linotype.backend_url + '/assets/' + website.favicon + '?width=250&height=250' : '')
+const head_favicon = computed(() => website?.favicon ? config.public.linotype.backend_url + '/assets/' + website.favicon + '?width=250&height=250' : '')
 
 useHead({
   title: head_title,

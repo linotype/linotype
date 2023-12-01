@@ -72,15 +72,8 @@ const useLinotype = function () {
         route: path
       }
     })
-    
+
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
-      console.log('error', {
-        env: config.public.linotype.env,
-        scheme: scheme.value,
-        domain: domain.value,
-        route: path,
-        error: errorAPI.value?.message
-      })
       error.value = errorAPI.value
       throw createError({ statusCode: 404, statusMessage: dataAPI.value?.message || errorAPI.value?.message || 'error' })
     }
@@ -112,7 +105,8 @@ const useLinotype = function () {
   const initLinotype = async () => {
 
     onBeforeRouteLeave( async (to, from, next) => {
-      await loadTemplate(sanitizeRoute(to?.matched[0]?.path || ''))
+      console.log('initLinotype:to', to)
+      await loadTemplate( getSanitizeRoute(to.path) )
       next()
     })
 
@@ -124,19 +118,19 @@ const useLinotype = function () {
   const loadLinotype = async () => {
     
     if( initialized.value == false ) {
-      await loadTemplate(sanitizeRoute(router?.resolve(getCurrentRoute())?.matched[0]?.path || ''))
+      await loadTemplate( getSanitizeRoute(route.path) )
     }
 
   }
 
 
   /**
-   * Utils getCurrentRoute
+   * Utils getSanitizeRoute
    */
-  const getCurrentRoute = () => {
-    let currentRoute = route.path ? route.path : '/'
+  const getSanitizeRoute = (route) => {
+    let currentRoute = route ? route : '/'
     currentRoute = sanitizeRoute(currentRoute)
-    return currentRoute
+    return currentRoute || ''
   }
 
   /**

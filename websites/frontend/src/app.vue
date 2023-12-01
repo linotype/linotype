@@ -1,3 +1,0 @@
-<template>
-  <LinotypePage />
-</template>

@@ -1,13 +1,9 @@
 <template>
   <div :id="`${props.blockType}-${props.blockId}`" :class="`block--${props.blockType}`" :data-reference="props.blockData.reference">
-    <LinotypeHelper :title="`BLOCK: ${props.blockType} / ID: ${props.blockId} / REF: ${props.blockData.reference}`" :data="props.blockData">
-      <!-- <LinotypeBlockFootersExample v-bind="props"/> -->
-    </LinotypeHelper>
-    
     <UFooter>
       <template #left>
         <p class="text-gray-500 dark:text-gray-400 text-sm">
-          Copyright © 2016-{{ new Date().getFullYear() }} Nuxt - <NuxtLink class="hover:underline" to="https://github.com/nuxt/nuxt/blob/main/LICENSE" target="_blank">
+          Copyright © 2020-{{ new Date().getFullYear() }} LINOTYPE - <NuxtLink class="hover:underline" to="https://github.com/linotype/linotype/blob/main/LICENSE" target="_blank">
             MIT License
           </NuxtLink>
         </p>
