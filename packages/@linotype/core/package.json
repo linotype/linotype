@@ -1,7 +1,7 @@
 {
 	"name": "@linotype/core",
 	"description": "Linotype framework core",
-	"private": true,
+	"private": false,
 	"icon": "extension",
 	"version": "1.0.3",
 	"files": [

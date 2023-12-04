@@ -1,7 +1,7 @@
 {
   "name": "@linotype/directus-extension-linotype",
   "description": "Linotype website framework for Directus",
-  "private": true,
+  "private": false,
   "icon": "extension",
   "version": "1.2.2",
   "keywords": [

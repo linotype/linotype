@@ -1,6 +1,6 @@
 {
   "name": "@linotype/starter",
-  "private": true,
+  "private": false,
   "version": "1.0.0",
   "description": "linotype starter library",
   "repository": "linotype/starter",
