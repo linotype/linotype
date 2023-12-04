@@ -1,5 +1,5 @@
-import { useRuntimeConfig, useState, useRoute, useRouter, useFetch, showError, onBeforeRouteLeave } from '#app'
-import { nextTick, ref, computed, resolveComponent } from 'vue'
+import { useRuntimeConfig, useState, useRoute, useFetch, showError, onBeforeRouteLeave, useNuxtApp, defineAsyncComponent } from '#app'
+import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
 /**
@@ -17,7 +17,6 @@ const useLinotype = function () {
   const app = useNuxtApp()
   const config = useRuntimeConfig()
   const { scheme, domain } = useDomain()
-  const router = useRouter()
   const route = useRoute()
 
   const initialized = useState('useLinotype.initialized', () => false)
@@ -33,7 +32,7 @@ const useLinotype = function () {
    */
   const load = (components) => {
 
-    Object.entries(components).forEach(([fileName, module]) => {
+    Object.entries(components).forEach(([fileName]) => {
 
       const regex = /\/block\/([^/]*)\/index\.vue$/;
       const match = fileName.match(regex);
