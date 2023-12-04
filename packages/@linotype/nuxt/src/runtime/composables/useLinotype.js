@@ -1,4 +1,4 @@
-import { useRuntimeConfig, useState, useRoute, useRouter, useFetch, createError, onBeforeRouteLeave } from '#app'
+import { useRuntimeConfig, useState, useRoute, useRouter, useFetch, showError, onBeforeRouteLeave } from '#app'
 import { nextTick, ref, computed, resolveComponent } from 'vue'
 import useDomain from "./useDomain"
 
@@ -74,8 +74,22 @@ const useLinotype = function () {
     })
 
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
+      loading.value = false
       error.value = errorAPI.value
-      throw createError({ statusCode: 404, statusMessage: dataAPI.value?.message || errorAPI.value?.message || 'error' })
+      throw showError({ 
+        statusCode: 404, 
+        fatal: true,
+        message: dataAPI.value?.message || errorAPI.value?.message || 'error' 
+      })
+    }
+    
+    if ( dataAPI.value.website == null ) {
+      loading.value = false
+      throw showError({
+        statusCode: 404,
+        fatal: false,
+        message: 'Page not found'
+      })
     }
     
     template.value = dataAPI.value
@@ -105,7 +119,6 @@ const useLinotype = function () {
   const initLinotype = async () => {
 
     onBeforeRouteLeave( async (to, from, next) => {
-      console.log('initLinotype:to', to)
       await loadTemplate( getSanitizeRoute(to.path) )
       next()
     })
