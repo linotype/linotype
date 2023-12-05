@@ -75,22 +75,22 @@ const useLinotype = function () {
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       loading.value = false
       error.value = errorAPI.value
+      console.log('linotype:error', dataAPI.value?.message || errorAPI.value?.message)
       throw showError({ 
         statusCode: 404, 
         fatal: true,
         message: dataAPI.value?.message || errorAPI.value?.message || 'error' 
       })
-      console.log('linotype:error', dataAPI.value?.message || errorAPI.value?.message)
     }
     
     if ( dataAPI.value.website == null ) {
       loading.value = false
+      console.log('linotype:error', 'no data founded')
       throw showError({
         statusCode: 404,
         fatal: false,
         message: 'Page not found'
       })
-      console.log('linotype:error', 'no data founded')
     }
     
     template.value = dataAPI.value
