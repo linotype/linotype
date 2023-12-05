@@ -80,6 +80,7 @@ const useLinotype = function () {
         fatal: true,
         message: dataAPI.value?.message || errorAPI.value?.message || 'error' 
       })
+      console.log('linotype:error', dataAPI.value?.message || errorAPI.value?.message)
     }
     
     if ( dataAPI.value.website == null ) {
@@ -89,6 +90,7 @@ const useLinotype = function () {
         fatal: false,
         message: 'Page not found'
       })
+      console.log('linotype:error', 'no data founded')
     }
     
     template.value = dataAPI.value

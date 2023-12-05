@@ -206,6 +206,8 @@ export default (router: any, { services }: any) => {
 
     } catch (error) {
       
+      console.log('linotype:error', error)
+      
       res.send({
         status: "error", 
         message: `Linotype Not Found`
