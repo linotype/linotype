@@ -48,7 +48,9 @@ export default defineNuxtPlugin( async () => {
       limit: -1,
     }
   })
-  if ( linotypePagesRoutes.value?.data?.length ) {
+  if ( errorAPI.value ) {
+    console.log('[linotype:error]', errorAPI)
+  } else if ( linotypePagesRoutes.value?.data?.length ) {
     for( const item of linotypePagesRoutes.value.data ) {
       router.addRoute({
         name: `linotype-matched-${item.id}`,
@@ -57,7 +59,7 @@ export default defineNuxtPlugin( async () => {
       }) 
     }
   }
-
+  
   //log error
   if ( config.public.linotype.debug == 'true' ) {
     console.log('[linotype:debug] is active', config.public.linotype)

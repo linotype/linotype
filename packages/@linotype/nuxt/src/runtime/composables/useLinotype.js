@@ -14,7 +14,6 @@ import useDomain from "./useDomain"
  */
 const useLinotype = function () {
   
-  const app = useNuxtApp()
   const config = useRuntimeConfig()
   const { scheme, domain } = useDomain()
   const route = useRoute()
