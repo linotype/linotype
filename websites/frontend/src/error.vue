@@ -1,5 +1,9 @@
 <template>
-  <UPageError :error="error" />
+  <LinotypeTemplate>
+    <LinotypeHeader/>
+    <UPageError :error="error" />
+    <LinotypeFooter/>
+  </LinotypeTemplate>
 </template>
 
 <script setup lang="ts">

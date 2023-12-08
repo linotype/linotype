@@ -33,7 +33,7 @@ export default defineNuxtConfig({
   },
 
   // ssr: true,
-  // srcDir: 'src',
+  srcDir: 'src',
 
   runtimeConfig: {
     public: {
@@ -83,7 +83,7 @@ export default defineNuxtConfig({
     fonts: ['DM Sans']
   },
 
-  // css: ['/components/linotype/theme/style.css'],
+  css: ['/components/linotype/theme/style.css'],
 
   routeRules: {
     // '/**': {
@@ -109,7 +109,7 @@ export default defineNuxtConfig({
     // '/old-page2': { redirect: { to: '/new-page', statusCode: 302 } }
   },
 
-  telemetry: false,
+  telemetry: true,
   devtools: { enabled: true },
   typescript: { strict: false }
 })
