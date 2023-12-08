@@ -3,7 +3,7 @@
   "description": "Linotype website framework for Directus",
   "private": false,
   "icon": "extension",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "keywords": [
     "directus",
     "directus-extension",
