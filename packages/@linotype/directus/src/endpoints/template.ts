@@ -210,7 +210,16 @@ export default (router: any, { services }: any) => {
       
       res.send({
         status: "error", 
-        message: `Linotype Not Found`
+        message: `Template Not Found`,
+        request: {
+          env: env,
+          domain: domain,
+          scheme: scheme,
+          route: route,
+        },
+        response: {
+          error: error,
+        },
       })
     
     }

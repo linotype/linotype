@@ -123,7 +123,7 @@ export default (router: any, { services }: any) => {
       
       res.send({
         status: "error", 
-        message: `Linotype Not Found`,
+        message: `Page Not Found`,
         request: {
           env: env,
           domain: domain,

@@ -1,5 +1,5 @@
 import { useRuntimeConfig, useState, useRoute, useFetch, showError, onBeforeRouteLeave, useNuxtApp } from '#app'
-import { nextTick, ref, computed, defineAsyncComponent } from 'vue'
+import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
 /**
@@ -26,29 +26,6 @@ const useLinotype = function () {
   const refresh = useState('useLinotype.refresh', () => 0)
   const preview = useState('useLinotype.preview', () => true)
 
-
-  /**
-   * Load components
-   */
-  const load = (components) => {
-
-    Object.entries(components).forEach(([fileName]) => {
-
-      const regex = /\/block\/([^/]*)\/index\.vue$/;
-      const match = fileName.match(regex);
-      const componentName = match ? match[1] : null;
-      
-      if (componentName) {
-        app.vueApp.component(
-          `linotype-block-${componentName}`.split(/[-_]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(''), 
-          defineAsyncComponent(() => components[fileName]())
-        )
-      }
-    
-    })
-  
-  }
-  
   /**
    * Load Current Page Data
    *
@@ -110,7 +87,7 @@ const useLinotype = function () {
    */
   const loadBlock = (id) => {
     
-    return `linotype-block-${id}`.split(/[-_]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('')
+    return `linotype-block-${id.replace('_','-')}`
 
   }
 
@@ -159,7 +136,6 @@ const useLinotype = function () {
    */
   return {
     config,
-    load,
     initLinotype,
     loadLinotype,
     loadTemplate,

@@ -9,6 +9,7 @@
     "lint": "eslint --fix --quiet --ext \".ts,.vue\" --ignore-path .gitignore .",
     "analyze": "npx nuxt analyze",
     "build": "npx nuxt build",
+    "play": "npx nx build @linotype/nuxt && npx nx dev websites-frontend",
     "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx nuxt dev",
     "generate": "npx nuxt generate",
     "preview": "npx nuxt build && npx nuxt preview",

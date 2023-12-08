@@ -7,6 +7,7 @@
   "scripts": {
     "update": "npx taze major",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "play": "nx build @linotype/directus-extension-linotype && npx nx dev websites-backend",
     "dev": "npx directus start",
     "build": "npx directus bootstrap",
     "start": "npx directus start",

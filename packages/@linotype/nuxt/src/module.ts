@@ -1,4 +1,4 @@
-import { defineNuxtModule, addServerHandler, addPlugin, createResolver, addComponentsDir, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addServerHandler, addPlugin, createResolver, extendPages, addImportsDir } from '@nuxt/kit'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
 
@@ -37,14 +37,14 @@ export interface ModuleOptions {
 export default defineNuxtModule<ModuleOptions>({
   
   meta: {
-    name: 'linotype',
+    name: '@linotype/nuxt',
     configKey: 'linotype',
     compatibility: {
       nuxt: '^3.0.0',
       bridge: false
     }
   },
-  
+
   defaults: {
     env: process.env.LINOTYPE_ENV,
     debug: process.env.LINOTYPE_DEBUG,
@@ -67,13 +67,55 @@ export default defineNuxtModule<ModuleOptions>({
     //Composable loader
     addImportsDir(resolver.resolve('./runtime/composables'))
     
-    //Componments loader
-    addComponentsDir({ 
-      path: resolver.resolve('./runtime/components'), 
-      isAsync: true, 
-      global: true
+    //Components loader (use hook to override in default components dir)
+    nuxt.hook('components:dirs', (dirs) => {
+      
+      const { resolve } = createResolver(import.meta.url)
+
+      dirs.unshift({
+        path: resolve('./runtime/components')
+      })
+
+      dirs.unshift({
+        path: '~/linotype', 
+        prefix: 'linotype',
+        pattern: ['**/*.vue'], 
+        ignore: ['**/*.story.vue'],
+        isAsync: true,
+        global: true,
+        watch: true, 
+        extensions: ['vue'],
+        preload: true
+      })
+      
+      dirs.unshift({
+        path: '~/components/linotype', 
+        prefix: 'linotype',
+        pattern: ['**/*.vue'], 
+        ignore: ['**/*.story.vue'],
+        isAsync: true,
+        global: true,
+        watch: true, 
+        extensions: ['vue'],
+        preload: true
+      })
+      
     })
     
+    //add linotype router
+    extendPages((pages) => {
+      pages.unshift({
+        name: 'linotype-index',
+        path: '/',
+        file: resolver.resolve('./runtime/pages/index.vue')
+       })
+       pages.unshift({
+        name: 'linotype-slug',
+        path: '/:slug(.*)*',
+        file: resolver.resolve('./runtime/pages/index.vue')
+       })
+    })
+
     //endpoints for backend
     addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
     addServerHandler({ method: 'post', route: '/linotype/block/sync', handler: resolver.resolve('./runtime/server/routes/sync') })
