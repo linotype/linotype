@@ -1,4 +1,4 @@
-import { useRuntimeConfig, useState, useRoute, useFetch, showError, onBeforeRouteLeave, useNuxtApp } from '#app'
+import { useRuntimeConfig, useState, useRoute, useFetch, showError, onBeforeRouteLeave } from '#app'
 import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
