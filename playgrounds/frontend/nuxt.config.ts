@@ -41,9 +41,9 @@ export default defineNuxtConfig({
 
   //playground specials
   srcDir: 'src',
-  app: {
-    rootId: 'linotype',
-  },
+  // app: {
+  //   rootId: 'linotype',
+  // },
 
   experimental: {
     componentIslands: true

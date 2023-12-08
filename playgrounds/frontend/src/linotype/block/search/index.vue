@@ -13,7 +13,7 @@
 
 <script lang="ts" setup>
 import { useRoute } from '#app';
-import { Ref } from 'vue';
+import { ref } from 'vue';
 
 const props = defineProps<{
   blockId: number

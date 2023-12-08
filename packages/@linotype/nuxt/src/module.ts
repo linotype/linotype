@@ -110,7 +110,7 @@ export default defineNuxtModule<ModuleOptions>({
         file: resolver.resolve('./runtime/pages/index.vue')
        })
        pages.unshift({
-        name: 'linotype-slug',
+        name: 'linotype-fallback',
         path: '/:slug(.*)*',
         file: resolver.resolve('./runtime/pages/index.vue')
        })

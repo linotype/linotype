@@ -1,5 +1,6 @@
 <template>
   <div :id="`${props.blockType}-${props.blockId}`" :class="`block--${props.blockType}`" bg-gray-100 m-5 p-5>
+    <h1>Comments</h1>
       <div v-if="props.blockData.view == 'all'">
         <LinotypeBlockCommentsViewsStats/>
         <LinotypeBlockCommentsViewsList/>

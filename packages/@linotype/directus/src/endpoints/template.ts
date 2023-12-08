@@ -86,46 +86,6 @@ export default (router: any, { services }: any) => {
           limit: 1,
         })
         
-        //check if parent slug exist
-        if ( !page.length ) {
-
-          const findParentSlug = async (slug: string): Promise<[]> => {
-            const parentSlug = slug.split('/').slice(0, -1).join('/')
-            if ( !parentSlug ) return []
-            const parentPage = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
-              fields: [
-                '*',
-                'target.*',
-                
-                'target.header.id',
-                'target.header.collection',
-                'target.header.item.*.*.*.*.*.*.*.*',
-
-                'content.id',
-                'content.collection',
-                'content.item.*.*.*.*.*.*.*.*',
-
-                'target.footer.id',
-                'target.footer.collection',
-                'target.footer.item.*.*.*.*.*.*.*.*',
-              ],
-              filter: {
-                status: 'published',
-                slug: parentSlug,
-                target: { 
-                  id : { _eq: site.id }
-                }
-              },
-              limit: 1,
-            })
-            if ( parentPage.length ) return parentPage
-            return await findParentSlug(parentSlug)
-          }
-
-          page = await findParentSlug(siteRoute)
-        
-        }
-
         //check if page has content
         if (page[0]?.content) {
           

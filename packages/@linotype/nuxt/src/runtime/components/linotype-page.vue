@@ -1,5 +1,5 @@
 <template>
-  <div class="linotype-page">
+  <div id="__linotype">
     <LinotypeLoading />
     <LinotypeHeader />
     <NuxtPage />

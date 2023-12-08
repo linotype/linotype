@@ -32,12 +32,27 @@ const useLinotype = function () {
    * @params none
    * @returns none
    */
-  const loadTemplate = async (path) => {
-
+  const loadTemplate = async (route) => {
+   
     initialized.value = true
     
     loading.value = true
     error.value = false
+
+    let path = '/'
+
+    //check path type
+    if ( route?.matched[0]?.path == "/" || route?.matched[0]?.path == "/:slug(.*)*" ) {
+      
+      //if simple, return route
+      path = getSanitizeRoute(route.path)
+
+    } else {
+      
+      // if Dynamics, return the matched path (or simple on error)
+      path = route?.matched[0]?.path || getSanitizeRoute(route.path)
+    
+    }
     
     const { data: dataAPI, error: errorAPI } = await useFetch(`${config.public.linotype.backend_url}/linotype/template`,{
       method: 'GET',
@@ -97,7 +112,7 @@ const useLinotype = function () {
   const initLinotype = async () => {
 
     onBeforeRouteLeave( async (to, from, next) => {
-      await loadTemplate( getSanitizeRoute(to.path) )
+      await loadTemplate(to)
       next()
     })
 
@@ -109,7 +124,7 @@ const useLinotype = function () {
   const loadLinotype = async () => {
     
     if( initialized.value == false ) {
-      await loadTemplate( getSanitizeRoute(route.path) )
+      await loadTemplate(route)
     }
 
   }
