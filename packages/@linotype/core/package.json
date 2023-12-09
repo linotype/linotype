@@ -18,7 +18,7 @@
 		"release": "npm publish --access public"
 	},
 	"devDependencies": {
-		"typescript": "^5.3.2",
+		"typescript": "^5.3.3",
 		"yaml": "^2.3.4"
 	}
 }

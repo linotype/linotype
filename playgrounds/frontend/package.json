@@ -17,18 +17,18 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "@histoire/plugin-nuxt": "^0.17.5",
-    "@histoire/plugin-vue": "^0.17.5",
+    "@histoire/plugin-nuxt": "^0.17.7",
+    "@histoire/plugin-vue": "^0.17.6",
     "@linotype/nuxt": "*",
-    "@nuxt/devtools": "^1.0.3",
+    "@nuxt/devtools": "^1.0.5",
     "@unocss/nuxt": "^0.57.7",
-    "@vueuse/nuxt": "^10.6.1",
-    "histoire": "^0.17.5",
+    "@vueuse/nuxt": "^10.7.0",
+    "histoire": "^0.17.6",
     "nuxt": "^3.8.2",
-    "nuxt-icon": "^0.6.6",
+    "nuxt-icon": "^0.6.7",
     "nuxt-vitest": "^0.11.5",
-    "vite": "^5.0.2",
-    "vue": "^3.3.8",
+    "vite": "^5.0.7",
+    "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   }
 }
