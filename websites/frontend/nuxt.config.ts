@@ -83,7 +83,7 @@ export default defineNuxtConfig({
     fonts: ['DM Sans']
   },
 
-  css: ['/components/linotype/theme/style.css'],
+  css: [],
 
   routeRules: {
     // '/**': {

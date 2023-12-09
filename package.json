@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
+  "scripts": {
+    "cleanup": "rm -rf node_modules **/node_modules yarn.lock"
+  },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "kill-port": "^2.0.1",
