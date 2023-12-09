@@ -87,7 +87,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/**': {
-      swr: 60*60*24,
+      // swr: 60*60*24,
       headers: { 
         'cache-control': `max-age=${60*60*24}`,
         'accept-encoding':'gzip, compress, br'
