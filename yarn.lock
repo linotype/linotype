@@ -2604,9 +2604,9 @@
   integrity sha512-trnsAYxU3xnS1gPHPyU961coFyLkh4gAD/0zQ5mymY4yOZ+CYvsPqUbOFSw0aDM4y0tV7tiFxL/1XfXPNC6IPg==
 
 "@iconify-json/carbon@^1.1.24":
-  version "1.1.24"
-  resolved "https://registry.yarnpkg.com/@iconify-json/carbon/-/carbon-1.1.24.tgz#a473f073a16f3bfd91c1212403db8df40cc5ea68"
-  integrity sha512-Sx4vj3HfQj3yP6a4QzWc1BymDO5uTOGTHeb5it/xaMa196C6+RegNUv1F+Y1h8AJ2Sv93GMI+PyMH0HyqTHEmg==
+  version "1.1.25"
+  resolved "https://registry.yarnpkg.com/@iconify-json/carbon/-/carbon-1.1.25.tgz#edcf7c613457534fd2e880ac9dc34f7e79c38b85"
+  integrity sha512-0fKlVoqAkVIpnwYAp36Q8fok2/VVnenremJJwJJsfRecAPhPiRUp9V98aQKkinvN9s3nqKXvKXrypOvqAlS00w==
   dependencies:
     "@iconify/types" "*"
 
@@ -7416,9 +7416,9 @@ css-declaration-sorter@^6.3.1:
   integrity sha512-rtdthzxKuyq6IzqX6jEcIzQF/YqccluefyCYheovBOLhFT/drQA9zj/UbRAa9J7C0o6EG6u3E6g+vKkay7/k3g==
 
 css-inline@^0.11.0:
-  version "0.11.0"
-  resolved "https://registry.yarnpkg.com/css-inline/-/css-inline-0.11.0.tgz#08917264e81a33335827696c9c1a2fc0db2ed1ff"
-  integrity sha512-hZ8sTouIicEUhVqKEeeire6kePeCDoIBvWTSPbHc7dK4Za1odVmQ6gMgFcH701gkKGP6Uic3zcQACEqSP3sJig==
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/css-inline/-/css-inline-0.11.1.tgz#8056298d916dc353e0a08aefc232a5e59cf695a1"
+  integrity sha512-Cc168yfivbDotgW16gklyjSEMu9B8X2rB+RlAvc+YJ+e4PVNhMb1ec3Yh2xCG4VUJvgnyegyXRaFs+eEwZbRpw==
 
 css-select@^4.1.3:
   version "4.3.0"

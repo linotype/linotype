@@ -19,7 +19,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@linotype/directus-extension-linotype": "^1.2.5",
+    "@linotype/directus-extension-linotype": "*",
     "directus": "^10.8.2",
     "directus-extension-schema-management-module": "^1.5.0"
   }
