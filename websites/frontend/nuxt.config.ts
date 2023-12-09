@@ -90,7 +90,8 @@ export default defineNuxtConfig({
       // swr: 60*60*24,
       headers: { 
         'cache-control': `max-age=${60*60*24}`,
-        'accept-encoding':'gzip, br'
+        'accept-encoding':'gzip, br',
+        'content-encoding': 'gzip'
       }
     },
     '/linotype/**': {
