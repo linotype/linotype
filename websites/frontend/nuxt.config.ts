@@ -84,12 +84,14 @@ export default defineNuxtConfig({
   css: [],
 
   routeRules: {
-    // '/**': {
-    //   swr: 60*60*24,
-    //   cache: {
-    //     base: 'linotype_cache',
-    //   },
-    // },
+    '/**': {
+      swr: 60*60*24,
+      cache: {
+        name: 'linotype_cache',
+        base: 'linotype_cache',
+        group: 'linotype',
+      },
+    },
     '/linotype/**': {
       cache: false,
       cors: true,
