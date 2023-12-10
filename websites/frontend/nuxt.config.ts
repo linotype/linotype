@@ -54,7 +54,6 @@ export default defineNuxtConfig({
   ],
   
   modules: [
-    '@nuxt/content',
     '@nuxt/ui',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',

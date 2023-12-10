@@ -19,12 +19,9 @@
     "@iconify-json/heroicons": "^1.1.15",
     "@iconify-json/simple-icons": "^1.1.82",
     "@linotype/nuxt": "*",
-    "@nuxt/content": "^2.9.0",
     "@nuxt/ui-pro": "^0.5.0",
     "@nuxtjs/fontaine": "^0.4.1",
     "@nuxtjs/google-fonts": "^3.1.1",
-    "@nuxtjs/mdc": "^0.2.8",
-    "gsap": "^3.12.3",
     "nuxt": "^3.8.2",
     "nuxt-og-image": "^2.2.4",
     "h3-compression":"^0.3.2"
