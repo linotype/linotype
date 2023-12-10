@@ -26,7 +26,8 @@
     "@nuxtjs/mdc": "^0.2.8",
     "gsap": "^3.12.3",
     "nuxt": "^3.8.2",
-    "nuxt-og-image": "^2.2.4"
+    "nuxt-og-image": "^2.2.4",
+    "h3-compression":"^0.3.2"
   },
   "devDependencies": {
     "@nuxt/devtools": "^1.0.5",

@@ -86,20 +86,12 @@ export default defineNuxtConfig({
   css: [],
 
   routeRules: {
-    '/': {
-      // swr: 60*60*24,
-      headers: { 
-        'cache-control': `max-age=${60*60*24}`,
-        'accept-encoding':'gzip, br',
-        // 'content-encoding': 'gzip'
-      }
-    },
     '/**': {
+      // static: true
       // swr: 60*60*24,
       headers: { 
         'cache-control': `max-age=${60*60*24}`,
         'accept-encoding':'gzip, br',
-        // 'content-encoding': 'gzip'
       }
     },
     '/linotype/**': {
@@ -108,15 +100,7 @@ export default defineNuxtConfig({
         'Acess-Control-Allow-Origin': '*', 
         'Access-Control-Allow-Credentials': 'true',
       }
-    },
-    // '/**': { swr: 60*60 }, //60 minutes
-    // '/**': { headers: { 'cache-control': `max-age=${60*60*24*365}` } },
-    // '/blog/**': { swr: true },
-    // '/articles/**': { static: true },
-    // '/admin/**': { ssr: false },
-    // '/api/v1/**': { cors: true },
-    // '/old-page': { redirect: '/new-page' },
-    // '/old-page2': { redirect: { to: '/new-page', statusCode: 302 } }
+    }
   },
 
   telemetry: true,
