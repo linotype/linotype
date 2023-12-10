@@ -25,14 +25,9 @@ export default defineNuxtConfig({
       brotli: true 
     },
     storage: {
-      linotype_cache: {
-        driver: 'fs',
-        base: './.linotype/cache'
-      },
-      // redis: {
-      //   driver: "redis",
-      //   url: process.env.REDIS,
-      // },
+      linotype_cache: process.env.REDIS 
+      ? { driver: 'redis', url: process.env.REDIS }
+      : { driver: 'fs', base: './.linotype/cache' },
     },
   },
 
