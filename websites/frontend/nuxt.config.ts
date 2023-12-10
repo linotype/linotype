@@ -1,9 +1,9 @@
 export default defineNuxtConfig({
   app: {
     head: {
-      // meta: [
-      //   { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-      // ],
+      meta: [
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+      ],
       // script: [
       //   { src: 'https://stats.dinorose.fr/script.js', async: true, 'data-website-id': '76bbda40-7f44-40b6-923b-9b2ddede8c3a' }
       // ],
@@ -24,12 +24,16 @@ export default defineNuxtConfig({
       gzip: true, 
       brotli: true 
     },
-    // storage: {
-    //   redis: {
-    //     driver: "redis",
-    //     url: "redis://localhost:6379",
-    //   },
-    // },
+    storage: {
+      linotype_cache: {
+        driver: 'fs',
+        base: './.linotype/cache'
+      },
+      // redis: {
+      //   driver: "redis",
+      //   url: process.env.REDIS,
+      // },
+    },
   },
 
   // ssr: true,
@@ -87,14 +91,13 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/**': {
-      // static: true
-      // swr: 60*60*24,
-      headers: { 
-        'cache-control': `max-age=${60*60*24}`,
-        'accept-encoding':'gzip, br',
-      }
+      swr: 60*60*24,
+      cache: {
+        base: 'linotype_cache',
+      },
     },
     '/linotype/**': {
+      cache: false,
       cors: true,
       headers: { 
         'Acess-Control-Allow-Origin': '*', 
