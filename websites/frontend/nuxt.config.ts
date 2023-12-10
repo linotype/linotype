@@ -84,13 +84,15 @@ export default defineNuxtConfig({
   css: [],
 
   routeRules: {
-    '/**': {
+    '/**': process.env.LINOTYPE_CACHE == 'true' ? {
       swr: 60*60*24,
       cache: {
         name: 'linotype_cache',
         base: 'linotype_cache',
         group: 'linotype',
       },
+    } : {
+      cache: false,
     },
     '/linotype/**': {
       cache: false,
