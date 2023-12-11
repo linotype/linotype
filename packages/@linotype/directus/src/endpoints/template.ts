@@ -42,7 +42,7 @@ export default (router: any, { services }: any) => {
       
       //filter sites with current path and get first
       site = sites?.filter((item: any) => {
-        if( item?.path && item.path !== '/' ) {
+        if( item?.path && item?.path && item.path !== '/' ) {
           return route.startsWith(item.path)
         } else {
           return true
@@ -50,9 +50,11 @@ export default (router: any, { services }: any) => {
       }).reverse()[0] || null
 
       //get site route
-      if ( !site.path ) site.path = '/'
-      let siteRoute = site.path ? route.slice(site.path.length) : route
+      console.log('site:before',site)
+      if ( ! site?.path ) site.path = '/'
+      let siteRoute = site?.path ? route.slice(site.path.length) : route
       siteRoute = siteRoute ? '/' + siteRoute.replace(/^\//, '') : '/'
+      console.log('site:after',site)
 
       //check if site exist
       if ( site?.status == 'online' ) {
@@ -93,7 +95,7 @@ export default (router: any, { services }: any) => {
             status: page[0]?.target?.status,
             name: page[0]?.target?.name || 'Unnamed',
             domain: page[0]?.target["domain_" + env],
-            url: scheme + '://' + page[0]?.target["domain_" + env] + (site.path !== '' && site.path),
+            url: scheme + '://' + page[0]?.target["domain_" + env] + ((site.path && site.path !== '') && site.path),
             favicon: page[0]?.target?.favicon || '',
             locale: page[0]?.target?.locale || 'en_EN',
             seo: {
@@ -112,7 +114,7 @@ export default (router: any, { services }: any) => {
             status: page[0]?.status,
             domain: page[0]?.target["domain_" + env],
             slug: page[0]?.slug,
-            url: scheme + '://' + page[0]?.target["domain_" + env] + (site.path !== '' && site.path) + page[0]?.slug,
+            url: scheme + '://' + page[0]?.target["domain_" + env] + ((site.path && site.path !== '') && site.path) + page[0]?.slug,
             seo: {
               title: page[0]?.seo_title,
               description: page[0]?.seo_description,
