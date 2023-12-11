@@ -1,4 +1,4 @@
-import { useRuntimeConfig, useState, useRoute, useFetch, showError } from '#app'
+import { useNuxtApp, useRuntimeConfig, useState, useRoute, useFetch, showError } from '#app'
 import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
@@ -14,8 +14,9 @@ import useDomain from "./useDomain"
  */
 const useLinotype = function () {
   
+  const nuxtApp = useNuxtApp()
   const config = useRuntimeConfig()
-  const { scheme, domain } = useDomain()
+  // const { scheme, domain } = useDomain()
   const route = useRoute()
 
   const initialized = useState('useLinotype.initialized', () => false)
@@ -52,11 +53,23 @@ const useLinotype = function () {
       path = route?.matched[0]?.path || getSanitizeRoute(route.path)
     
     }
-    
+
+    let scheme = ''
+    let domain = ''
+    if (process.server) {
+      scheme = ( nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-proto'] || nuxtApp.ssrContext?.event?.node?.req?.connection?.encrypted ? 'https' : 'http' ).split(/\s*,\s*/)[0]
+      domain = nuxtApp.ssrContext?.event?.node?.req?.headers.host?.split(':')[0] || 'localhost'
+    } else {
+      scheme = location.protocol === 'https:' ? 'https' : 'http'
+      domain = window?.document?.location?.host?.split(':')[0] || 'localhost'
+    }
+
+    console.log('nuxtApp',nuxtApp)
+
     const params = {
       env: config.public.linotype.env,
-      scheme: scheme.value,
-      domain: domain.value,
+      scheme: scheme,
+      domain: domain,
       route: path
     }
 
