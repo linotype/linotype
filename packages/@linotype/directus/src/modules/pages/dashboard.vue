@@ -35,7 +35,7 @@ import InstallerComponent from './../components/installer.vue'
 import MenuComponent from '../components/menu.vue'
 import LogsComponent from '../components/logs.vue'
 
-const { init, isActive, loadLinotype, blocksList, collectionsList } = useLinotype()
+const { init, isActive, blocksList, collectionsList } = useLinotype()
 const { isLinotypeInstalled, linotypeStore, blocksStore, allowedBlocksIds, refresh } = useUtils()
 
 init()

@@ -9,7 +9,7 @@ export default defineNuxtPlugin( async () => {
   const nuxtApp = useNuxtApp()
   const router = useRouter()
   const { scheme, domain } = useDomain()
-  const { initLinotype, loadLinotype } = useLinotype()
+  const { initLinotype } = useLinotype()
 
   //define current domain
   if (process.server) {
@@ -22,9 +22,6 @@ export default defineNuxtPlugin( async () => {
 
   //init linotype
   nuxtApp.hook('app:beforeMount', () => initLinotype() )
-
-  //load linotype
-  nuxtApp.hook('app:created', async () => await loadLinotype() )
 
   //load custom route
   const { data: linotypePagesRoutes, error: errorAPI } = await useFetch(`${config.public.linotype.backend_url}/items/linotype_pages`,{

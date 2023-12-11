@@ -1,4 +1,4 @@
-import { useRuntimeConfig, useState, useRoute, useFetch, showError, onBeforeRouteLeave } from '#app'
+import { useRuntimeConfig, useState, useRoute, useFetch, showError, onBeforeRouteEnter } from '#app'
 import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
@@ -117,23 +117,13 @@ const useLinotype = function () {
    */
   const initLinotype = async () => {
 
-    onBeforeRouteLeave( async (to, from, next) => {
+    onBeforeRouteEnter( async (to, from, next) => {
       await loadTemplate(to)
       next()
     })
 
   }
 
-  /**
-   * Load linotype
-   */
-  const loadLinotype = async () => {
-    
-    if( initialized.value == false ) {
-      await loadTemplate(route)
-    }
-
-  }
 
 
   /**
@@ -158,7 +148,6 @@ const useLinotype = function () {
   return {
     config,
     initLinotype,
-    loadLinotype,
     loadTemplate,
     loadBlock,
     website: template.value.website,
