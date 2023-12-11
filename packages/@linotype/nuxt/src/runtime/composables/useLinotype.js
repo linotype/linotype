@@ -64,7 +64,7 @@ const useLinotype = function () {
       domain = window?.document?.location?.host?.split(':')[0] || 'localhost'
     }
 
-    console.log('nuxtApp',nuxtApp)
+    console.log('nuxtApp',nuxtApp.ssrContext?.event?.node?.req)
 
     const params = {
       env: config.public.linotype.env,
