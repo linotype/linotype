@@ -1,4 +1,5 @@
-import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig, useFetch } from '#app'
+import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig, useFetch, addRouteMiddleware } from '#app'
+
 import useDomain from './composables/useDomain'
 import useLinotype from './composables/useLinotype'
 import PageIndex from './pages/index.vue'
@@ -9,7 +10,7 @@ export default defineNuxtPlugin( async () => {
   const nuxtApp = useNuxtApp()
   const router = useRouter()
   const { scheme, domain } = useDomain()
-  const { initLinotype } = useLinotype()
+  const { loadTemplate } = useLinotype()
 
   //define current domain
   if (process.server) {
@@ -20,8 +21,12 @@ export default defineNuxtPlugin( async () => {
     domain.value = window?.document?.location?.host?.split(':')[0] || 'localhost'
   }
 
-  //init linotype
-  nuxtApp.hook('app:beforeMount', () => initLinotype() )
+  //load linotype template
+  addRouteMiddleware('linotype-middleware', async (to, from) => {
+      await loadTemplate(to)
+    },
+    { global: true }
+  )
 
   //load custom route
   const { data: linotypePagesRoutes, error: errorAPI } = await useFetch(`${config.public.linotype.backend_url}/items/linotype_pages`,{

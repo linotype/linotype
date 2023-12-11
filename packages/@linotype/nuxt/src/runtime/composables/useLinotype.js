@@ -1,4 +1,4 @@
-import { useRuntimeConfig, useState, useRoute, useFetch, showError, onBeforeRouteEnter } from '#app'
+import { useRuntimeConfig, useState, useRoute, useFetch, showError } from '#app'
 import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
@@ -116,11 +116,6 @@ const useLinotype = function () {
    * Init linotype
    */
   const initLinotype = async () => {
-
-    onBeforeRouteEnter( async (to, from, next) => {
-      await loadTemplate(to)
-      next()
-    })
 
   }
 
