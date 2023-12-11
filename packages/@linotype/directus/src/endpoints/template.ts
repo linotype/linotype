@@ -11,6 +11,13 @@ export default (router: any, { services }: any) => {
     const scheme = req?.query?.scheme || 'https'
     const route = req?.query?.route || ''
     
+    console.log('params',{
+      env: env,
+      domain: domain,
+      scheme: scheme,
+      route: route
+    })
+
     try {
 
       let sites = null
