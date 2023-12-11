@@ -18,7 +18,7 @@ export default (router: any, { services }: any) => {
       route: route
     })
 
-    try {
+    // try {
 
       let sites = null
       let site = null
@@ -35,7 +35,7 @@ export default (router: any, { services }: any) => {
         fields: [
           'id',
           'status',
-          'path',
+          // 'path',
           'domain_local',
           'domain_staging',
           'domain_preproduction',
@@ -58,10 +58,12 @@ export default (router: any, { services }: any) => {
       //   }
       // }).reverse()[0] || null
 
-      site = sites[0]
+      
 
       //check if site exist
-      if ( site?.status == 'online' ) {
+      if ( sites[0] && sites[0]?.status == 'online' ) {
+
+        site = sites[0]
 
         //get site route
         // console.log('site:before',site)
@@ -168,35 +170,46 @@ export default (router: any, { services }: any) => {
 
         }
 
+        res.send({
+          website: siteData,
+          page: pageData,
+          headers: headersData,
+          contents: contentsData,
+          footers: footersData,
+        })
+
+      } else{
+
+        console.log('linotype:directus:endpoints:template:error', 'no data founded')
+
+        res.send({
+          status: 'error', 
+          message: 'Template Not Found',
+        })
+
       }
 
-      res.send({
-        website: siteData,
-        page: pageData,
-        headers: headersData,
-        contents: contentsData,
-        footers: footersData,
-      })
+      
 
-    } catch (error) {
+    // } catch (error) {
       
-      console.log('linotype:error', error)
+    //   
       
-      res.send({
-        status: "error", 
-        message: `Template Not Found`,
-        request: {
-          env: env,
-          domain: domain,
-          scheme: scheme,
-          route: route,
-        },
-        response: {
-          error: error,
-        },
-      })
+    //   res.send({
+    //     status: "error", 
+    //     message: `Template Not Found`,
+    //     request: {
+    //       env: env,
+    //       domain: domain,
+    //       scheme: scheme,
+    //       route: route,
+    //     },
+    //     response: {
+    //       error: error,
+    //     },
+    //   })
     
-    }
+    // }
 
   })
 

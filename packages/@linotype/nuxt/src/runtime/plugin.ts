@@ -51,7 +51,7 @@ export default defineNuxtPlugin( async () => {
     }
   })
   if ( errorAPI.value ) {
-    console.log('[linotype:error]', errorAPI)
+    console.log('[linotype:nuxt:plugin:error]', errorAPI)
   } else if ( linotypePagesRoutes.value?.data?.length ) {
     for( const item of linotypePagesRoutes.value.data ) {
       router.addRoute({
@@ -66,7 +66,7 @@ export default defineNuxtPlugin( async () => {
   if ( config.public.linotype.debug == 'true' ) {
     console.log('[linotype:debug] is active', config.public.linotype)
     nuxtApp.hook('vue:error', (error, instance, info) => {
-      console.log('[linotype:error]', error, instance, info)
+      console.log('[linotype:nuxt:plugin:error]', error, instance, info)
     })
   }
 

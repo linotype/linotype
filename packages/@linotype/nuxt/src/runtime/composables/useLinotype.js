@@ -68,7 +68,7 @@ const useLinotype = function () {
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       loading.value = false
       error.value = errorAPI.value
-      console.log('linotype:error', dataAPI.value?.message || errorAPI.value?.message)
+      console.log('linotype:nuxt:useLinotype:error', dataAPI.value?.message || errorAPI.value?.message)
       throw showError({ 
         statusCode: 404, 
         fatal: true,
@@ -78,7 +78,7 @@ const useLinotype = function () {
     
     if ( dataAPI.value.website == null ) {
       loading.value = false
-      console.log('linotype:error', 'no data founded')
+      console.log('linotype:nuxt:useLinotype:error', 'no data founded')
       throw showError({
         statusCode: 404,
         fatal: false,
