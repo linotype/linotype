@@ -53,14 +53,16 @@ const useLinotype = function () {
     
     }
     
+    const params = {
+      env: config.public.linotype.env,
+      scheme: scheme.value,
+      domain: domain.value,
+      route: path
+    }
+
     const { data: dataAPI, error: errorAPI } = await useFetch(`${config.public.linotype.backend_url}/linotype/template`,{
       method: 'GET',
-      params: {
-        env: config.public.linotype.env,
-        scheme: scheme.value,
-        domain: domain.value,
-        route: path
-      }
+      params: params
     })
 
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
@@ -84,6 +86,11 @@ const useLinotype = function () {
       })
     }
     
+    if ( config.public.linotype.debug == 'true' ) {
+      console.log('[linotype:debug] /linotype/template : request', params )
+      console.log('[linotype:debug] /linotype/template : response', dataAPI.value )
+    }
+
     template.value = dataAPI.value
 
     nextTick(() => {

@@ -42,8 +42,7 @@ export default (router: any, { services }: any) => {
       
       //filter sites with current path and get first
       site = sites?.filter((item: any) => {
-
-        if( item.path && item.path !== '/' ) {
+        if( item?.path && item.path !== '/' ) {
           return route.startsWith(item.path)
         } else {
           return true
