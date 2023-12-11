@@ -39,7 +39,7 @@ export default (router: any, { services }: any) => {
           ["domain_" + env] : { _eq: domain },
         }
       })
-      
+      console.log('sites',sites)
       //filter sites with current path and get first
       site = sites?.filter((item: any) => {
         if( item?.path && item?.path && item.path !== '/' ) {
