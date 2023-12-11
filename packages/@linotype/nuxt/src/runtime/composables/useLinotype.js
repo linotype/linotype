@@ -16,7 +16,7 @@ const useLinotype = function () {
   
   const nuxtApp = useNuxtApp()
   const config = useRuntimeConfig()
-  // const { scheme, domain } = useDomain()
+  const { scheme, domain } = useDomain()
   const route = useRoute()
 
   const initialized = useState('useLinotype.initialized', () => false)
@@ -53,19 +53,11 @@ const useLinotype = function () {
       path = route?.matched[0]?.path || getSanitizeRoute(route.path)
     
     }
-    const headers = useRequestHeaders()
-    const url = useRequestURL()
-
-    if(process.server) {
-      console.log('server: url', url)
-      console.log('server: headers', headers)
-    }
-    
 
     const params = {
       env: config.public.linotype.env,
-      scheme: url.protocol,
-      domain: url.hostname,
+      scheme: scheme.value,
+      domain: domain.value,
       route: path
     }
 
@@ -74,10 +66,10 @@ const useLinotype = function () {
       params: params
     })
 
-    if ( config.public.linotype.debug == 'true' ) {
-      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : request', params )
-      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value )
-    }
+    // if ( config.public.linotype.debug == 'true' ) {
+    //   console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : request', params )
+    //   console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value )
+    // }
 
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       loading.value = false

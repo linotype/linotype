@@ -1,4 +1,4 @@
 
 export default defineNitroPlugin((nitroApp) => {
-  console.log('[nitro]', nitroApp)
+  // console.log('[nitro.router]', nitroApp)
 })
