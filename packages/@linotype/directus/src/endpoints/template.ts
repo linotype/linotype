@@ -9,7 +9,7 @@ export default (router: any, { services }: any) => {
     const env = req?.query?.env || 'local'
     const domain = req?.query?.domain || 'localhost'
     const scheme = req?.query?.scheme || 'https'
-    const route = req?.query?.route || ''
+    const route = req?.query?.route || '/'
     
     console.log('params',{
       env: env,
@@ -56,16 +56,16 @@ export default (router: any, { services }: any) => {
         }
       }).reverse()[0] || null
 
-      //get site route
-      console.log('site:before',site)
-      if ( ! site?.path ) site.path = '/'
-      let siteRoute = site?.path ? route.slice(site.path.length) : route
-      siteRoute = siteRoute ? '/' + siteRoute.replace(/^\//, '') : '/'
-      console.log('site:after',site)
-
       //check if site exist
       if ( site?.status == 'online' ) {
 
+        //get site route
+        console.log('site:before',site)
+        if ( ! site?.path ) site.path = '/'
+        let siteRoute = site?.path ? route.slice(site.path.length) : route
+        siteRoute = siteRoute ? '/' + siteRoute.replace(/^\//, '') : '/'
+        console.log('site:after',site)
+        
         //get page from site and slug
         page = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
           fields: [
