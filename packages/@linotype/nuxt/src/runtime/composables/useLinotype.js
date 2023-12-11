@@ -65,6 +65,11 @@ const useLinotype = function () {
       params: params
     })
 
+    if ( config.public.linotype.debug == 'true' ) {
+      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : request', params )
+      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value )
+    }
+
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       loading.value = false
       error.value = errorAPI.value
@@ -86,11 +91,6 @@ const useLinotype = function () {
       })
     }
     
-    if ( config.public.linotype.debug == 'true' ) {
-      console.log('[linotype:debug] /linotype/template : request', params )
-      console.log('[linotype:debug] /linotype/template : response', dataAPI.value )
-    }
-
     template.value = dataAPI.value
 
     nextTick(() => {

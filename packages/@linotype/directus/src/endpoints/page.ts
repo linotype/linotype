@@ -119,7 +119,7 @@ export default (router: any, { services }: any) => {
 
     } catch (error) {
       
-      console.log('linotype:directus:endpoints:page:error', error)
+      console.log('[linotype:directus:endpoints:page:error]', error)
       
       res.send({
         status: "error", 

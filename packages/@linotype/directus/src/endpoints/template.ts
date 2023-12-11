@@ -180,7 +180,7 @@ export default (router: any, { services }: any) => {
 
       } else{
 
-        console.log('linotype:directus:endpoints:template:error', 'no data founded')
+        console.log('[linotype:directus:endpoints:template:error]', 'no data founded')
 
         res.send({
           status: 'error', 
