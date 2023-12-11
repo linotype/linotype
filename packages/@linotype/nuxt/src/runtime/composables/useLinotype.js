@@ -53,9 +53,10 @@ const useLinotype = function () {
       path = route?.matched[0]?.path || getSanitizeRoute(route.path)
     
     }
-
+    const headers = useRequestHeaders()
     const url = useRequestURL()
     console.log('nuxtApp: url', url)
+    console.log('nuxtApp: headers', headers)
 
     
 
