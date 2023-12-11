@@ -55,9 +55,11 @@ const useLinotype = function () {
     }
     const headers = useRequestHeaders()
     const url = useRequestURL()
-    console.log('nuxtApp: url', url)
-    console.log('nuxtApp: headers', headers)
 
+    if(process.server) {
+      console.log('server: url', url)
+      console.log('server: headers', headers)
+    }
     
 
     const params = {

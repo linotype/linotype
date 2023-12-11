@@ -6,9 +6,9 @@ export default (router: any, { services }: any) => {
 
   router.get('/page', async (req: any, res: any) => {
 
-    const env = req?.query?.env || 'local'
-    const domain = req?.query?.domain || 'localhost'
-    const scheme = req?.query?.scheme || 'https'
+    const env = req?.query?.env || ''
+    const domain = req?.query?.domain || ''
+    const scheme = req?.query?.scheme || ''
     const route = req?.query?.route == '/' ? '' : req?.query?.route  || ''
     
     
