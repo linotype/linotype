@@ -12,8 +12,21 @@ export default defineNuxtPlugin( async () => {
   const { loadTemplate } = useLinotype()
   const url = useRequestURL()
 
+  console.log('hoooost1',{
+    host: nuxtApp?.ssrContext?.req?.headers?.host,
+    host2: nuxtApp?.ssrContext?.event?.node?.req?.headers?.host,
+    url: url
+  })
+
   //load linotype template
   addRouteMiddleware('linotype-middleware', async (to, from) => {
+    const url = useRequestURL()
+    console.log('hoooost2',{
+      host: nuxtApp?.ssrContext?.req?.headers?.host,
+      host2: nuxtApp?.ssrContext?.event?.node?.req?.headers?.host,
+      url: url
+    })
+
       await loadTemplate(to)
     },
     { global: true }
