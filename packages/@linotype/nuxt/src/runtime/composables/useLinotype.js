@@ -54,25 +54,15 @@ const useLinotype = function () {
     
     }
 
-    let scheme = ''
-    let domain = ''
-    if (process.server) {
-      scheme = ( nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-proto'] || nuxtApp.ssrContext?.event?.node?.req?.connection?.encrypted ? 'https' : 'http' ).split(/\s*,\s*/)[0]
-      domain = nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-host'] || nuxtApp.ssrContext?.event?.node?.req?.headers.host?.split(':')[0] || 'localhost'
-      console.log('nuxtApp: x-forwarded-host', nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-host'])
-      console.log('nuxtApp: headers.host', nuxtApp.ssrContext?.event?.node?.req?.headers.host?.split(':')[0])
-      console.log('nuxtApp: headers', nuxtApp.ssrContext?.event?.node?.req?.headers)
-    } else {
-      scheme = location.protocol === 'https:' ? 'https' : 'http'
-      domain = window?.document?.location?.host?.split(':')[0] || 'localhost'
-    }
+    const url = useRequestURL()
+    console.log('nuxtApp: url', url)
 
     
 
     const params = {
       env: config.public.linotype.env,
-      scheme: scheme,
-      domain: domain,
+      scheme: url.protocol,
+      domain: url.hostname,
       route: path
     }
 
