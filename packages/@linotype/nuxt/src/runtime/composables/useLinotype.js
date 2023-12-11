@@ -61,6 +61,7 @@ const useLinotype = function () {
       domain = nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-host'] || nuxtApp.ssrContext?.event?.node?.req?.headers.host?.split(':')[0] || 'localhost'
       console.log('nuxtApp: x-forwarded-host', nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-host'])
       console.log('nuxtApp: headers.host', nuxtApp.ssrContext?.event?.node?.req?.headers.host?.split(':')[0])
+      console.log('nuxtApp: headers', nuxtApp.ssrContext?.event?.node?.req?.headers)
     } else {
       scheme = location.protocol === 'https:' ? 'https' : 'http'
       domain = window?.document?.location?.host?.split(':')[0] || 'localhost'
