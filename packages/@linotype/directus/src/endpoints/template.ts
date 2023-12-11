@@ -44,27 +44,33 @@ export default (router: any, { services }: any) => {
         filter: {
           status: 'online',
           ["domain_" + env] : { _eq: domain },
-        }
+        },
+        limit: 1,
       })
       console.log('sites',sites)
+      
       //filter sites with current path and get first
-      site = sites?.filter((item: any) => {
-        if( item?.path && item?.path && item.path !== '/' ) {
-          return route.startsWith(item.path)
-        } else {
-          return true
-        }
-      }).reverse()[0] || null
+      // site = sites?.filter((item: any) => {
+      //   if( item?.path && item.path && item.path !== '/' ) {
+      //     return route.startsWith(item.path)
+      //   } else {
+      //     return true
+      //   }
+      // }).reverse()[0] || null
+
+      site = sites[0]
 
       //check if site exist
       if ( site?.status == 'online' ) {
 
         //get site route
-        console.log('site:before',site)
-        if ( ! site?.path ) site.path = '/'
-        let siteRoute = site?.path ? route.slice(site.path.length) : route
-        siteRoute = siteRoute ? '/' + siteRoute.replace(/^\//, '') : '/'
-        console.log('site:after',site)
+        // console.log('site:before',site)
+        // if ( ! site?.path ) site.path = '/'
+        // let siteRoute = site?.path ? route.slice(site.path.length) : route
+        // siteRoute = siteRoute ? '/' + siteRoute.replace(/^\//, '') : '/'
+        // console.log('site:after',site)
+
+        let siteRoute = route
         
         //get page from site and slug
         page = await new ItemsService('linotype_pages', { schema: req.schema, accountability: req.accountability }).readByQuery({
@@ -102,7 +108,7 @@ export default (router: any, { services }: any) => {
             status: page[0]?.target?.status,
             name: page[0]?.target?.name || 'Unnamed',
             domain: page[0]?.target["domain_" + env],
-            url: scheme + '://' + page[0]?.target["domain_" + env] + ((site.path && site.path !== '') && site.path),
+            url: scheme + '://' + page[0]?.target["domain_" + env],
             favicon: page[0]?.target?.favicon || '',
             locale: page[0]?.target?.locale || 'en_EN',
             seo: {
@@ -121,7 +127,7 @@ export default (router: any, { services }: any) => {
             status: page[0]?.status,
             domain: page[0]?.target["domain_" + env],
             slug: page[0]?.slug,
-            url: scheme + '://' + page[0]?.target["domain_" + env] + ((site.path && site.path !== '') && site.path) + page[0]?.slug,
+            url: scheme + '://' + page[0]?.target["domain_" + env] + page[0]?.slug,
             seo: {
               title: page[0]?.seo_title,
               description: page[0]?.seo_description,
