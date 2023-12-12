@@ -1,4 +1,4 @@
-import { defineNuxtModule, addServerHandler, addPlugin, createResolver, extendPages, addImportsDir } from '@nuxt/kit'
+import { defineNuxtModule, addServerPlugin, addServerHandler, addPlugin, createResolver, extendPages, addImportsDir } from '@nuxt/kit'
 import { defu } from 'defu'
 import { fileURLToPath } from 'url'
 
@@ -117,14 +117,22 @@ export default defineNuxtModule<ModuleOptions>({
     })
 
     //endpoints for backend
-    addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/server/routes/linotype') })
-    addServerHandler({ method: 'post', route: '/linotype/block/sync', handler: resolver.resolve('./runtime/server/routes/sync') })
+    addServerHandler({ method: 'get', route: '/linotype', handler: resolver.resolve('./runtime/routes/linotype') })
+    addServerHandler({ method: 'post', route: '/linotype/block/sync', handler: resolver.resolve('./runtime/routes/sync') })
+    addServerHandler({ method: 'get', route: '/linotype/cache', handler: resolver.resolve('./runtime/routes/cache') })
 
     //endpoints for frontend
-    addServerHandler({ method: 'get', route: '/sitemap.xml', handler: resolver.resolve('./runtime/server/routes/sitemap') })
+    addServerHandler({ method: 'get', route: '/sitemap.xml', handler: resolver.resolve('./runtime/routes/sitemap') })
+    addServerHandler({ method: 'get', route: '/robots.txt', handler: resolver.resolve('./runtime/routes/robots') })
     
     //linotype loader
-    addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugin') })
+    addPlugin({ mode: 'all', src: resolver.resolve('./runtime/plugins/linotype') })
+
+    //utils
+    addPlugin({ mode: 'client', src: resolver.resolve('./runtime/plugins/scroll') })
+
+    //compression
+    addServerPlugin(resolver.resolve('./runtime/plugins/compression'))
 
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
     nuxt.options.build.transpile.push(runtimeDir)
