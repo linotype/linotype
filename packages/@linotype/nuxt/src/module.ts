@@ -37,7 +37,7 @@ export interface ModuleOptions {
 export default defineNuxtModule<ModuleOptions>({
   
   meta: {
-    name: '@linotype/nuxt',
+    name: 'linotype',
     configKey: 'linotype',
     compatibility: {
       nuxt: '^3.0.0',
