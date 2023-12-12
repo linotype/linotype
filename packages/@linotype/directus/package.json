@@ -86,7 +86,7 @@
   },
   "devDependencies": {
     "@directus/extensions-sdk": "^10.2.0",
-    "@linotype/core": "*",
+    "@linotype/core": "workspace:*",
     "@rollup/plugin-yaml": "^4.1.2",
     "@types/lodash-es": "^4.17.12",
     "@vueuse/core": "^10.7.0",
