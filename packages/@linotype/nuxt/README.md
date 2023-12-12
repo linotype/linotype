@@ -35,13 +35,6 @@ My new Nuxt module for doing amazing things.
 # Using pnpm
 pnpm add -D nuxt-extension-linotype
 
-# Using yarn
-yarn add --dev nuxt-extension-linotype
-
-# Using npm
-npm install --save-dev nuxt-extension-linotype
-```
-
 2. Add `nuxt-extension-linotype` to the `modules` section of `nuxt.config.ts`
 
 ```js

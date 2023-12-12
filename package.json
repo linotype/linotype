@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "cleanup": "rm -rf node_modules **/node_modules yarn.lock"
+    "cleanup": "rm -rf node_modules **/node_modules pnpm-lock.yaml"
   },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
