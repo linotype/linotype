@@ -12,19 +12,16 @@ export default defineNuxtPlugin( async () => {
   const { scheme, domain } = useDomain()
   const { loadTemplate } = useLinotype()
 
+  //define domain and scheme
   if (process.server) {
-    scheme.value = ( nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-proto'] || nuxtApp.ssrContext?.event?.node?.req?.connection?.encrypted ? 'https' : 'http' ).split(/\s*,\s*/)[0]
-    domain.value = nuxtApp.ssrContext?.event?.node?.req?.headers.host?.split(':')[0] || ''
-    if ( !domain.value ) {
-      const urlinfos = nuxtApp?.ssrContext?.event.context.siteConfigNitroOrigin.match("^(.*?)://([^/:]+)")
+      const urlinfos = /^(.*?):\/\/([^\/:]+)/.exec(nuxtApp?.ssrContext?.event?.context?.siteConfigNitroOrigin)
       scheme.value = urlinfos && urlinfos[1] || '';
       domain.value = urlinfos && urlinfos[2] || '';
-    }
   } else {
     scheme.value = location.protocol === 'https:' ? 'https' : 'http'
     domain.value = window?.document?.location?.host?.split(':')[0] || ''
   }
-  
+
   //load linotype template
   addRouteMiddleware('linotype-middleware', async (to) => {
       await loadTemplate(to)

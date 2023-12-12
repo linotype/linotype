@@ -56,7 +56,7 @@ const useLinotype = function () {
       env: config.public.linotype.env,
       scheme: scheme.value,
       domain: domain.value,
-      route: path
+      route: path || '/'
     }
 
     const { data: dataAPI, error: errorAPI } = await useFetch(`${config.public.linotype.backend_url}/linotype/template`,{
@@ -64,10 +64,10 @@ const useLinotype = function () {
       params: params
     })
 
-    // if ( config.public.linotype.debug == 'true' ) {
-    //   console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : request', params )
-    //   console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value )
-    // }
+    if ( config.public.linotype.debug == 'true' ) {
+      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : request', params )
+      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value )
+    }
 
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       loading.value = false
