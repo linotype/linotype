@@ -203,7 +203,7 @@ importers:
   websites/backend:
     dependencies:
       '@linotype/directus-extension-linotype':
-        specifier: ^1.2.6
+        specifier: workspace:*
         version: link:../../packages/@linotype/directus
       directus:
         specifier: ^10.8.2
@@ -221,7 +221,7 @@ importers:
         specifier: ^1.1.84
         version: 1.1.84
       '@linotype/nuxt':
-        specifier: ^1.6.15
+        specifier: workspace:*
         version: link:../../packages/@linotype/nuxt/dist
       '@nuxt/devtools':
         specifier: latest
