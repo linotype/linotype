@@ -27,7 +27,7 @@ export default defineNuxtConfig({
     storage: {
       linotype_cache: process.env.REDIS 
       ? { driver: 'redis', url: process.env.REDIS }
-      : { driver: 'fs', base: './.linotype/cache' },
+      : { driver: 'fs', base: './.nuxt/cache' },
     },
   },
 
