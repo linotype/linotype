@@ -27,7 +27,7 @@
     "@nuxtjs/google-fonts": "^3.1.1",
     "eslint": "^8.55.0",
     "h3-compression": "^0.3.2",
-    "nuxt": "^3.8.2",
+    "nuxt": "3.8.0",
     "nuxt-og-image": "^2.2.4",
     "typescript": "^5.3.3",
     "vue": "^3.3.11",
