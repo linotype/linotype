@@ -2,7 +2,7 @@ import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig, useFetch, ad
 
 import useDomain from './../composables/useDomain'
 import useLinotype from './../composables/useLinotype'
-import PageIndex from './../pages/index.vue'
+import PageIndex from '#components'
 
 export default defineNuxtPlugin( async () => {
   
