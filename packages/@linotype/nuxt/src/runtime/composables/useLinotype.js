@@ -1,4 +1,4 @@
-import { useNuxtApp, useRuntimeConfig, useState, useRoute, useFetch, showError } from '#app'
+import { useRuntimeConfig, useState, useFetch, showError } from '#app'
 import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
@@ -14,10 +14,8 @@ import useDomain from "./useDomain"
  */
 const useLinotype = function () {
   
-  const nuxtApp = useNuxtApp()
   const config = useRuntimeConfig()
   const { scheme, domain } = useDomain()
-  const route = useRoute()
 
   const initialized = useState('useLinotype.initialized', () => false)
   const template = useState('useLinotype.template', () => { return {}})

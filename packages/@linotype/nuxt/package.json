@@ -5,21 +5,21 @@
   "version": "1.6.11",
   "license": "MIT",
   "type": "module",
-  "homepage": "https://github.com/linotype/nuxt#readme",
+  "homepage": "https://github.com/linotype/linotype#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/linotype/nuxt.git"
+    "url": "git+https://github.com/linotype/linotype.git"
   },
   "author": {
     "name": "Yannick Armspach",
-    "email": "linotype@ynk.one",
-    "url": "https://ynk.one"
+    "email": "linotype@ynk.es",
+    "url": "https://ynk.es"
   },
   "maintainers": [
     {
       "name": "Yannick Armspach",
-      "email": "linotype@ynk.one",
-      "url": "https://ynk.one"
+      "email": "linotype@ynk.es",
+      "url": "https://ynk.es"
     }
   ],
   "exports": {

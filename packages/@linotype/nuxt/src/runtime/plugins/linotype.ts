@@ -1,4 +1,4 @@
-import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig, useFetch, addRouteMiddleware, useRequestURL } from '#app'
+import { defineNuxtPlugin, useNuxtApp, useRouter, useRuntimeConfig, useFetch, addRouteMiddleware } from '#app'
 
 import useDomain from './../composables/useDomain'
 import useLinotype from './../composables/useLinotype'
@@ -16,7 +16,7 @@ export default defineNuxtPlugin( async () => {
     scheme.value = ( nuxtApp.ssrContext?.event?.node?.req?.headers['x-forwarded-proto'] || nuxtApp.ssrContext?.event?.node?.req?.connection?.encrypted ? 'https' : 'http' ).split(/\s*,\s*/)[0]
     domain.value = nuxtApp.ssrContext?.event?.node?.req?.headers.host?.split(':')[0] || ''
     if ( !domain.value ) {
-      const urlinfos = /^(.*?):\/\/([^\/:]+)/.exec(nuxtApp?.ssrContext?.event.context.siteConfigNitroOrigin);
+      const urlinfos = nuxtApp?.ssrContext?.event.context.siteConfigNitroOrigin.match("^(.*?)://([^/:]+)")
       scheme.value = urlinfos && urlinfos[1] || '';
       domain.value = urlinfos && urlinfos[2] || '';
     }
@@ -26,7 +26,7 @@ export default defineNuxtPlugin( async () => {
   }
   
   //load linotype template
-  addRouteMiddleware('linotype-middleware', async (to, from) => {
+  addRouteMiddleware('linotype-middleware', async (to) => {
       await loadTemplate(to)
     },
     { global: true }
