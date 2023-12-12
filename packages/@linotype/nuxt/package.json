@@ -67,9 +67,9 @@
     "nuxt": "^3.8.2",
     "sitemap": "^7.1.1",
     "stream": "^0.0.2",
-    "vite": "^5.0.7",
+    "vite": "^5.0.8",
     "vite-plugin-glob": "^0.3.2",
-    "vitest": "^0.34.6",
+    "vitest": "^1.0.4",
     "vue": "^3.3.11"
   },
   "unbuild": {

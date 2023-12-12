@@ -9,10 +9,10 @@
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
     "kill-port": "^2.0.1",
-    "nx": "^17.2.0",
-    "prettier": "^3.1.0",
+    "nx": "^17.2.1",
+    "prettier": "^3.1.1",
     "release-it": "^17.0.1",
-    "taze": "^0.12.3"
+    "taze": "^0.13.0"
   },
   "workspaces": [
     "packages/**",

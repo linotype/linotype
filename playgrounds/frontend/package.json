@@ -21,13 +21,13 @@
     "@histoire/plugin-vue": "^0.17.6",
     "@linotype/nuxt": "*",
     "@nuxt/devtools": "^1.0.5",
-    "@unocss/nuxt": "^0.57.7",
+    "@unocss/nuxt": "^0.58.0",
     "@vueuse/nuxt": "^10.7.0",
     "histoire": "^0.17.6",
     "nuxt": "^3.8.2",
     "nuxt-icon": "^0.6.7",
     "nuxt-vitest": "^0.11.5",
-    "vite": "^5.0.7",
+    "vite": "^5.0.8",
     "vue": "^3.3.11",
     "vue-router": "^4.2.5"
   }
