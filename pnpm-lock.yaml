@@ -203,7 +203,7 @@ importers:
   websites/backend:
     dependencies:
       '@linotype/directus-extension-linotype':
-        specifier: workspace:*
+        specifier: ^1.2.6
         version: link:../../packages/@linotype/directus
       directus:
         specifier: ^10.8.2
@@ -221,7 +221,7 @@ importers:
         specifier: ^1.1.84
         version: 1.1.84
       '@linotype/nuxt':
-        specifier: workspace:*
+        specifier: ^1.6.15
         version: link:../../packages/@linotype/nuxt/dist
       '@nuxt/devtools':
         specifier: latest
@@ -5213,6 +5213,7 @@ packages:
     dependencies:
       is-glob: 4.0.3
       micromatch: 4.0.5
+      napi-wasm: 1.1.0
     dev: true
     bundledDependencies:
       - napi-wasm
@@ -13538,6 +13539,10 @@ packages:
   /napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
     dev: false
+
+  /napi-wasm@1.1.0:
+    resolution: {integrity: sha512-lHwIAJbmLSjF9VDRm9GoVOy9AGp3aIvkjv+Kvz9h16QR3uSVYH78PNQUnT2U4X53mhlnV2M7wrhibQ3GHicDmg==}
+    dev: true
 
   /native-duplexpair@1.0.0:
     resolution: {integrity: sha512-E7QQoM+3jvNtlmyfqRZ0/U75VFgCls+fSkbml2MpgWkWyz3ox8Y58gNhfuziuQYGNNQAbFZJQck55LHCnCK6CA==}
