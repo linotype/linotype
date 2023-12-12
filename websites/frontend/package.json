@@ -14,8 +14,7 @@
     "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx nuxt dev",
     "generate": "npx nuxt generate",
     "preview": "npx nuxt build && npx nuxt preview",
-    "start": "npx nuxt start",
-    "postinstall": "nuxt prepare"
+    "start": "npx nuxt start"
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.1.16",
