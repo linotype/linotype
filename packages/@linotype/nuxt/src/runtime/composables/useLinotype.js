@@ -66,7 +66,7 @@ const useLinotype = function () {
 
     if ( config.public.linotype.debug == 'true' ) {
       console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : request', params )
-      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value )
+      console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value ? 'success' : 'error' )
     }
 
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
