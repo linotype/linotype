@@ -80,9 +80,9 @@
     "play": "npx chokidar \"./../../../packages/@linotype/directus/src/**/*\" --initial -c \"export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx kill-port 3001 && npx nx build @linotype/directus-extension-linotype && npx nx dev playground-directus\"",
     "build": "directus-extension build",
     "release:current": "directus-extension build && npm publish --access public",
-    "release:patch": "pnpm version --patch && pnpm release:current",
-    "release:minor": "pnpm version --minor && pnpm release:current",
-    "release:major": "pnpm version --major && pnpm release:current"
+    "release:patch": "pnpm version patch && pnpm release:current",
+    "release:minor": "pnpm version minor && pnpm release:current",
+    "release:major": "pnpm version major && pnpm release:current"
   },
   "devDependencies": {
     "@directus/extensions-sdk": "^10.2.0",
