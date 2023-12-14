@@ -22,9 +22,9 @@
       </template>
     </UHeader>
     
-    <ClientOnly>
+    <!-- <ClientOnly>
       <LazyUDocsSearch  />
-    </ClientOnly>
+    </ClientOnly> -->
     
   </div>
 </template>

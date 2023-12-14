@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "cleanup": "rm -rf node_modules **/node_modules pnpm-lock.yaml"
+    "cleanup": "rm -rf node_modules **/node_modules .output **/.output .nuxt **/.nuxt dist **/dist pnpm-lock.yaml"
   },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",

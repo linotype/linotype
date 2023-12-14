@@ -63,6 +63,7 @@
     "changelogen": "^0.5.5",
     "defu": "^6.1.3",
     "eslint": "^8.55.0",
+    "h3-compression": "^0.3.2",
     "lodash-es": "^4.17.21",
     "nuxt": "^3.8.2",
     "sitemap": "^7.1.1",

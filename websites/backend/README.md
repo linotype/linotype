@@ -26,10 +26,10 @@ cp .env.example .env
 
 Install the necessary dependencies:
 ```bash
-yarn install
+pnpm install
 ```
 
 Run the dev environement
 ```bash
-yarn dev
+pnpm dev
 ```

@@ -20,7 +20,7 @@
     "@histoire/plugin-nuxt": "^0.17.7",
     "@histoire/plugin-vue": "^0.17.6",
     "@linotype/nuxt": "workspace:*",
-    "@nuxt/devtools": "^1.0.5",
+    "@nuxt/devtools": "^1.0.6",
     "@unocss/nuxt": "^0.58.0",
     "@vueuse/nuxt": "^10.7.0",
     "histoire": "^0.17.6",

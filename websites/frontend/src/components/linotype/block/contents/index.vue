@@ -5,15 +5,15 @@
       
       <UPageHeader>
         <template #title>
-          <div v-html="props.blockData.title"/>
+          <div v-if="props.blockData.title" v-html="props.blockData.title"/>
         </template>
         <template #description>
-          <div v-html="props.blockData.intro"/>
+          <div v-if="props.blockData.intro" v-html="props.blockData.intro"/>
         </template>
       </UPageHeader>
 
       <UPageBody prose>
-        <div v-html="props.blockData.contents"/>
+        <div v-if="props.blockData.contents" v-html="props.blockData.contents"/>
       </UPageBody>
 
     </UPage>
