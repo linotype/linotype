@@ -23,43 +23,8 @@
       },
       {
         "type": "endpoint",
-        "name": "linotype-endpoint-index",
+        "name": "linotype",
         "source": "src/endpoints/index.ts"
-      },
-      {
-        "type": "endpoint",
-        "name": "linotype-endpoint-blocks",
-        "source": "src/endpoints/blocks.ts"
-      },
-      {
-        "type": "endpoint",
-        "name": "linotype-endpoint-config",
-        "source": "src/endpoints/config.ts"
-      },
-      {
-        "type": "endpoint",
-        "name": "linotype-endpoint-page",
-        "source": "src/endpoints/page.ts"
-      },
-      {
-        "type": "endpoint",
-        "name": "linotype-endpoint-template",
-        "source": "src/endpoints/template.ts"
-      },
-      {
-        "type": "endpoint",
-        "name": "linotype-endpoint-menu",
-        "source": "src/endpoints/menu.ts"
-      },
-      {
-        "type": "endpoint",
-        "name": "linotype-endpoint-sitemap",
-        "source": "src/endpoints/sitemap.ts"
-      },
-      {
-        "type": "endpoint",
-        "name": "linotype-endpoint-search",
-        "source": "src/endpoints/search.ts"
       }
     ],
     "host": "^10.8.0",
