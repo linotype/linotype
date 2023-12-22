@@ -8,8 +8,9 @@
 		"dist"
 	],
 	"publishConfig": {
-		"directory": "dist"
-	},
+    "registry": "https://registry.npmjs.org/",
+    "directory": "dist"
+  },
 	"scripts": {
 		"update": "npx taze major",
 		"test": "echo 'test'",

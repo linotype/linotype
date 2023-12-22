@@ -22,7 +22,8 @@
     }
   ],
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "directory": "dist"
   },
   "main": "dist/module.mjs",
   "types": "dist/module.d.ts",
