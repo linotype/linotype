@@ -14,7 +14,8 @@
     "dev": "npx nuxt dev",
     "generate": "npx nuxt generate",
     "preview": "npx nuxt build && npx nuxt preview",
-    "start": "npx nuxt start"
+    "start": "npx nuxt start",
+    "start:prod": "node ./.output/server/index.mjs"
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.1.19",
