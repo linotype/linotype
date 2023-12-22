@@ -3,6 +3,11 @@
   "private": true,
   "version": "0.0.0",
   "license": "MIT",
+  "workspaces": [
+    "packages/**",
+    "playgrounds/**",
+    "websites/**"
+  ],
   "scripts": {
     "cleanup": "rm -rf node_modules **/node_modules .output **/.output .nuxt **/.nuxt dist **/dist pnpm-lock.yaml",
     "checkup": "npx depcheck --skip-missing=true",
