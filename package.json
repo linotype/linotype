@@ -4,15 +4,19 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "cleanup": "rm -rf node_modules **/node_modules .output **/.output .nuxt **/.nuxt dist **/dist pnpm-lock.yaml"
+    "cleanup": "rm -rf node_modules **/node_modules .output **/.output .nuxt **/.nuxt dist **/dist pnpm-lock.yaml",
+    "checkup": "npx depcheck --skip-missing=true",
+    "update": "npx taze -frw major"
   },
   "devDependencies": {
     "chokidar-cli": "^3.0.0",
+    "depcheck": "^1.4.7",
     "kill-port": "^2.0.1",
-    "nx": "^17.2.3",
+    "nx": "^17.2.6",
     "prettier": "^3.1.1",
     "release-it": "^17.0.1",
-    "taze": "^0.13.0"
+    "taze": "^0.13.0",
+    "typescript": "^5.3.3"
   },
   "nx": {
     "targetDefaults": {

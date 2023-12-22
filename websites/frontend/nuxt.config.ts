@@ -1,3 +1,5 @@
+import LinotypeModule from './../../packages/@linotype/nuxt'
+
 export default defineNuxtConfig({
   
   srcDir: 'src',
@@ -11,7 +13,7 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     'nuxt-og-image',
-    '@linotype/nuxt'
+    LinotypeModule
   ],
 
   ui: {
