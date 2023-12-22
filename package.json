@@ -9,7 +9,7 @@
     "websites/**"
   ],
   "scripts": {
-    "cleanup": "rm -rf node_modules **/node_modules .output **/.output .nuxt **/.nuxt dist **/dist pnpm-lock.yaml",
+    "cleanup": "rm -rf node_modules **/node_modules .output **/.output .nuxt **/.nuxt dist **/dist yarn.lock",
     "checkup": "npx depcheck --skip-missing=true",
     "update": "npx taze -frw major"
   },
@@ -17,7 +17,7 @@
     "chokidar-cli": "^3.0.0",
     "depcheck": "^1.4.7",
     "kill-port": "^2.0.1",
-    "nx": "^17.2.6",
+    "nx": "^17.2.7",
     "prettier": "^3.1.1",
     "release-it": "^17.0.1",
     "taze": "^0.13.0",
@@ -32,5 +32,6 @@
         ]
       }
     }
-  }
+  },
+  "packageManager": "yarn@4.0.2"
 }

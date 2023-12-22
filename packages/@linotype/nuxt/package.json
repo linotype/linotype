@@ -1,7 +1,6 @@
 {
   "name": "@linotype/nuxt",
   "description": "Linotype Nuxt module",
-  "private": false,
   "version": "1.6.16",
   "license": "MIT",
   "type": "module",
@@ -38,7 +37,6 @@
       "require": "./dist/module.cjs"
     }
   },
-  
   "scripts": {
     "update": "npx taze major",
     "prepack": "nuxt-module-build build",

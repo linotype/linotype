@@ -1,16 +1,15 @@
 {
 	"name": "@linotype/core",
 	"description": "Linotype framework core",
-	"private": false,
 	"icon": "extension",
 	"version": "1.0.3",
 	"files": [
 		"dist"
 	],
 	"publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "directory": "dist"
-  },
+		"registry": "https://registry.npmjs.org/",
+		"directory": "dist"
+	},
 	"scripts": {
 		"update": "npx taze major",
 		"test": "echo 'test'",
