@@ -77,9 +77,9 @@ export default defineNuxtPlugin( async () => {
         routes: linotypePagesRoutes.value?.data?.map(item => item.slug) || []
       }
     })
-    nuxtApp.hook('vue:error', (error, instance, info) => {
-      console.log('[linotype:nuxt:plugin:error]', error, instance, info)
-    })
+    // nuxtApp.hook('vue:error', (error, instance, info) => {
+    //   console.log('[linotype:nuxt:plugin:error]', error, instance, info)
+    // })
   }
 
 })

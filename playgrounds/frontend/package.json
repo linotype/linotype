@@ -21,14 +21,16 @@
     "@histoire/plugin-vue": "^0.17.6",
     "@linotype/nuxt": "*",
     "@nuxt/devtools": "^1.0.6",
-    "@unocss/nuxt": "^0.58.0",
-    "@vueuse/nuxt": "^10.7.0",
+    "@nuxt/test-utils": "^3.9.0",
+    "@unocss/nuxt": "^0.58.3",
+    "@vueuse/nuxt": "^10.7.1",
+    "h3": "^1.9.0",
     "histoire": "^0.17.6",
     "nuxt": "^3.8.2",
-    "nuxt-icon": "^0.6.7",
-    "nuxt-vitest": "^0.11.5",
-    "vite": "^5.0.10",
-    "vue": "^3.3.13",
+    "nuxt-icon": "^0.6.8",
+    "vite": "^4.0.0",
+    "vitest": "1.0.0",
+    "vue": "^3.4.3",
     "vue-router": "^4.2.5"
   }
 }

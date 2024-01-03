@@ -1,4 +1,4 @@
-import { useRuntimeConfig, useState, useFetch, showError } from '#app'
+import { useRuntimeConfig, useState, useFetch } from '#app'
 import { nextTick, ref, computed } from 'vue'
 import useDomain from "./useDomain"
 
@@ -68,26 +68,17 @@ const useLinotype = function () {
       console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : request', params )
       console.log('[linotype:nuxt:useLinotype:debug] /linotype/template : response', dataAPI.value ? 'success' : 'error' )
     }
-
+    
     if ( errorAPI.value || dataAPI.value?.status == 'error' ) {
       loading.value = false
-      error.value = errorAPI.value
-      console.log('linotype:nuxt:useLinotype:error', dataAPI.value?.message || errorAPI.value?.message)
-      throw showError({ 
-        statusCode: 404, 
-        fatal: true,
-        message: dataAPI.value?.message || errorAPI.value?.message || 'error' 
-      })
+      error.value = dataAPI.value?.message || errorAPI.value?.message || 'error' 
+      // console.log('linotype:nuxt:useLinotype:error', dataAPI.value?.message || errorAPI.value?.message)
     }
     
-    if ( dataAPI.value.website == null ) {
+    if ( dataAPI.value.contents == null ) {
       loading.value = false
-      console.log('linotype:nuxt:useLinotype:error', 'no data founded')
-      throw showError({
-        statusCode: 404,
-        fatal: false,
-        message: 'Page not found'
-      })
+      error.value = 'no data founded'
+      // console.log('linotype:nuxt:useLinotype:error', 'no data founded')
     }
     
     template.value = dataAPI.value

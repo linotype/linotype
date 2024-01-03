@@ -17,10 +17,10 @@
     "chokidar-cli": "^3.0.0",
     "depcheck": "^1.4.7",
     "kill-port": "^2.0.1",
-    "nx": "^17.2.7",
+    "nx": "^17.2.8",
     "prettier": "^3.1.1",
     "release-it": "^17.0.1",
-    "taze": "^0.13.0",
+    "taze": "^0.13.1",
     "typescript": "^5.3.3"
   },
   "nx": {

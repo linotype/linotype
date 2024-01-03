@@ -1,12 +1,14 @@
+import LinotypeModule from './../../packages/@linotype/nuxt'
+
 export default defineNuxtConfig({
 
   modules: [
     //Linotype module declaration
-    '@linotype/nuxt',
+    LinotypeModule,
     //for playground
     '@unocss/nuxt',
     '@vueuse/nuxt',
-    'nuxt-vitest',
+    // '@nuxt/test-utils',
     'nuxt-icon',
     '@nuxt/devtools',
   ],
@@ -21,13 +23,36 @@ export default defineNuxtConfig({
   
   //allow linotype route cors
   routeRules: {
-    '/linotype/**': { 
+    '/**': process.env.LINOTYPE_CACHE == 'true' ? {
+      swr: 60*60*24,
+      cache: {
+        name: 'linotype_cache',
+        base: 'linotype_cache',
+        group: 'linotype',
+      },
+    } : {
+      cache: false,
+    },
+    '/linotype/**': {
+      cache: false,
       cors: true,
       headers: { 
         'Acess-Control-Allow-Origin': '*', 
         'Access-Control-Allow-Credentials': 'true',
       }
     }
+  },
+
+  nitro: {
+    compressPublicAssets: { 
+      gzip: true, 
+      brotli: true 
+    },
+    storage: {
+      linotype_cache: process.env.REDIS 
+      ? { driver: 'redis', url: process.env.REDIS }
+      : { driver: 'fs', base: './.nuxt/cache' },
+    },
   },
 
   //for minimal playground style

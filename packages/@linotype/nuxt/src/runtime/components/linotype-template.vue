@@ -3,8 +3,8 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, watch } from "vue";
-import { showError } from "#app"
+import { computed, onMounted, watch } from "vue";
+import { createError } from "#app"
 import { useHead, useSeoMeta } from "@unhead/vue"
 import useLinotype from "./../composables/useLinotype"
 
@@ -53,14 +53,15 @@ useSeoMeta({
 })
 
 const checkError = () => {
-  if (error.value)
-    throw showError({
+  if (error.value) {
+    throw createError({
       statusCode: 404,
       statusMessage: String(error.value),
       fatal: true,
-    });
-};
+    })
+  }
+}
 watch(error, checkError);
-checkError();
+onMounted(() => checkError())
 
 </script>
