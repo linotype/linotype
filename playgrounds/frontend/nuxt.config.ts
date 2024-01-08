@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   
   // Default Linotype settings
   linotype: {
+    // src: '~/components/linotype',
     env: process.env.LINOTYPE_ENV,
     debug: process.env.LINOTYPE_DEBUG,
     backend_url: process.env.LINOTYPE_BACKEND_URL,

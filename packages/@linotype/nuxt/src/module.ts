@@ -6,6 +6,13 @@ export interface ModuleOptions {
 
   /**
    * Linotype environement
+   * @default ~/linotype
+   * @type string
+   */
+  src?: string;
+
+  /**
+   * Linotype environement
    * @default process.env.LINOTYPE_ENV
    * @type string
    */
@@ -46,6 +53,7 @@ export default defineNuxtModule<ModuleOptions>({
   },
 
   defaults: {
+    src: '~/linotype',
     env: process.env.LINOTYPE_ENV,
     debug: process.env.LINOTYPE_DEBUG,
     backend_url: process.env.LINOTYPE_BACKEND_URL,
@@ -77,19 +85,7 @@ export default defineNuxtModule<ModuleOptions>({
       })
 
       dirs.unshift({
-        path: '~/linotype', 
-        prefix: 'linotype',
-        pattern: ['**/*.vue'], 
-        ignore: ['**/*.story.vue'],
-        isAsync: true,
-        global: true,
-        watch: true, 
-        extensions: ['vue'],
-        preload: true
-      })
-      
-      dirs.unshift({
-        path: '~/components/linotype', 
+        path: options.src, 
         prefix: 'linotype',
         pattern: ['**/*.vue'], 
         ignore: ['**/*.story.vue'],

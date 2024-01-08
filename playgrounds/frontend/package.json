@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx nuxt dev",
+    "dev": "npx nuxt dev",
     "test": "npx vitest --ui",
     "story": "npx histoire dev",
     "story:build": "npx histoire build",

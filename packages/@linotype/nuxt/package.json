@@ -1,7 +1,7 @@
 {
   "name": "@linotype/nuxt",
   "description": "Linotype Nuxt module",
-  "version": "1.7.0",
+  "version": "1.7.1",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -42,7 +42,7 @@
     "prepack": "nuxt-module-build build",
     "build": "nuxt-module-build build",
     "dev": "npx nuxt dev playground",
-    "play": "npx chokidar \"./../../../packages/@linotype/nuxt/src/**/*\" --initial -c \"export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx kill-port 3000 && npx nx prepack @linotype/nuxt && npx node-notifier-cli notify -t 'linotype' -m 'Reloded' -s Glass -x 0 & npx nx dev playground-frontend\"",
+    "play": "npx chokidar \"./../../../packages/@linotype/nuxt/src/**/*\" --initial -c \"npx kill-port 3000 && npx nx prepack @linotype/nuxt && npx node-notifier-cli notify -t 'linotype' -m 'Reloded' -s Glass -x 0 & npx nx dev playground-frontend\"",
     "dev:build": "npx nuxt build playground",
     "dev:prepare": "nuxt-module-build --stub && nuxt prepare playground",
     "release:current": "npm run lint && npm run prepack && npm publish --access public",
@@ -51,7 +51,7 @@
     "release:major": "yarn version major && yarn release:current",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:play": "npx chokidar \"./../../../packages/@linotype/nuxt/src/**/*\" --initial -c \"export NODE_TLS_REJECT_UNAUTHORIZED=0 && npx kill-port 3000 && npx nx prepack @linotype/nuxt && npx nx build playground-frontend && npx nx start playground-frontend\"",
+    "test:play": "npx chokidar \"./../../../packages/@linotype/nuxt/src/**/*\" --initial -c \"npx kill-port 3000 && npx nx prepack @linotype/nuxt && npx nx build playground-frontend && npx nx start playground-frontend\"",
     "test:watch": "vitest watch"
   },
   "dependencies": {

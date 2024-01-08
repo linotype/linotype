@@ -1,6 +1,11 @@
 <template>
+  <linotype-svg 
+    v-if="sourceFull.source.type == 'image/svg+xml'"
+    :source="sourceFull.source"
+    class="linotype-image is-svg"
+  />
   <picture 
-    v-if="data" 
+    v-else-if="data" 
     class="linotype-image block"
   >
     <source
@@ -85,5 +90,6 @@ const data = computed(() => {
     return false
   }
 })
+
 
 </script>
