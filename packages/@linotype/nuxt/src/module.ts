@@ -78,10 +78,8 @@ export default defineNuxtModule<ModuleOptions>({
     //Components loader (use hook to override in default components dir)
     nuxt.hook('components:dirs', (dirs) => {
       
-      const { resolve } = createResolver(import.meta.url)
-
       dirs.unshift({
-        path: resolve('./runtime/components')
+        path: resolver.resolve('./runtime/components')
       })
 
       dirs.unshift({
