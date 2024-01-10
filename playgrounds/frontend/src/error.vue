@@ -1,7 +1,7 @@
 <template>
   <LinotypeTemplate>
     <LinotypeHeader/>
-    <h2>{{ error.statusCode }}</h2>
+    <h2>{{ error?.statusCode }}</h2>
     <button @click="handleError">back</button>
     <LinotypeFooter/>
   </LinotypeTemplate>

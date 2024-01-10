@@ -10,14 +10,13 @@ import useLinotype from "./../composables/useLinotype"
 
 const { config, website, page, error } = useLinotype();
 
-const head_name = computed(() => website?.name || '')
-const head_title = computed(() => page?.seo?.title || website?.seo?.title || website?.name + ' - ' + page?.title || '')
-const head_description = computed(() => page?.seo?.description || website?.seo?.description || '');
-const head_image = computed(() => {
-  return page?.seo?.image ? config.public.linotype.backend_url + '/assets/' + page.seo.image + '?width=1500&height=780' : ''
-      || website?.seo?.image ? config.public.linotype.backend_url + '/assets/' + website.seo.image + '?width=1500&height=780' : ''
-});
-const head_favicon = computed(() => website?.favicon ? config.public.linotype.backend_url + '/assets/' + website.favicon + '?width=250&height=250' : '')
+const head_name = website.value?.name || ''
+const head_title = page.value?.seo?.title || website.value?.seo?.title || website.value?.name + ' - ' + page.value?.title || ''
+const head_description = page.value?.seo?.description || website.value?.seo?.description || '';
+const head_image = page.value?.seo?.image ? config.public.linotype.backend_url + '/assets/' + page.value.seo.image + '?width=1500&height=780' : ''
+                || website.value?.seo?.image ? config.public.linotype.backend_url + '/assets/' + website.value.seo.image + '?width=1500&height=780' : ''
+
+const head_favicon = website.value?.favicon ? config.public.linotype.backend_url + '/assets/' + website.value.favicon + '?width=250&height=250' : ''
 
 useHead({
   title: head_title,
@@ -30,17 +29,17 @@ useHead({
     { name: 'application-name', content: head_name },
     { name: 'msapplication-TileColor', content: '#1e1d1d' },
     { name: 'theme-color', content: '#1e1d1d' },
-    ...(website?.metas || [])
+    ...(website.value?.metas || [])
   ],
   link: [
-    { rel: 'canonical', href: page?.url || '' },
+    { rel: 'canonical', href: page.value?.url || '' },
     { rel: 'apple-touch-icon', sizes: '180x180', href: head_favicon },
     { rel: 'icon', type: 'image/png', sizes: '32x32', href: head_favicon },
     { rel: 'icon', type: 'image/png', sizes: '16x16', href: head_favicon },
     { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1e1d1d' }
     // { rel: 'manifest', href: '/site.webmanifest' },
   ],
-  htmlAttrs: { lang: website?.locale || 'en_EN' }
+  htmlAttrs: { lang: website.value?.locale || 'en_EN' }
 })
 
 useSeoMeta({
