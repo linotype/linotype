@@ -6,6 +6,7 @@ import page from './page'
 import search from './search'
 import sitemap from './sitemap'
 import template from './template'
+import send from './send'
 
 export default (router: any, params: any) => {
   status(router)
@@ -16,4 +17,5 @@ export default (router: any, params: any) => {
   menu(router, params)
   search(router, params)
   sitemap(router, params)
+  send(router, params)
 }
