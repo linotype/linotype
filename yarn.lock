@@ -10867,6 +10867,36 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@vuelidate/core@npm:^2.0.3":
+  version: 2.0.3
+  resolution: "@vuelidate/core@npm:2.0.3"
+  dependencies:
+    vue-demi: "npm:^0.13.11"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^2.0.0 || >=3.0.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  checksum: bdd5df3692adcb9bef3dc430f3ec4c763364b27691008a4f1e3cc28ad492f5ae0e8c1cc60585ef220ecac9ad65e0a0a312e7ae3bb56a1ed05c765adb04a0d533
+  languageName: node
+  linkType: hard
+
+"@vuelidate/validators@npm:^2.0.4":
+  version: 2.0.4
+  resolution: "@vuelidate/validators@npm:2.0.4"
+  dependencies:
+    vue-demi: "npm:^0.13.11"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^2.0.0 || >=3.0.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  checksum: 53cb362b5b561b22fb1d1021ab0d78e0fbf3324efba78a88f53b8b3ac996d546aabb9cd1069256ddb877d70841ea1f4771cb0f6b6b8a1074efbd972c6549c2fc
+  languageName: node
+  linkType: hard
+
 "@vueuse/core@npm:10.7.0, @vueuse/core@npm:^10.7.0":
   version: 10.7.0
   resolution: "@vueuse/core@npm:10.7.0"
@@ -21755,6 +21785,8 @@ __metadata:
     "@nuxt/devtools": "npm:^1.0.6"
     "@nuxt/test-utils": "npm:^3.9.0"
     "@unocss/nuxt": "npm:^0.58.3"
+    "@vuelidate/core": "npm:^2.0.3"
+    "@vuelidate/validators": "npm:^2.0.4"
     "@vueuse/nuxt": "npm:^10.7.1"
     h3: "npm:^1.9.0"
     histoire: "npm:^0.17.6"
@@ -27373,6 +27405,22 @@ __metadata:
     vue-demi-fix: bin/vue-demi-fix.js
     vue-demi-switch: bin/vue-demi-switch.js
   checksum: c292c398ad3c2dbbaaf9b66a0a14b725840d3ba2afb109000cf12ccbc12f9ac4d569d3c14d2a347889519a3a0d58b8169ffb924c91ba506fe69063ea06ca6e3d
+  languageName: node
+  linkType: hard
+
+"vue-demi@npm:^0.13.11":
+  version: 0.13.11
+  resolution: "vue-demi@npm:0.13.11"
+  peerDependencies:
+    "@vue/composition-api": ^1.0.0-rc.1
+    vue: ^3.0.0-0 || ^2.6.0
+  peerDependenciesMeta:
+    "@vue/composition-api":
+      optional: true
+  bin:
+    vue-demi-fix: bin/vue-demi-fix.js
+    vue-demi-switch: bin/vue-demi-switch.js
+  checksum: 8f1a38e41e3dd0a4821c87231c664dcc00e6dbf5eecd3de397b7ddb6ae01f173aed5385c55a3c3239be36145742f1a5be407662fc67f9c4515ea691dd0ac93e1
   languageName: node
   linkType: hard
 

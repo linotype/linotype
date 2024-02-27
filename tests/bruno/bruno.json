@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "linotype",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
