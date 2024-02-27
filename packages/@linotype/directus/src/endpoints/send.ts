@@ -1,21 +1,27 @@
-import nodemailer from 'nodemailer';
-import type { Transporter } from 'nodemailer';
-import { Liquid } from 'liquidjs';
+import nodemailer from 'nodemailer'
+import type { Transporter } from 'nodemailer'
+import { Liquid } from 'liquidjs'
 
 export default (router: any, { services }: any) => {
 
-  const { MailService, ItemsService } = services;
+  const { MailService, ItemsService } = services
 
-  let transporter: Transporter;
+  let transporter: Transporter
 
   //[POST] send message endpoint
   router.post('/send', async (req: any, res: any) => {
 
-    //get targeted form id
-    const form_id = req?.body?.form
+    let response
+    
+    const formID = req?.body?.form || null
+    const bodyData = req?.body?.data || {}
+    
+    let bodySubject = req?.body?.subject || ''
+    let bodyMessage = req?.body?.message || ''
+    let bodyEmail = ''
 
     // check if form defined
-    if (!form_id) res.status(400).send({ message: 'Form ID not founded' })
+    if (formID == null) res.status(400).send({ message: 'Form ID not founded' })
 
     // get form data
     const linotype_inbox_forms = await new ItemsService('linotype_inbox_forms', { schema: req.schema }).readByQuery({
@@ -31,7 +37,7 @@ export default (router: any, { services }: any) => {
         'mailer.*'
       ],
       filter: {
-        id: form_id
+        id: formID
       },
       limit: -1,
     })
@@ -40,31 +46,34 @@ export default (router: any, { services }: any) => {
     const form = linotype_inbox_forms[0] || null
 
     // check if form data exist
-    if (!form) res.status(400).send({ message: 'Form Data not founded' })
+    if (form == null) res.status(400).send({ message: 'Form Data not founded' })
 
-
-    //render template
-    const html = await new Liquid().parseAndRender(form?.template, {
-      from: form.mailer?.email,
-      to: form.email_to,
-      subject: req?.body?.subject || form?.subject || 'contact',
-      form: req?.body?.form,
-      message: req?.body?.message,
-      data: Object.keys(req?.body?.data).map((key: string) => { return { key: key, value: req?.body?.data[key] } }),
-      ...req?.body?.data
-    });
+    //render templates
+    bodySubject = await new Liquid().parseAndRender(form?.subject, {
+      from: form?.mailer?.email,
+      to: form?.email_to,
+      form: formID,
+      ...bodyData
+    })
+    bodyEmail = await new Liquid().parseAndRender(form?.template, {
+      from: form?.mailer?.email,
+      to: form?.email_to,
+      subject: bodySubject || form?.subject || 'contact',
+      form: formID,
+      message: bodyMessage,
+      data: bodyData ? Object.keys(bodyData).map((key: string) => { return { key: key, value: bodyData[key] } }) : {},
+      ...bodyData
+    })
 
     //create mail object
     const mailObject = {
       from: form?.mailer?.email,
       to: form?.email_to,
-      subject: req?.body?.subject || form?.subject || 'contact',
-      html: html
+      subject: bodySubject || form?.subject || 'contact',
+      html: bodyEmail
     }
 
     try {
-
-      let response
 
       //check if mailer exist
       if (form?.mailer) {
@@ -82,52 +91,57 @@ export default (router: any, { services }: any) => {
                 pass: form?.mailer?.password,
               },
               tls: form?.mailer?.tls,
-            } as Record<string, unknown>);
-            break;
+            } as Record<string, unknown>)
+            break
         }
 
         //send
-        response = await transporter.sendMail(mailObject);
+        response = await transporter.sendMail(mailObject)
 
       } else {
 
         //or use the global mailer from directus
-        response = await MailService.send(mailObject);
+        response = await MailService.send(mailObject)
 
       }
 
       //log success message in database
       await new ItemsService('linotype_inbox_messages', { schema: req.schema }).createOne({
         status: response ? 'success' : 'error',
-        from: form.mailer?.email,
-        to: form.email_to,
-        subject: req?.body?.subject || form?.subject || 'contact',
-        form: req?.body?.form,
-        message: req?.body?.message,
-        data: Object.keys(req?.body?.data).map((key: string) => { return { key: key, value: req?.body?.data[key] } }),
+        from: form?.mailer?.email,
+        to: form?.email_to,
+        subject: bodySubject || form?.subject || 'contact',
+        form: formID,
+        message: bodyMessage,
+        email: bodyEmail,
+        data: bodyData ? Object.keys(bodyData).map((key: string) => { return { key: key, value: bodyData[key] } }) : {},
       })
 
       //return success
       res.status(200).send({
-        message: response ? form.message_success || 'message send' : form.message_error || 'message not send',
+        message: response ? form?.message_success || 'message send' : form?.message_error || 'message not send',
       })
 
     } catch (error) {
+
+      console.log(error)
 
       //log error message in database
       await new ItemsService('linotype_inbox_messages', { schema: req.schema }).createOne({
         status: 'error',
         from: form?.mailer?.email,
         to: form?.email_to,
-        subject: req?.body?.subject || form?.subject || 'contact',
-        form: req?.body?.form,
-        message: req?.body?.message,
-        data: Object.keys(req?.body?.data).map((key: string) => { return { key: key, value: req?.body?.data[key] } }),
+        subject: bodySubject || form?.subject || 'contact',
+        form: formID,
+        message: bodyMessage,
+        email: bodyEmail,
+        error: `[${error?.code || 'null'}] ${error?.message || 'error'}`,
+        data: bodyData ? Object.keys(bodyData).map((key: string) => { return { key: key, value: bodyData[key] } }) : {},
       })
 
       //return error
-      res.status(400).send({
-        message: form.message_error || 'message not send',
+      res.status(500).send({
+        message: form?.message_error || 'message not send',
       })
 
     }
