@@ -34792,7 +34792,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-router@npm:^4.3.3, vue-router@npm:^4.4.0":
+"vue-router@npm:^4.3.3":
   version: 4.4.0
   resolution: "vue-router@npm:4.4.0"
   dependencies:
@@ -34813,7 +34813,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-tsc@npm:^1.8.27":
+"vue-tsc@npm:^1.8.26":
   version: 1.8.27
   resolution: "vue-tsc@npm:1.8.27"
   dependencies:
@@ -34882,7 +34882,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue@npm:^3.4.20, vue@npm:^3.4.29":
+"vue@npm:^3.4.29":
   version: 3.4.30
   resolution: "vue@npm:3.4.30"
   dependencies:
@@ -35012,9 +35012,9 @@ __metadata:
     nuxt-og-image: "npm:^2.2.6"
     typescript: "npm:^5.5.2"
     vite: "npm:^5.3.1"
-    vue: "npm:^3.4.20"
-    vue-router: "npm:^4.4.0"
-    vue-tsc: "npm:^1.8.27"
+    vue: "npm:^3.3.13"
+    vue-router: "npm:^4.2.5"
+    vue-tsc: "npm:^1.8.26"
   languageName: unknown
   linkType: soft
 
