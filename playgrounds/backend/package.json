@@ -18,9 +18,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@directus/constants": "^11.0.4",
     "@linotype/directus-extension-linotype": "*",
-    "directus": "^10.9.3",
-    "directus-extension-flexible-editor": "^1.2.0",
+    "directus": "^10.13.1",
+    "directus-extension-flexible-editor": "^1.7.0",
     "directus-extension-schema-management-module": "^1.5.0"
   }
 }
