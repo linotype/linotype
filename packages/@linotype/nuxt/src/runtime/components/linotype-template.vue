@@ -12,8 +12,8 @@ const { config, website, page, error } = useLinotype();
 
 const head_title =  page?.seo?.title || website?.seo?.title || website?.name + ' - ' + page?.title || ''
 const head_description =  page?.seo?.description || website?.seo?.description || ''
-const head_image =  page?.seo?.image ? config.public.linotype.backend_url + '/assets/' + page.seo.image + '?width=1500&height=780' : '' || website?.seo?.image ? config.public.linotype.backend_url + '/assets/' + website.seo.image + '?width=1500&height=780' : ''
-const head_favicon =  website?.favicon ? config.public.linotype.backend_url + '/assets/' + website.favicon + '?width=250&height=250' : ''
+const head_image =  page?.seo?.image ? config.public.linotype.backend_url + '/assets/' + page.seo.image + '?format=jpg&width=1500&height=780' : '' || website?.seo?.image ? config.public.linotype.backend_url + '/assets/' + website.seo.image + '?format=jpg&width=1500&height=780' : ''
+const head_favicon =  website?.favicon ? config.public.linotype.backend_url + '/assets/' + website.favicon + '?format=jpg&width=250&height=250' : ''
 
 useSeoMeta({
   title: head_title,
@@ -21,6 +21,11 @@ useSeoMeta({
   description: head_description,
   ogDescription: head_description,
   ogImage: head_image,
+  ogImageSecureUrl:head_image,
+  ogImageType:'image/jpeg',
+  ogImageWidth: '1500',
+  ogImageHeight: '780',
+  ogImageAlt: head_title,
   twitterCard: 'summary_large_image',
   appleMobileWebAppTitle: head_title,
   applicationName: head_title,
