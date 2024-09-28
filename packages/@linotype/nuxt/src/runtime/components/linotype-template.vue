@@ -37,9 +37,9 @@ useHead({
   htmlAttrs: { lang: website?.locale || 'en' },
   link: [
     { rel: 'canonical', href: page?.url || '' },
-    { rel: 'apple-touch-icon', sizes: '180x180', href: head_favicon },
-    { rel: 'icon', sizes: '32x32', href: head_favicon },
-    { rel: 'icon', sizes: '16x16', href: head_favicon },
+    head_favicon && { rel: 'apple-touch-icon', sizes: '180x180', href: head_favicon },
+    head_favicon && { rel: 'icon', sizes: '32x32', href: head_favicon },
+    head_favicon && { rel: 'icon', sizes: '16x16', href: head_favicon },
   ],
   meta: website?.metas || [],
 })
